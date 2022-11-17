@@ -62,7 +62,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
     },
@@ -76,7 +76,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
     },
@@ -115,7 +115,28 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err)
         }) 
-    }
+    },
+    RecordScore(context, payload) {
+      console.log('payload', payload)
+      axios({
+        method: 'post',
+        url:`${API_URL}/pages/score/`,
+        data: {
+          score: payload.score,
+          movie: payload.movie,
+          // user: payload.userId
+        },
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res)=> {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
   modules: {
   }

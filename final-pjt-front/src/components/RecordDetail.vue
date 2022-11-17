@@ -1,0 +1,52 @@
+<template>
+  <div>
+    <p>{{ movie.title }}</p>
+    <input v-model="score" type="number" min="0" max="5" step="0.5">
+    <input type="submit" @click="RecordScore(movie)">
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  name: 'RecordDetail',
+  data() {
+    return {
+      score: null,
+    }
+  },
+  methods: {
+    RecordScore(movie) {
+      const score = Number(this.score)
+      const API_URL = 'http://127.0.0.1:8000'
+      axios({
+        method: 'get',
+        url: `${API_URL}/accounts/user`,
+        headers: {
+            Authorization: `Token ${ this.$store.state.token }`
+        }
+      })
+        .then((res) => {
+          const userId = res.data.pk
+          const payload = {
+            score,
+            movie,
+            userId
+          }
+          this.$store.dispatch('RecordScore', payload)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  },
+  props: {
+    movie: Object
+  }
+}
+</script>
+
+<style>
+
+</style>

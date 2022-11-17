@@ -5,10 +5,17 @@ import LoginView from '@/views/LoginView'
 import MovieView from '@/views/MovieView'
 import ChangeView from '@/views/ChangeView'
 import ProfileView from '@/views/ProfileView'
+import OnBoardingView from '@/views/OnBoardingView'
+import RecordView from '@/views/RecordView'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/onboarding',
+    name: 'OnBoardingView',
+    component: OnBoardingView
+  },
   {
     path: '/signup',
     name: 'SignUpView',
@@ -35,6 +42,12 @@ const routes = [
     name: 'ProfileView',
     component: ProfileView
   },
+  {
+    path: '/record',
+    name: 'RecordView',
+    component: RecordView
+  }
+
 ]
 
 const router = new VueRouter({

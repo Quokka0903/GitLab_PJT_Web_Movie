@@ -4,5 +4,6 @@ from . import views
 app_name = 'movies'
 
 urlpatterns = [
-    path('movies/', views.movie_list)
+    path('movies/', views.movie_list),
+    path('score/', views.CreateScore),
 ]
