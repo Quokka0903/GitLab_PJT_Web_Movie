@@ -4,6 +4,7 @@ import SignUpView from '@/views/SignUpView'
 import LoginView from '@/views/LoginView'
 import MovieView from '@/views/MovieView'
 import ChangeView from '@/views/ChangeView'
+import ProfileView from '@/views/ProfileView'
 
 Vue.use(VueRouter)
 
@@ -28,7 +29,12 @@ const routes = [
     path: '/password',
     name: 'ChangeView',
     component: ChangeView
-  }
+  },
+  {
+    path: '/profile',
+    name: 'ProfileView',
+    component: ProfileView
+  },
 ]
 
 const router = new VueRouter({

@@ -26,6 +26,10 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({ name: 'MovieView' })
+    },
+    DELETE_TOKEN(state) {
+      state.token = null
+      router.push({ name: 'LoginView'})
     }
   },
   actions: {
@@ -72,12 +76,27 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
         .catch((err) => {
           console.log(err)
         })
+    },
+    logOut(context) {
+      axios({
+        method: 'post',
+        url: `${API_URL}/accounts/logout/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          console.log(res)
+          context.commit('DELETE_TOKEN')
+        })
+        .catch((err) => {
+          console.log(err)
+        }) 
     }
   },
   modules: {
