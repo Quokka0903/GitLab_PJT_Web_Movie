@@ -10,12 +10,15 @@ export default {
   computed: {
     isLogin() {
       return this.$store.getters.isLogin
+    },
+    movies() {
+      return this.$store.state.movies
     }
   },
   methods: {
     getMovies() {
       if (this.isLogin) {
-        console.log('영화 불러오기')
+        this.$store.dispatch('getMovies')
       } else {
         alert('로그인이 필요합니다!')
         this.$router.push({name: 'LoginView'})

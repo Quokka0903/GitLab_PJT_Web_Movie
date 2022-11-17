@@ -6,10 +6,10 @@
       <input type="text" id="original" v-model="original"><br> -->
 
       <label for="newpassword"> New Password : </label>
-      <input type="text" id="newpassword" v-model="newpassword"><br>
+      <input type="password" id="newpassword" v-model="newpassword"><br>
 
       <label for="newpassword2"> New Password Confirmation : </label>
-      <input type="text" id="newpassword2" v-model="newpassword2"><br>
+      <input type="password" id="newpassword2" v-model="newpassword2"><br>
 
       <input type="submit" value="Change">
     </form>

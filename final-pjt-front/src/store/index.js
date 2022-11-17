@@ -30,9 +30,27 @@ export default new Vuex.Store({
     DELETE_TOKEN(state) {
       state.token = null
       router.push({ name: 'LoginView'})
+    },
+    GET_MOVIES(state, movies) {
+      state.movies =movies
     }
   },
   actions: {
+    getMovies(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/pages/movies`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
     signUp(context, payload) {
       axios({
         method: 'post',
