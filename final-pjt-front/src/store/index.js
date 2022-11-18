@@ -123,7 +123,7 @@ export default new Vuex.Store({
         url:`${API_URL}/pages/score/`,
         data: {
           score: payload.score,
-          movie: payload.movie,
+          movie_pk: payload.movie_pk,
           // user: payload.userId
         },
         headers: {
