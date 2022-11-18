@@ -29,9 +29,10 @@ export default {
       })
         .then((res) => {
           const userId = res.data.pk
+          const movie_pk = movie.id
           const payload = {
             score,
-            movie,
+            movie_pk,
             userId
           }
           this.$store.dispatch('RecordScore', payload)

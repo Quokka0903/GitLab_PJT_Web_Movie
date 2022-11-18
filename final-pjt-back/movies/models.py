@@ -26,8 +26,8 @@ class Review(models.Model):
 # movies_liked 어떻게 할 지
 class MovieScore(models.Model):
     score = models.IntegerField()
-    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="score")
-    movie = models.ManyToManyField(Movie, related_name="moviescore")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="score")
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="moviescore")
 
 class Cinema(models.Model):
     pass
