@@ -25,7 +25,7 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      router.push({ name: 'MovieView' })
+      router.push({ name: 'MainView' })
     },
     DELETE_TOKEN(state) {
       state.token = null
