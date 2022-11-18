@@ -1,5 +1,12 @@
 <template>
   <div>
+    <nav>
+      <router-link :to="{ name: 'MainView' }">메인 페이지</router-link> |
+      <span> 근처 극장 찾기 </span> | 
+      <span> 마이 페이지 </span>
+    </nav>
+    <router-view/>
+
     <h1>MainPage</h1>
     <div class="box">
       <p>알고리즘</p>
@@ -26,7 +33,7 @@ import axios from 'axios'
 import MovieViewItem from '@/components/MovieViewItem.vue'
 
 export default {
-  name: 'MovieView',
+  name: 'MainView',
   components: {
     MovieViewItem,
   },

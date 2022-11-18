@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import StartView from '@/views/StartView'
 import SignUpView from '@/views/SignUpView'
 import LoginView from '@/views/LoginView'
-import MovieView from '@/views/MovieView'
+import MovieView from '@/views/MainView'
 import ChangeView from '@/views/ChangeView'
 import ProfileView from '@/views/ProfileView'
 import OnBoardingView from '@/views/OnBoardingView'
@@ -11,6 +12,11 @@ import RecordView from '@/views/RecordView'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    name: 'StartView',
+    component: StartView
+  },
   {
     path: '/onboarding',
     name: 'OnBoardingView',
@@ -28,8 +34,8 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/movie',
-    name: 'MovieView',
+    path: '/main',
+    name: 'MainView',
     component: MovieView
   },
   {
