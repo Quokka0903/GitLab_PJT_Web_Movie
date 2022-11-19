@@ -1,19 +1,19 @@
 <template>
   <div>
     <h1>MainPage</h1>
+    <AlgorithmItem
+    v-for="(movie) in movies"
+    :key="movie.id"
+    :movie="movie"
+    />
     <div class="box">
       <p>알고리즘</p>
       <div class="mx-auto ms-auto row g-3">
-      <!-- <MovieViewItem
-      v-for=" (movie, index) in Movies"
-      :movie='movie'
-      :key="index"
-      /> -->
     </div>
     </div>
     <div class="mx-auto ms-auto row g-3">
       <MovieViewItem
-      v-for=" (movie, index) in Movies"
+      v-for="(movie, index) in Movies"
       :movie='movie'
       :key="index"
       />
@@ -24,11 +24,13 @@
 <script>
 import axios from 'axios'
 import MovieViewItem from '@/components/MovieViewItem.vue'
+import AlgorithmItem from '@/components/AlgorithmItem.vue'
 
 export default {
   name: 'MainView',
   components: {
     MovieViewItem,
+    AlgorithmItem,
   },
   data() {
     return {

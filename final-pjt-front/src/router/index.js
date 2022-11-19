@@ -10,6 +10,7 @@ import OnBoardingView from '@/views/OnBoardingView'
 import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
+import MovieDetail from '@/views/MovieDetail'
 
 Vue.use(VueRouter)
 
@@ -80,7 +81,13 @@ const routes = [
     path: '/record',
     name: 'RecordView',
     component: RecordView
-  }
+  },
+  {
+    path: '/movie/:id',
+    name: 'MovieDetail',
+    component: MovieDetail
+  },
+  
 
 ]
 
