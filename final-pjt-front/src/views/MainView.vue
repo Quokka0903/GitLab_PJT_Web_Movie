@@ -23,6 +23,7 @@
 
 <script>
 import axios from 'axios'
+import _ from 'lodash'
 import MovieViewItem from '@/components/MovieViewItem.vue'
 import AlgorithmItem from '@/components/AlgorithmItem.vue'
 
@@ -69,7 +70,7 @@ export default {
       })
         .then((response) => {
           console.log(response)
-          this.Movies = response.data.results
+          this.Movies = _.sampleSize(response.data.results, 5)
         }) 
         .catch((error)=> {
           console.log(error)
