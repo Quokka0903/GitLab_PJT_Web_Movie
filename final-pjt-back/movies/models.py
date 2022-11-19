@@ -17,6 +17,8 @@ class Movie(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # 리뷰에 좋아요 누른 user 추가 
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_reviews")
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     content = models.CharField(max_length=50)

@@ -69,7 +69,6 @@ export default {
           }       
       })
         .then((response) => {
-          console.log(response)
           this.Movies = _.sampleSize(response.data.results, 5)
         }) 
         .catch((error)=> {

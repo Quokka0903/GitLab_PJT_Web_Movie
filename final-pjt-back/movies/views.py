@@ -9,7 +9,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer
 from .models import Movie, Genre, Review
-
+from django.http import JsonResponse
 import requests
 import json
 
@@ -85,3 +85,26 @@ def review_create(request, movie_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(movie=movie, user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+# 좋아요 구현
+@api_view(['POST'])
+def likes(request, review_pk):
+    review = get_object_or_404(Review, pk=review_pk)
+    print('working1')
+    if review.like_users.filter(pk=request.user.pk).exists():
+        review.like_users.remove(request.user)
+        is_liked = False
+    else:
+        review.like_users.add(request.user)
+        is_liked = True    
+    like_count = review.like_users.count()
+    context = {
+        'like_count': like_count,
+        'is_liked': is_liked,
+        'pk': review_pk,
+    }
+    return JsonResponse(context)
+
+def profile_detail(request):
+    pass
