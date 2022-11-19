@@ -7,13 +7,13 @@
         <img :src="jpg" class="card-img-top">
       </div>
       <p>장르 : 
-        <span v-for="(genre, index) in movie.genres" :key="index">
+        <span v-for="(genre, index) in movie?.genres" :key="index">
           {{genre.name}}
         </span>
       </p>
-      <p>개봉일 : {{movie.release_date}}</p>
-      <p>평점 : {{movie.vote_average}}</p>
-      <p>줄거리 : {{movie.overview}}</p>
+      <p>개봉일 : {{movie?.release_date}}</p>
+      <p>평점 : {{movie?.vote_average}}</p>
+      <p>줄거리 : {{movie?.overview}}</p>
     </div>
     <div>
       <h3>별점</h3>
@@ -23,6 +23,9 @@
     </div>
     <div>
       <h3>리뷰</h3>
+      <MakeReview
+      :movie="movie"
+      />
     </div>
   </div>
 </template>
@@ -30,6 +33,7 @@
 <script>
 import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
+import MakeReview from '@/components/MakeReview'
 
 
 export default {
@@ -37,10 +41,13 @@ export default {
   data() {
     return {
       movie: null,
+      movie_id: null,
+      jpg: null,
     }
   },
   components:{
-    RecordDetail
+    RecordDetail,
+    MakeReview,
   },
   methods: {
     getMovieDetail() {
@@ -54,13 +61,10 @@ export default {
       })
         .then((res) => {
           this.movie = res.data
+          this.movie_id = movie_id
+          this.jpg = `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
         })
     }
-  },
-  computed: {
-    jpg() {
-      return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
-      },
   },
   created() {
     this.getMovieDetail()
