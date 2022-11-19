@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <nav>
+    <!-- <nav> -->
       <!-- <router-link :to="{ name: 'ArticleView' }">Articles</router-link> |  -->
-      <router-link :to="{ name: 'MovieView' }">MoviePage</router-link> | 
-      <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> | 
-      <router-link :to="{ name: 'LoginView' }">LoginPage</router-link>
-    </nav>
+      <!-- <router-link :to="{ name: 'MovieView' }">MoviePage</router-link> |  -->
+      <!-- <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |  -->
+      <!-- <router-link :to="{ name: 'LoginView' }">LoginPage</router-link> -->
+    <!-- </nav> -->
     <router-view/>
   </div>
 </template>
+
 
 <style>
 #app {
