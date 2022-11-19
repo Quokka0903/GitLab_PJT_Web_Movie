@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <h1>MainPage</h1>
     <div class="box">
       <p>알고리즘</p>
@@ -55,28 +54,32 @@ export default {
     },
     getlist() {
 
+    },
+    getTopMovie(){
+      axios({
+        method : 'get',
+        url: 'https://api.themoviedb.org/3/movie/top_rated?',
+        params:{
+          api_key:'3b039b524fe9061bc79cb30956f2b673',
+          language:'ko-KR',
+          page:'1',
+          }       
+      })
+        .then((response) => {
+          console.log(response)
+          this.Movies = response.data.results
+        }) 
+        .catch((error)=> {
+          console.log(error)
+        })
     }
   },
   created() {
     this.getMovies()
+    this.getTopMovie()
   },
   mounted() {
-    axios({
-      method : 'get',
-      url: 'https://api.themoviedb.org/3/movie/top_rated?',
-      params:{
-        api_key:'3b039b524fe9061bc79cb30956f2b673',
-        language:'ko-KR',
-        page:'1',
-      }       
-    })
-      .then((response) => {
-        console.log(response)
-        this.Movies = response.data.results
-      }) 
-      .catch((error)=> {
-        console.log(error)
-      })
+
   }
   
 }
