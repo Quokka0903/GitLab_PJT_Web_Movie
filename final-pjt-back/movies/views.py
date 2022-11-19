@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer
+from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer
 from .models import Movie, Genre, Review
 
 import requests
@@ -21,6 +21,13 @@ def movie_list(request):
         # movies = Movie.objects.all()
         movies = get_list_or_404(Movie)
         serializer = MovieListSerializer(movies, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+def movie_detail(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    if request.method == 'GET':
+        serializer = MovieSerializer(movie)
         return Response(serializer.data)
 
 
@@ -77,7 +84,6 @@ def review_detail(request, review_pk):
 def review_create(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = ReviewSerializer(data=request.data)
-    print(request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(movie=movie, user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
