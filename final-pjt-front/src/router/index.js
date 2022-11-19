@@ -56,10 +56,9 @@ const routes = [
       component: MainView,
     }]
   },
-  // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/profile',
-    name: 'ProfileView',
+    name: '',
     component: IndexNav,
     children: [{
       path: '/',
@@ -67,6 +66,7 @@ const routes = [
       component: ProfileView,
     }]
   },
+  // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/onboarding',
     name: 'OnBoardingView',
