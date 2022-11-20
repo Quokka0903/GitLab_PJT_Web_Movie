@@ -50,7 +50,7 @@ export default {
     },
     Check() {
       if (this.isLogin) {
-        this.$router.push({name: 'MainView'})
+        this.$router.replace({name: 'MainView'})
       }
     },
   },

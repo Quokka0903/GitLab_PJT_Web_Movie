@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>{{ movie?.title }}</p>
     <input v-model="score" type="number" min="0" max="5" step="0.5">
     <input type="submit" @click="RecordScore(movie)">
   </div>

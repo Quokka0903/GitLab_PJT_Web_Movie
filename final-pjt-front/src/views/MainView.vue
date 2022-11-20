@@ -1,22 +1,24 @@
 <template>
-  <div>
-    <h1>MainPage</h1>
-    
-    <div class="box">
-      <p>알고리즘</p>
-      <div class="mx-auto ms-auto row g-3">
+  <div id="justify-content" class="container">
+    <div class="row justify-content-around">
+      <p>오늘 이 영화 어떠세요?</p>
         <AlgorithmItem
         v-for="(movie) in recommend"
         :key="movie.id"
         :movie="movie"
+        class="col-3"
         />
     </div>
-    </div>
-    <div class="mx-auto ms-auto row g-3">
+    <br>
+    <hr>
+    <br>
+    <div class="row justify-content-around">
+      <p>실시간 랭킹 영화</p>
       <MovieViewItem
       v-for="(movie, index) in Movies"
       :movie='movie'
       :key="index"
+      class="col-2"
       />
     </div>
   </div>
@@ -103,7 +105,7 @@ export default {
 <style>
 .box {
   text-align: center;
-  border: 1px solid;
+  border: 0;
   width: 1000px;
   height: 1000px;
 }

@@ -5,12 +5,12 @@
       :review='review'
       :key="index"
       /> -->
-    <input type="text" v-model="title" placeholder="리뷰 제목">
-    <textarea
+    <b-input v-model="title" placeholder="리뷰 제목"></b-input>
+    <b-textarea
     placeholder="당신만의 한 줄을 남겨주세요"
     v-model="context"
-    ></textarea>
-    <button @click="createReview(movie)">리뷰 남기기</button>
+    ></b-textarea>
+    <b-button @click="createReview(movie)">리뷰 남기기</b-button>
   </div>
 </template>
 

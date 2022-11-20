@@ -10,8 +10,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer
 from .models import Movie, Genre, Review, MovieScore
 from django.http import JsonResponse
-import requests
-import json
+from collections import defaultdict
 import random
 
 # Create your views here.
@@ -119,6 +118,56 @@ def likes(request, review_pk):
     }
     return JsonResponse(context)
 
+# 알고리즘 구현
+@api_view(['GET'])
+def recommend(request):
+    if request.method == 'GET':
+        movies = get_list_or_404(Movie)
+        movie_scores = get_list_or_404(MovieScore, user_id=request.user.id)
+
+        prefer = defaultdict(int)
+        already_like = []
+        for score in movie_scores:
+            already_like.append(score.movie_id)
+            movie = get_object_or_404(Movie, pk=score.movie_id)
+            #print('movie')
+            #print(movie.title)
+            for genre in movie.genres.all():
+                #print(genre.name, end=' ')
+                prefer[genre.id] += 1
+            #print('\n')
+
+        movie_list = []
+
+        #print('장르 점수')
+        #print(prefer)
+        #print('\n')
+
+        for movie in movies:
+
+            if movie.pk in already_like:
+                 continue
+            score = movie.vote_average * 3
+            score += movie.popularity // 150
+
+            for genre in movie.genres.all():
+                score += prefer[genre.id] * 5
+            movie_list.append([score, movie.id, movie.title])
+
+        movie_list.sort(reverse=True)
+
+        my_movies = movie_list[:15]
+        my_movie = []
+        for s, i, t in  movie_list[:15]:
+            my_movie.append(movies[i - 1])
+
+        #for unit in my_movies:
+        #    print(unit[0], unit[2])
+
+        #print(my_movie)
+
+        serializer = MovieListSerializer(my_movie, many=True)
+        return Response(serializer.data)
 @api_view(['GET'])
 def recommend_genre(request, movie_id):
     # 장르가 같은 모든 영화 가져오기

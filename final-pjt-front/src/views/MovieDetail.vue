@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h1>{{movie?.title}}</h1>
     <div>
       <h3>영화 정보</h3>
@@ -54,9 +54,9 @@ export default {
       movie: null,
       movie_id: null,
       jpg: null,
-      genre_movies: [],
+      detail: null,
       background1: null,
-      background2: null,
+      genre_movies: []
     }
   },
   components:{
@@ -91,11 +91,8 @@ export default {
               this.detail = res.data
               console.log(this.detail)
               console.log(this.detail.backdrop_path)
-              console.log(this.detail.belongs_to_collection)
               this.background1 = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
-              this.background2 = `https://image.tmdb.org/t/p/original/${this.detail.belongs_to_collection.backdrop_path}`
               console.log(this.background1)
-              console.log(this.background2)
             })
           return {movie_id: res.movie_id}
         })
@@ -115,6 +112,7 @@ export default {
             })
         })
     },
+  },
     // getGenreMovies() {
     //   axios({
     //     method: 'get',
@@ -131,7 +129,6 @@ export default {
     //       console.log(err)
     //     })
     // }
-  },
   created() {
     this.getMovieDetail()
   }
@@ -142,5 +139,11 @@ export default {
 .img {
     width : 30%;
     height : 30%;
+  }
+.background {
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
   }
 </style>

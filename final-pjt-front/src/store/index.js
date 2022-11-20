@@ -61,13 +61,13 @@ export default new Vuex.Store({
     getRecommend(context) {
       axios({
         method: 'get',
-        url: `${API_URL}/pages/Algo`,
+        url: `${API_URL}/pages/algo`,
         headers: {
           Authorization: `Token ${context.state.token}`
         }
       })
         .then((res) => {
-          res.data = _.sampleSize(res.data, 5)
+          res.data = _.sampleSize(res.data, 4)
           context.commit('GET_RECOMMEND', res.data)
         })
         .catch((err) => {
