@@ -7,11 +7,12 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer
+from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer
 from .models import Movie, Genre, Review, MovieScore
 from django.http import JsonResponse
 import requests
 import json
+import random
 
 # Create your views here.
 @api_view(['GET'])
@@ -118,3 +119,22 @@ def likes(request, review_pk):
     }
     return JsonResponse(context)
 
+@api_view(['GET'])
+def recommend_genre(request, movie_id):
+    # 장르가 같은 모든 영화 가져오기
+    movie = get_object_or_404(Movie, pk=movie_id)
+    genres = movie.genres.all()
+    movie_list = []
+    if len(genres) == 1:
+        for genre in genres:
+            movies = genre.movie_set.all()
+            movie_list.append(random.sample(list(movies), 10))
+            for mo in random.sample(list(movies), 5):
+                movie_list.append(mo)
+    else:
+        for genre in genres:
+            movies = genre.movie_set.all()
+            for mo in random.sample(list(movies), 5):
+                movie_list.append(mo)
+    serializer = MovieListSerializer(movie_list, many=True)
+    return Response(serializer.data)
