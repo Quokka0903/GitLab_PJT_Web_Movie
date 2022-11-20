@@ -80,27 +80,6 @@ export default {
           this.jpg = `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
           return { movie_id: this.movie_id}
         })
-    },
-    getBackdrop() {
-      console.log(this.movie) 
-      const movie_id = this.movie.movie_id
-      axios({
-        method: 'get',
-        url: `https://api.themoviedb.org/3/movie/${movie_id}?api_key=97facdf795694b266aef7a0828a53e1f&language=ko-KR`,
-        headers: {
-          Authorization: `Token ${this.$store.state.token}`
-        }
-      })
-        .then((res) => {
-          this.detail = res.data
-          console.log(this.detail)
-          console.log(this.detail.backdrop_path)
-          console.log(this.detail.belongs_to_collection)
-          this.background1 = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
-          this.background2 = `https://image.tmdb.org/t/p/original/${this.detail.belongs_to_collection.backdrop_path}`
-          console.log(this.background1)
-          console.log(this.background2)
-        })
         .then((res) => {
           axios({
             method: 'get',
@@ -117,44 +96,45 @@ export default {
               console.log(err)
             })
         })
+      },
     },
-    getBackdrop() {
-      console.log(this.movie) 
-      const movie_id = this.movie.movie_id
-      axios({
-        method: 'get',
-        url: `https://api.themoviedb.org/3/movie/${movie_id}?api_key=97facdf795694b266aef7a0828a53e1f&language=ko-KR`,
-        headers: {
-          Authorization: `Token ${this.$store.state.token}`
-        }
-      })
-        .then((res) => {
-          this.detail = res.data
-          console.log(this.detail)
-          console.log(this.detail.backdrop_path)
-          console.log(this.detail.belongs_to_collection)
-          this.background1 = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
-          this.background2 = `https://image.tmdb.org/t/p/original/${this.detail.belongs_to_collection.backdrop_path}`
-          console.log(this.background1)
-          console.log(this.background2)
-        })
-        .then((res) => {
-          axios({
-            method: 'get',
-            url: `http://127.0.0.1:8000/pages/genre_algo/${res.movie_id}/`,
-            headers: {
-              Authorization: `Token ${this.$store.state.token}`
-            }
-          })
-            .then((res) => {
-              console.log(res.data)
-              this.genre_movies = _.sampleSize(res.data, 4)
-            })
-            .catch((err) => {
-              console.log(err)
-            })
-        })
-    },
+    // getBackdrop() {
+    //   console.log(this.movie) 
+    //   const movie_id = this.movie.movie_id
+    //   axios({
+    //     method: 'get',
+    //     url: `https://api.themoviedb.org/3/movie/${movie_id}?api_key=97facdf795694b266aef7a0828a53e1f&language=ko-KR`,
+    //     headers: {
+    //       Authorization: `Token ${this.$store.state.token}`
+    //     }
+    //   })
+    //     .then((res) => {
+    //       this.detail = res.data
+    //       console.log(this.detail)
+    //       console.log(this.detail.backdrop_path)
+    //       console.log(this.detail.belongs_to_collection)
+    //       this.background1 = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
+    //       this.background2 = `https://image.tmdb.org/t/p/original/${this.detail.belongs_to_collection.backdrop_path}`
+    //       console.log(this.background1)
+    //       console.log(this.background2)
+    //     })
+    //     .then((res) => {
+    //       axios({
+    //         method: 'get',
+    //         url: `http://127.0.0.1:8000/pages/genre_algo/${res.movie_id}/`,
+    //         headers: {
+    //           Authorization: `Token ${this.$store.state.token}`
+    //         }
+    //       })
+    //         .then((res) => {
+    //           console.log(res.data)
+    //           this.genre_movies = _.sampleSize(res.data, 4)
+    //         })
+    //         .catch((err) => {
+    //           console.log(err)
+    //         })
+    //     })
+    // },
     // getGenreMovies() {
     //   axios({
     //     method: 'get',
@@ -171,7 +151,6 @@ export default {
     //       console.log(err)
     //     })
     // }
-  },
     // getGenreMovies() {
     //   axios({
     //     method: 'get',
