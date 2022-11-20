@@ -16,7 +16,7 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre)
 
 class Review(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reviews")
     # 리뷰에 좋아요 누른 user 추가 
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_reviews")
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
@@ -27,7 +27,8 @@ class Review(models.Model):
 
 # movies_liked 어떻게 할 지
 class MovieScore(models.Model):
-    score = models.IntegerField()
+    # TODO: Float로 변경
+    score = models.FloatField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="score")
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="moviescore")
 
