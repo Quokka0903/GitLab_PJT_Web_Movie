@@ -138,3 +138,7 @@ def recommend_genre(request, movie_id):
                 movie_list.append(mo)
     serializer = MovieListSerializer(movie_list, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def score_movies(request):
+    pass
