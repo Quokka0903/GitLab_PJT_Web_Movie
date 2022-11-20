@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, AlgoTest
 
 urlpatterns = [
     path('movies/', views.movie_list),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('reviews/<int:review_pk>/', views.review_detail),
     path('movies/<int:movie_pk>/reviews/', views.review_create),
     path('reviews/<int:review_pk>/likes/', views.likes),
+    path('Algo/', AlgoTest.recommend),
 ]
