@@ -39,6 +39,7 @@ export default new Vuex.Store({
     },
     GET_RECOMMEND(state, recommend) {
       state.recommend =recommend
+      // console.log(state.recommend)
     },
   },
   actions: {
@@ -84,7 +85,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
+          console.log('token', res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
     },
@@ -132,7 +133,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
+          console.log('로그아웃', res)
           context.commit('DELETE_TOKEN')
         })
         .catch((err) => {

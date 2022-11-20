@@ -48,7 +48,7 @@ export default {
         }
       })
         .then((res) => {
-            console.log(res)
+            console.log('리뷰', res)
             this.title = ''
             this.context = ''
         })

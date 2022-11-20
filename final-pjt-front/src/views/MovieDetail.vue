@@ -15,6 +15,16 @@
       <p>평점 : {{movie?.vote_average}}</p>
       <p>줄거리 : {{movie?.overview}}</p>
     </div>
+    <h3>같은 장르의 영화 추천드립니다!</h3>
+    <div class='row row-cols-md-4'>
+      <div v-for="movie in genre_movies"
+      :key="movie.id"
+      class='col'>
+      <div class="card h-100">
+        <img class="card-img-top" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="">
+      </div>
+      </div>
+    </div>
     <div>
       <h3>별점</h3>
       <RecordDetail
@@ -34,6 +44,7 @@
 import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
 import MakeReview from '@/components/MakeReview'
+import _ from 'lodash'
 
 
 export default {
@@ -46,6 +57,7 @@ export default {
       detail: null,
       background1: null,
       background2: null,
+      genre_movies: []
     }
   },
   components:{
@@ -66,6 +78,7 @@ export default {
           this.movie = res.data
           this.movie_id = movie_id
           this.jpg = `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
+          return { movie_id: this.movie_id}
         })
     },
     getBackdrop() {
@@ -88,15 +101,98 @@ export default {
           console.log(this.background1)
           console.log(this.background2)
         })
-    }
+        .then((res) => {
+          axios({
+            method: 'get',
+            url: `http://127.0.0.1:8000/pages/genre_algo/${res.movie_id}/`,
+            headers: {
+              Authorization: `Token ${this.$store.state.token}`
+            }
+          })
+            .then((res) => {
+              console.log(res.data)
+              this.genre_movies = _.sampleSize(res.data, 4)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        })
+    },
+    getBackdrop() {
+      console.log(this.movie) 
+      const movie_id = this.movie.movie_id
+      axios({
+        method: 'get',
+        url: `https://api.themoviedb.org/3/movie/${movie_id}?api_key=97facdf795694b266aef7a0828a53e1f&language=ko-KR`,
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
+        }
+      })
+        .then((res) => {
+          this.detail = res.data
+          console.log(this.detail)
+          console.log(this.detail.backdrop_path)
+          console.log(this.detail.belongs_to_collection)
+          this.background1 = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
+          this.background2 = `https://image.tmdb.org/t/p/original/${this.detail.belongs_to_collection.backdrop_path}`
+          console.log(this.background1)
+          console.log(this.background2)
+        })
+        .then((res) => {
+          axios({
+            method: 'get',
+            url: `http://127.0.0.1:8000/pages/genre_algo/${res.movie_id}/`,
+            headers: {
+              Authorization: `Token ${this.$store.state.token}`
+            }
+          })
+            .then((res) => {
+              console.log(res.data)
+              this.genre_movies = _.sampleSize(res.data, 4)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        })
+    },
+    // getGenreMovies() {
+    //   axios({
+    //     method: 'get',
+    //     url: `http://127.0.0.1:8000/pages/genre_algo/${this.movie_id}/`,
+    //     headers: {
+    //       Authorization: `Token ${this.$store.state.token}`
+    //     }
+    //   })
+    //     .then((res) => {
+    //       console.log(res.data)
+    //       this.genre_movies = _.sampleSize(res.data, 5)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // }
   },
+    // getGenreMovies() {
+    //   axios({
+    //     method: 'get',
+    //     url: `http://127.0.0.1:8000/pages/genre_algo/${this.movie_id}/`,
+    //     headers: {
+    //       Authorization: `Token ${this.$store.state.token}`
+    //     }
+    //   })
+    //     .then((res) => {
+    //       console.log(res.data)
+    //       this.genre_movies = _.sampleSize(res.data, 5)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // }
+  // },
   created() {
     this.getMovieDetail()
-
-  },
-  mounted() {
-    this.getBackdrop()
-  },
+    this.getGenreMovies()
+  }
 }
 </script>
 
