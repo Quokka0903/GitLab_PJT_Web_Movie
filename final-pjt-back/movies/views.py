@@ -12,6 +12,7 @@ from .models import Movie, Genre, Review, MovieScore
 from django.http import JsonResponse
 from collections import defaultdict
 import random
+import json
 
 # Create your views here.
 @api_view(['GET'])
@@ -204,3 +205,18 @@ def like_movies(request):
                 n += 1
     serializer = MovieListSerializer(movie_list, many=True)
     return Response(serializer.data)
+
+# main page에 들어갈 랜덤 장르
+@api_view(['GET'])
+def random_genre(request):
+    genre = random.choice(get_list_or_404(Genre))
+    movies = random.sample(list(genre.movie_set.all()), 3)
+    serializer = MovieListSerializer(movies, many=True)
+    context = {
+        'genre': genre.name,
+        'movies': serializer.data
+    }
+    
+    # result = json.dumps(context, indent=4)
+    # print(result)
+    return Response(context)
