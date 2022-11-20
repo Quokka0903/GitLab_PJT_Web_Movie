@@ -188,6 +188,19 @@ def recommend_genre(request, movie_id):
     serializer = MovieListSerializer(movie_list, many=True)
     return Response(serializer.data)
 
+# 처음 영화 선택, 장르별로 중복없이 영화 가져오기
 @api_view(['GET'])
-def score_movies(request):
-    pass
+def like_movies(request):
+    movie_list = []
+    genres = get_list_or_404(Genre)
+    for genre in genres:
+        movies = genre.movie_set.all().order_by('popularity')
+        n = 0
+        for movie in movies:
+            if n == 5:
+                break
+            if movie not in movie_list:
+                movie_list.append(movie)
+                n += 1
+    serializer = MovieListSerializer(movie_list, many=True)
+    return Response(serializer.data)
