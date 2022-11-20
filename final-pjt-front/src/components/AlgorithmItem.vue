@@ -1,8 +1,8 @@
 <template>
   <div @click="MoveDetail(movie.id)">
-    <div class="card mx-auto" style="width: 18rem">
-      <div class="img">
-        <img :src="jpg" class="card-img-top" height=100%>
+    <div class="card mx-auto" style="height: 30rem">
+      <div>
+        <img :src="jpg" class="card-img-top" height=90%>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="card mx-auto" style="width: 18rem">
-      <div class="img">
+    <div class="card mx-auto" style="height: 20rem">
+      <div>
         <img :src="jpg" class="card-img-top" height=100%>
       </div>
-    <div class="card-body">
-      <h5 class="card-title">{{title}}</h5>
-    </div>
+      <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+      </div>
   </div>
   </div>
   </template>

@@ -43,7 +43,7 @@ export default {
     Check() {
       if (this.isLogin) {
         console.log('보냄')
-        this.$router.push({name: 'MainView'})
+        this.$router.replace({name: 'MainView'})
       }
     },
   },

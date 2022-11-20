@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h1>{{movie?.title}}</h1>
     <div>
       <h3>영화 정보</h3>
@@ -43,6 +43,9 @@ export default {
       movie: null,
       movie_id: null,
       jpg: null,
+      detail: null,
+      background1: null,
+      background2: null,
     }
   },
   components:{
@@ -64,11 +67,36 @@ export default {
           this.movie_id = movie_id
           this.jpg = `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
         })
+    },
+    getBackdrop() {
+      console.log(this.movie) 
+      const movie_id = this.movie.movie_id
+      axios({
+        method: 'get',
+        url: `https://api.themoviedb.org/3/movie/${movie_id}?api_key=97facdf795694b266aef7a0828a53e1f&language=ko-KR`,
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
+        }
+      })
+        .then((res) => {
+          this.detail = res.data
+          console.log(this.detail)
+          console.log(this.detail.backdrop_path)
+          console.log(this.detail.belongs_to_collection)
+          this.background1 = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
+          this.background2 = `https://image.tmdb.org/t/p/original/${this.detail.belongs_to_collection.backdrop_path}`
+          console.log(this.background1)
+          console.log(this.background2)
+        })
     }
   },
   created() {
     this.getMovieDetail()
-  }
+
+  },
+  mounted() {
+    this.getBackdrop()
+  },
 }
 </script>
 
@@ -76,5 +104,11 @@ export default {
 .img {
     width : 30%;
     height : 30%;
+  }
+.background {
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
   }
 </style>
