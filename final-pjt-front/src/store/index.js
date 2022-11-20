@@ -76,6 +76,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
+          console.log('로그인')
           console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
