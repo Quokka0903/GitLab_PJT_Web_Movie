@@ -30,7 +30,7 @@
   
   <style>
   .card {
-    /* margin-top: auto; */
+    margin-top: auto;
     background-size: cover;
   }
 
