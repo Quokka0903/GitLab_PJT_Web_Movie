@@ -8,12 +8,15 @@ Vue.use(Vuex)
 
 const API_URL = 'http://127.0.0.1:8000'
 
+import _ from 'lodash'
+
 export default new Vuex.Store({
   plugins: [
     createPersistedState()
   ],
   state: {
     movies: [],
+    recommend: [],
     token: null,
   },
   getters: {
@@ -33,7 +36,11 @@ export default new Vuex.Store({
     },
     GET_MOVIES(state, movies) {
       state.movies =movies
-    }
+    },
+    GET_RECOMMEND(state, recommend) {
+      state.recommend =recommend
+      console.log(state.recommend)
+    },
   },
   actions: {
     getMovies(context) {
@@ -46,6 +53,22 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getRecommend(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/pages/Algo`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          res.data = _.sampleSize(res.data, 5)
+          context.commit('GET_RECOMMEND', res.data)
         })
         .catch((err) => {
           console.log(err)

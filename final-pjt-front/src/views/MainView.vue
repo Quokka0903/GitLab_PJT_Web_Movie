@@ -1,14 +1,15 @@
 <template>
   <div>
     <h1>MainPage</h1>
-    <AlgorithmItem
-    v-for="(movie) in movies"
-    :key="movie.id"
-    :movie="movie"
-    />
+    
     <div class="box">
       <p>알고리즘</p>
       <div class="mx-auto ms-auto row g-3">
+        <AlgorithmItem
+        v-for="(movie) in recommend"
+        :key="movie.id"
+        :movie="movie"
+        />
     </div>
     </div>
     <div class="mx-auto ms-auto row g-3">
@@ -35,7 +36,7 @@ export default {
   },
   data() {
     return {
-      Movies:[]
+      Movies:[],
     }
   },
   computed: {
@@ -44,12 +45,23 @@ export default {
     },
     movies() {
       return this.$store.state.movies
+    },
+    recommend() {
+      return this.$store.state.recommend
     }
   },
   methods: {
     getMovies() {
       if (this.isLogin) {
         this.$store.dispatch('getMovies')
+      } else {
+        alert('로그인이 필요합니다!')
+        this.$router.push({name: 'LoginView'})
+      }
+    },
+    getRecommend() {
+      if (this.isLogin) {
+        this.$store.dispatch('getRecommend')
       } else {
         alert('로그인이 필요합니다!')
         this.$router.push({name: 'LoginView'})
@@ -79,6 +91,7 @@ export default {
   created() {
     this.getMovies()
     this.getTopMovie()
+    this.getRecommend()
   },
   mounted() {
 
@@ -94,4 +107,5 @@ export default {
   width: 1000px;
   height: 1000px;
 }
+
 </style>
