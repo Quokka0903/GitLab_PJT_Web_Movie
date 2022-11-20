@@ -219,4 +219,4 @@ def random_genre(request):
     
     # result = json.dumps(context, indent=4)
     # print(result)
-    return Response(context)
+    return Response(context) 
