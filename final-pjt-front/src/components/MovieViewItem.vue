@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card mx-auto" style="height: 20rem">
+    <div class="card mx-auto" style="height: 100%">
       <div>
         <img :src="jpg" class="card-img-top" height=100%>
       </div>
