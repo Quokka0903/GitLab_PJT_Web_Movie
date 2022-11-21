@@ -12,5 +12,6 @@ urlpatterns = [
     path('algo/', views.recommend),
     path('genre_algo/<int:movie_id>/', views.recommend_genre),
     path('like/', views.like_movies),
-    path('genre/', views.random_genre)
+    path('genre/', views.random_genre),
+    path('movies/reviews/<int:movie_id>/', views.review_list),
 ]

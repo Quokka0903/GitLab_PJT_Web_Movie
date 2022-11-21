@@ -70,13 +70,13 @@ def score_view(request, movie_pk, user_pk):
         print(serializer)
         return Response(serializer.data)
 
-# def movie_detail(request):
-# @api_view(['GET'])
-# def review_list(request):
-#     if request.method == 'GET':
-#         reviews = get_list_or_404(Review)
-#         serializer = ReviewListSerializer(reviews, many=True)
-#         return Response(serializer.data)
+@api_view(['GET'])
+def review_list(request, movie_id):
+    movie = get_object_or_404(Movie, pk=movie_id)
+    if request.method == 'GET':
+        reviews = movie.review_set.all()
+        serializer = ReviewListSerializer(reviews, many=True)
+        return Response(serializer.data)
 
 
 @api_view(['GET', 'DELETE', 'PUT'])
@@ -207,7 +207,7 @@ def like_movies(request):
         movies = genre.movie_set.all().order_by('popularity')
         n = 0
         for movie in movies:
-            if n == 5:
+            if n == 5 or n == len(movies): 
                 break
             if movie not in movie_list:
                 movie_list.append(movie)

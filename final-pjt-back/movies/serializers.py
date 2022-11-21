@@ -22,10 +22,12 @@ class ReviewListSerializer(serializers.ModelSerializer):
     # movie 처리 필요? (상관 없는 것 같기도)
     class Meta:
         model = Review
-        fields = ('title', 'content')
-        read_only_fields = ('user', 'movie',)
+        fields = ('id', )
+        read_only_fields = ('user', 'movie', 'like_users',)
 
 class ReviewSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    like_users_count = serializers.IntegerField(source='like_users.count', read_only=True)
     class Meta:
         model = Review
         fields = '__all__'
