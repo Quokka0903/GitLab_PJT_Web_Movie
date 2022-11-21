@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     getBack() {
-      this.num = _.sample(_.range(1, 12))
+      this.num = _.sample(_.range(1, 28))
       console.log(this.num)
     }
   },
