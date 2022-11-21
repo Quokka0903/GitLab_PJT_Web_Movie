@@ -1,12 +1,21 @@
 <template>
   <div>
-    <span class="star">
-      ★★★★★
-      <span>★★★★★</span>
-      <input type="range" oninput="drawStar(this)" value="0.5" step="0.5" min="0" max="5">
-    </span>
-    <input v-model="score" type="number" min="0" max="5" step="0.5">
-    <input type="submit" @click="RecordScore(movie)">
+    <div class="inner d-flex justify-content-center">
+    <div class="star-rating row justify-content-around">
+      <div
+        class="star col-2"
+        v-for="index in 5"
+        :key="index"
+        @click="check(index)"
+        >
+        <span v-if="index <= score">❤️</span>
+        <span v-if="index > score">🤍</span>
+      </div>
+    </div>
+  </div>
+    <!-- <input v-model="score" type="number" min="0" max="5" step="0.5"> -->
+    <br>
+    <input type="submit" @click="RecordScore(movie)" value="하트 주기">
   </div>
 </template>
 
@@ -20,10 +29,6 @@ export default {
     }
   },
   methods: {
-    drawStar(target) {
-      console.log(target)
-    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
-    },
     RecordScore(movie) {
       const score = Number(this.score)
       const API_URL = 'http://127.0.0.1:8000'
@@ -43,41 +48,30 @@ export default {
             userId
           }
           this.$store.dispatch('RecordScore', payload)
-          
         })
         .catch((err) => {
           console.log(err)
         })
-    }
+    },
+    getScored() {
+      
+    },
+    check(index) {
+      this.score = index;
+    },
   },
   props: {
     movie: Object
+  },
+  created() {
+    this.getScored()
   }
 }
+// const drawStar = (target) => {
+//     document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+//   }
 </script>
 
 <style>
-  .star {
-    position: relative;
-    font-size: 2rem;
-    color: #ddd;
-  }
-  
-  .star input {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  .star span {
-    width: 0;
-    position: absolute; 
-    left: 0;
-    color: rosybrown;
-    overflow: hidden;
-    pointer-events: none;
-  }
+
 </style>

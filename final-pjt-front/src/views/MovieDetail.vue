@@ -5,7 +5,8 @@
       <div class="row justify-content-around">
         <div class="img col-4">
           <img :src="jpg" class="card-img-top">
-            <h5>별점</h5>
+            <hr>
+            <p> {{movie?.title}}에게 : </p>
             <RecordDetail
             :movie="movie"
             />
@@ -95,15 +96,8 @@ export default {
             .then((res) => {
               this.detail = res.data
               this.background = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
-              // console.log(this.background)
-              
+              //배경설정
               document.documentElement.style.setProperty('--background', 'url("' + this.background + '")')
-              
-              const background = document.querySelector('.background')
-              const backStyle = window.getComputedStyle(background,'::after')
-              console.log(backStyle.backgroundImage)
-              // backStyle.backgroundImage = 'url("' + this.background + '")'
-              // console.log(backStyle)
             })
           return {movie_id: res.movie_id}
         })
@@ -143,10 +137,6 @@ export default {
   }
 .background {
   height: 100%;
-  /* overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
   }
 .background::after {
   height: 100%;
