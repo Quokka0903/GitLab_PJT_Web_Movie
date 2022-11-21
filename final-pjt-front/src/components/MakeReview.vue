@@ -5,6 +5,7 @@
       :review='review'
       :key="index"
       /> -->
+    {{reviews}}
     <b-input v-model="title" placeholder="리뷰 제목"></b-input>
     <b-textarea
     placeholder="당신만의 한 줄을 남겨주세요"
@@ -24,12 +25,14 @@ export default {
     return {
         title: '',
         context: '',
-        reviews: [],
+        // reviews: [],
         API_URL: 'http://127.0.0.1:8000',
     }
   },
-  component: {
-    // ReviewDetail,
+  computed: {
+    reviews() {
+      return this.movie.review_set
+    }
   },
   methods: {
     createReview(movie) {
