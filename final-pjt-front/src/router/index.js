@@ -12,6 +12,8 @@ import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
 import MovieDetail from '@/views/MovieDetail'
 import ReviewListView from '@/views/ReviewListView'
+import MyMovieView from '@/views/MyMovieView'
+import MyReviewView from '@/views/MyReviewView'
 
 Vue.use(VueRouter)
 
@@ -97,9 +99,17 @@ const routes = [
     path: '/reviews/:movie_id',
     name: 'ReviewListView',
     component: ReviewListView
-  }
-  
-
+  },
+  {
+    path: '/mymovie/:user_id',
+    name: 'MyMovieView',
+    component: MyMovieView
+  },
+  {
+    path: '/myreview/:user_id',
+    name: 'MyReviewView',
+    component: MyReviewView
+  },
 ]
 
 const router = new VueRouter({
