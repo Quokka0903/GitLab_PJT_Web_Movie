@@ -198,7 +198,7 @@ def like_movies(request):
         movies = genre.movie_set.all().order_by('popularity')
         n = 0
         for movie in movies:
-            if n == 5 or n == len(movies):
+            if n == 5 or n == len(movies): 
                 break
             if movie not in movie_list:
                 movie_list.append(movie)
