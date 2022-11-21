@@ -60,14 +60,14 @@ def create_score(request):
     # 수정 어떻게 할 지
     # elif request.method == 'PUT':
     
-@api_view(['GET'])
-def score_view(request, movie_pk, user_pk):
-    score = get_list_or_404(MovieScore, movie_id=movie_pk, user_id=user_pk)
-    if request.method == 'GET':
-        print(score)
-        serializer = MovieScoreSerializer(data=score)
-        print(serializer)
-        return Response(serializer.data)
+# @api_view(['GET'])
+# def score_view(request, movie_pk, user_pk):
+#     score = get_list_or_404(MovieScore, movie_id=movie_pk, user_id=user_pk)
+#     if request.method == 'GET':
+#         print(score)
+#         serializer = MovieScoreSerializer(data=score)
+#         print(serializer)
+#         return Response(serializer.data)
 
 @api_view(['GET'])
 def review_list(request, movie_id):
@@ -228,3 +228,12 @@ def random_genre(request):
     # result = json.dumps(context, indent=4)
     # print(result)
     return Response(context) 
+
+@api_view(['GET'])
+def score_view(request, movie_pk, user_pk):
+    try:
+        movie_score = MovieScore.objects.get(movie=movie_pk, user=user_pk)
+        serializer = MovieScoreSerializer(movie_score)
+        return Response(serializer.data)
+    except:
+        return

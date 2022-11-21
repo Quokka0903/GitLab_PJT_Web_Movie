@@ -31,6 +31,14 @@ export default {
   methods: {
     RecordScore(movie) {
       const score = Number(this.score)
+      const movie_pk = movie.id
+      const payload = {
+        score,
+        movie_pk,
+      }
+      this.$store.dispatch('RecordScore', payload)
+    },
+    getScored() {
       const API_URL = 'http://127.0.0.1:8000'
       axios({
         method: 'get',
@@ -41,20 +49,28 @@ export default {
       })
         .then((res) => {
           const userId = res.data.pk
-          const movie_pk = movie.id
-          const payload = {
-            score,
-            movie_pk,
-            userId
-          }
-          this.$store.dispatch('RecordScore', payload)
+          const movie_pk = this.movie.id
+          return { user_pk: userId, movie_pk: movie_pk }
+        })
+        .then((res) => {
+          axios({
+            method: 'get',
+            url: `${API_URL}/pages/score/${res.movie_pk}/${res.user_pk}`,
+            headers: {
+                Authorization: `Token ${ this.$store.state.token }`
+            }
+          })
+            .then((res) => {
+              this.score = res.data.score
+            })
+            .catch((err) => {
+              console.log(err)
+              this.score = 0
+            })
         })
         .catch((err) => {
           console.log(err)
         })
-    },
-    getScored() {
-      
     },
     check(index) {
       this.score = index;
