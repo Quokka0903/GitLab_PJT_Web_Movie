@@ -1,8 +1,8 @@
 <template>
   <div id="start">
-    <img id="logo" src="@/assets/moms.png" alt="mom_logo">
+    <!-- <img id="logo" src="@/assets/moms.png" alt="mom_logo"> -->
     
-    <div id="inside">
+    <div>
       <h4>
         당신만을 위한 영화 맞춤 서비스
       </h4>
@@ -30,7 +30,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #start {
-background:url("@/assets/cinema.jpg");
+/* background:url("@/assets/cinema/cinema00.jpg"); */
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center center;
@@ -40,9 +40,6 @@ height: 100%;
 #logo {
   width: 25%;
   height: 25%;
-}
-#inside {
-  color: beige;
 }
 
 h3 {

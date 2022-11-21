@@ -1,6 +1,6 @@
 <template>
   <div @click="MoveDetail(movie.id)"> 
-    <div class="card mx-auto" style="height: 30rem">
+    <div class="card mx-auto" style="height: 100%">
       <div>
         <img :src="jpg" class="card-img-top" height=90%>
       </div>

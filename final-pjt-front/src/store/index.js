@@ -15,7 +15,7 @@ export default new Vuex.Store({
     createPersistedState()
   ],
   state: {
-    movies: [],
+    // movies: [],
     recommend: [],
     token: null,
   },
@@ -34,30 +34,30 @@ export default new Vuex.Store({
       state.token = null
       router.push({ name: 'LoginView'})
     },
-    GET_MOVIES(state, movies) {
-      state.movies =movies
-    },
+    // GET_MOVIES(state, movies) {
+    //   state.movies =movies
+    // },
     GET_RECOMMEND(state, recommend) {
       state.recommend =recommend
       // console.log(state.recommend)
     },
   },
   actions: {
-    getMovies(context) {
-      axios({
-        method: 'get',
-        url: `${API_URL}/pages/movies`,
-        headers: {
-          Authorization: `Token ${context.state.token}`
-        }
-      })
-        .then((res) => {
-          context.commit('GET_MOVIES', res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
+    // getMovies(context) {
+    //   axios({
+    //     method: 'get',
+    //     url: `${API_URL}/pages/movies`,
+    //     headers: {
+    //       Authorization: `Token ${context.state.token}`
+    //     }
+    //   })
+    //     .then((res) => {
+    //       context.commit('GET_MOVIES', res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // },
     getRecommend(context) {
       axios({
         method: 'get',
