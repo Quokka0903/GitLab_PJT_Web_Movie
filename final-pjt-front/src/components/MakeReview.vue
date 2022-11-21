@@ -65,7 +65,7 @@ export default {
     },
     GoReview(movie_id) {
       this.$router.push({name: 'ReviewListView', params: {movie_id: movie_id}})
-    }
+    },
     // ReadReview(movie) {
     //     console.log('리뷰목록 불러오기')
     //     const movie_id = movie.id
