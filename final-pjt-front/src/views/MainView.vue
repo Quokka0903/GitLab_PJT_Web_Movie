@@ -21,7 +21,18 @@
       class="col-2"
       />
     </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row justify-content-around">
+      <p>{{genre}} 장르의 영화 어떠세요?</p>
+      <GenreItem
+      v-for="(movie,idx) in genre_movies"
+      :movie="movie"
+      :key="idx"
+      class="col-3"/>
   </div>
+</div>
 </template>
 
 <script>
@@ -29,16 +40,20 @@ import axios from 'axios'
 import _ from 'lodash'
 import MovieViewItem from '@/components/MovieViewItem.vue'
 import AlgorithmItem from '@/components/AlgorithmItem.vue'
+import GenreItem from '@/components/GenreItem.vue'
 
 export default {
   name: 'MainView',
   components: {
     MovieViewItem,
     AlgorithmItem,
+    GenreItem,
   },
   data() {
     return {
       Movies:[],
+      genre: null,
+      genre_movies: null,
     }
   },
   computed: {
@@ -88,12 +103,29 @@ export default {
         .catch((error)=> {
           console.log(error)
         })
+    },
+    getGenreMovie() {
+      axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/pages/genre/',
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
+        }
+      })
+       .then((response) => {
+        this.genre = response.data.genre
+        this.genre_movies = response.data.movies
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   },
   created() {
     this.getMovies()
     this.getTopMovie()
     this.getRecommend()
+    this.getGenreMovie()
   },
   mounted() {
 
