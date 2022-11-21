@@ -11,6 +11,7 @@ import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
 import MovieDetail from '@/views/MovieDetail'
+import ReviewListView from '@/views/ReviewListView'
 
 Vue.use(VueRouter)
 
@@ -92,7 +93,11 @@ const routes = [
     name: 'RecordView',
     component: RecordView
   },
-  
+  {
+    path: '/reviews/:movie_id',
+    name: 'ReviewListView',
+    component: ReviewListView
+  }
   
 
 ]

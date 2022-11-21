@@ -61,13 +61,13 @@ def create_score(request):
     # 수정 어떻게 할 지
     # elif request.method == 'PUT':
 
-# def movie_detail(request):
-# @api_view(['GET'])
-# def review_list(request):
-#     if request.method == 'GET':
-#         reviews = get_list_or_404(Review)
-#         serializer = ReviewListSerializer(reviews, many=True)
-#         return Response(serializer.data)
+@api_view(['GET'])
+def review_list(request, movie_id):
+    movie = get_object_or_404(Movie, pk=movie_id)
+    if request.method == 'GET':
+        reviews = movie.review_set.all()
+        serializer = ReviewListSerializer(reviews, many=True)
+        return Response(serializer.data)
 
 
 @api_view(['GET', 'DELETE', 'PUT'])
