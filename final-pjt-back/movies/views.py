@@ -42,7 +42,6 @@ def create_score(request):
             'score': request.data['score'],
         }
         for movie in movies:
-            print(movie)
             if movie.movie_id == movie_pk and movie.user_id == request.user.pk:
                 deleted_id = movie.id
                 tmp_movie = get_object_or_404(MovieScore, pk=deleted_id)

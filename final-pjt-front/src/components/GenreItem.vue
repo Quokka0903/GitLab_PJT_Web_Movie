@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="MoveDetail(movie.id)"> 
     <div class="card mx-auto" style="height: 30rem">
       <div>
         <img :src="jpg" class="card-img-top" height=90%>
@@ -17,14 +17,19 @@ export default {
     props: {
       movie : Object,
     },
-    computed: {
-      title() {
-        return this.movie.title
-      },
-      jpg() {
-        return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
-      },
+  computed: {
+    title() {
+      return this.movie.title
+    },
+    jpg() {
+      return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
+    },
+  },
+  methods: {
+    MoveDetail(id) {
+      this.$router.push({name: 'MovieDetail', params:{id}})
     }
+  } 
 }
 </script>
 
