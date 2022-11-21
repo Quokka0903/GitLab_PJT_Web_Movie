@@ -1,20 +1,33 @@
 <template>
-  <div class="background" :style="{'background-image': 'url(' + background + ')'}">
-    <div>
+  <div class="background">
+    <div id="justify-content" class="container">
       <h1>{{movie?.title}}</h1>
-      <div>
-        <h3>영화 정보</h3>
-        <div class="img">
+      <div class="row justify-content-around">
+        <div class="img col-4">
           <img :src="jpg" class="card-img-top">
+            <h5>별점</h5>
+            <RecordDetail
+            :movie="movie"
+            />
         </div>
-        <p>장르 : 
-          <span v-for="(genre, index) in movie?.genres" :key="index">
-            {{genre.name}}
-          </span>
-        </p>
-        <p>개봉일 : {{movie?.release_date}}</p>
-        <p>평점 : {{movie?.vote_average}}</p>
-        <p>줄거리 : {{movie?.overview}}</p>
+        <div class="col-8" style="font-weight: bold; font-size: 1rem;">
+          <p>장르 : 
+            <span v-for="(genre, index) in movie?.genres" :key="index">
+              {{genre.name}} /
+            </span>
+          </p>
+          <p>TMDB 평점 : {{movie?.vote_average}}</p>
+          <p>시놉시스 : </p>
+          <p>{{movie?.overview}}</p>
+          <p>개봉일 : {{movie?.release_date}}</p>
+          <div>
+            <h5>리뷰</h5>
+            <MakeReview
+            :movie="movie"
+            style="width:100%"
+            />  
+          </div>
+        </div>
       </div>
       <hr>
       <h3>같은 장르의 영화 추천드립니다!</h3>
@@ -22,23 +35,12 @@
         <div v-for="movie in genre_movies"
         :key="movie.id"
         class='col'>
-        <div class="card h-100">
+        <div class="card h-100" @click="MoveDetail(movie.id)">
           <img class="card-img-top" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="">
         </div>
         </div>
       </div>
-      <div>
-        <h3>별점</h3>
-        <RecordDetail
-        :movie="movie"
-        />
-      </div>
-      <div>
-        <h3>리뷰</h3>
-        <MakeReview
-        :movie="movie"
-        />
-      </div>
+      
     </div>
   </div>
 </template>
@@ -93,7 +95,15 @@ export default {
             .then((res) => {
               this.detail = res.data
               this.background = `https://image.tmdb.org/t/p/original/${this.detail.backdrop_path}`
-              console.log(this.background)
+              // console.log(this.background)
+              
+              document.documentElement.style.setProperty('--background', 'url("' + this.background + '")')
+              
+              const background = document.querySelector('.background')
+              const backStyle = window.getComputedStyle(background,'::after')
+              console.log(backStyle.backgroundImage)
+              // backStyle.backgroundImage = 'url("' + this.background + '")'
+              // console.log(backStyle)
             })
           return {movie_id: res.movie_id}
         })
@@ -113,10 +123,16 @@ export default {
             })
         })
     },
+    MoveDetail(id) {
+      this.$router.push({name: 'MovieDetail', params:{id}})
+      // this.$router.go() -> 새로고침
+      this.getMovieDetail()
+    }
   },
   created() {
     this.getMovieDetail()
-  }
+  },
+  
 }
 </script>
 
@@ -127,9 +143,27 @@ export default {
   }
 .background {
   height: 100%;
+  /* overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+  }
+.background::after {
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-image: var(--background);
+  
   overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  }
+  opacity: 30%;
+  
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+
+}
 </style>
