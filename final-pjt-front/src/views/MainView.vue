@@ -13,6 +13,17 @@
     <hr>
     <br>
     <div class="row justify-content-around">
+      <p>{{genre}} 장르의 영화 어떠세요?</p>
+      <GenreItem
+      v-for="(movie,idx) in genre_movies"
+      :movie="movie"
+      :key="idx"
+      class="col-3"/>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div class="row justify-content-around">
       <p>실시간 랭킹 영화</p>
       <MovieViewItem
       v-for="(movie, index) in Movies"
@@ -24,14 +35,6 @@
     <br>
     <hr>
     <br>
-    <div class="row justify-content-around">
-      <p>{{genre}} 장르의 영화 어떠세요?</p>
-      <GenreItem
-      v-for="(movie,idx) in genre_movies"
-      :movie="movie"
-      :key="idx"
-      class="col-3"/>
-  </div>
 </div>
 </template>
 
@@ -68,14 +71,14 @@ export default {
     }
   },
   methods: {
-    getMovies() {
-      if (this.isLogin) {
-        this.$store.dispatch('getMovies')
-      } else {
-        alert('로그인이 필요합니다!')
-        this.$router.push({name: 'LoginView'})
-      }
-    },
+    // getMovies() {
+    //   if (this.isLogin) {
+    //     this.$store.dispatch('getMovies')
+    //   } else {
+    //     alert('로그인이 필요합니다!')
+    //     this.$router.push({name: 'LoginView'})
+    //   }
+    // },
     getRecommend() {
       if (this.isLogin) {
         this.$store.dispatch('getRecommend')
@@ -122,7 +125,7 @@ export default {
     }
   },
   created() {
-    this.getMovies()
+    // this.getMovies()
     this.getTopMovie()
     this.getRecommend()
     this.getGenreMovie()

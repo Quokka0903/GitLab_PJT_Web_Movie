@@ -64,6 +64,7 @@ export default {
               this.score = res.data.score
             })
             .catch((err) => {
+              console.log('에러아님')
               console.log(err)
               this.score = 0
             })
