@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 # permission Decorators
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.filters import SearchFilter
+from rest_framework import generics
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
@@ -228,3 +230,10 @@ def score_view(request, movie_pk, user_pk):
         return Response(serializer.data)
     except:
         return
+
+# 검색기능 구현
+class search_list(generics.ListAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieListSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['title']

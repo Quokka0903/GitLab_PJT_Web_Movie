@@ -4,7 +4,7 @@
   <h1>내가 평점 준 영화</h1>
   <hr>
   <br>
-  <div class="row justify-content-around">
+  <div class="row justify-content-start">
     <MyMovieItem
     v-for="movie in my_movies"
     :key="`my-movie-${movie.movie_id}`"

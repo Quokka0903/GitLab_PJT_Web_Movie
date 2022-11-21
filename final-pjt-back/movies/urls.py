@@ -14,4 +14,5 @@ urlpatterns = [
     path('like/', views.like_movies),
     path('genre/', views.random_genre),
     path('movies/reviews/<int:movie_id>/', views.review_list),
+    path('search/', views.search_list.as_view()),
 ]

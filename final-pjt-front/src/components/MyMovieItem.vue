@@ -35,7 +35,7 @@ export default {
         }
       })
        .then((res) => {
-        console.log(res)
+        // console.log(res)
           this.detailmovie = res.data
           this.imgUrl = `https://image.tmdb.org/t/p/original/${res.data.poster_path}`
         })

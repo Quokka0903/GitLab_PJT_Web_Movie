@@ -14,6 +14,7 @@ import MovieDetail from '@/views/MovieDetail'
 import ReviewListView from '@/views/ReviewListView'
 import MyMovieView from '@/views/MyMovieView'
 import MyReviewView from '@/views/MyReviewView'
+import SearchView from '@/views/SearchView'
 
 Vue.use(VueRouter)
 
@@ -110,6 +111,16 @@ const routes = [
     name: 'MyReviewView',
     component: MyReviewView
   },
+  {
+    path: '/search',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'SearchView',
+      component: SearchView,
+    }]
+  }
 ]
 
 const router = new VueRouter({
