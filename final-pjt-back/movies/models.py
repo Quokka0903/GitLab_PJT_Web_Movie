@@ -27,7 +27,6 @@ class Review(models.Model):
 
 # movies_liked 어떻게 할 지
 class MovieScore(models.Model):
-    # TODO: Float로 변경
     score = models.FloatField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="score")
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="moviescore")

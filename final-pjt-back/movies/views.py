@@ -210,7 +210,7 @@ def like_movies(request):
 @api_view(['GET'])
 def random_genre(request):
     genre = random.choice(get_list_or_404(Genre))
-    movies = random.sample(list(genre.movie_set.all()), 3)
+    movies = random.sample(list(genre.movie_set.all()), 4)
     serializer = MovieListSerializer(movies, many=True)
     context = {
         'genre': genre.name,
