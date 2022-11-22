@@ -62,12 +62,14 @@ export default {
             }
           })
             .then((res) => {
-              this.score = res.data.score
+              if (res.status === 204) {
+                this.score = 0
+              } else {
+                this.score = res.data.score
+              }
             })
             .catch((err) => {
-              console.log('에러아님')
               console.log(err)
-              this.score = 0
             })
         })
         .catch((err) => {

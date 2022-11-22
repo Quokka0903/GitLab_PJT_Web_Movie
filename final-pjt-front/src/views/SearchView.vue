@@ -5,9 +5,9 @@
         <input
         class="inputsearch" 
         type="text" 
-        v-model.trim="title_info" 
         placeholder="영화 제목을 입력하세요!"
-        @keyup.enter="search"/>
+        @input="search"
+        />
       </div>
     </div>
   <div v-if="results.length" class="row justify-content-start">
@@ -32,14 +32,14 @@
 import axios from 'axios'
 import SearchItem from '@/components/SearchItem'
 
-const API_URL = 'http://127.0.0.1:8000'
+// const API_URL = 'http://127.0.0.1:8000'
 
 export default {
   name:'SearchView',
   data(){
     return {
       results: [],
-      title_info: null,
+      // title_info: null,
       title_search : null,
     }
   },
@@ -47,24 +47,23 @@ export default {
     SearchItem,
   },
   methods:{
-    search() {
-      const search_input = this.title_info
+    search(event) {
+      const search_input = event.target.value.trim()
       if (!search_input) {
         alert('검색어를 입력해주세요!')
         return
       }
       axios({
         method : 'get',
-        url: `${API_URL}/pages/search/`,
+        url: `http://127.0.0.1:8000/pages/search/`,
         params:{
-          "search" : this.title_info, 
+          "search" : search_input, 
         },
       })
         .then((response) => {
           this.results = response.data
-          console.log(response.data)
-          this.title_search = this.title_info
-          this.title_info = null
+          // this.title_search = this.title_info
+          // this.title_info = null
         }) 
         .catch((error)=> {
           console.log(error)
