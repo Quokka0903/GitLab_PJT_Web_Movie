@@ -29,15 +29,15 @@ export default {
         API_URL: 'http://127.0.0.1:8000',
     }
   },
-  computed: {
-    reviews() {
-      if (this.movie.review_set === []) {
-        return '아직 리뷰가 없어요!'
-      } else {
-        return this.movie.review_set
-      }
-    }
-  },
+  // computed: {
+  //   reviews() {
+  //     if (this.movie.review_set === []) {
+  //       return '아직 리뷰가 없어요!'
+  //     } else {
+  //       return this.movie.review_set
+  //     }
+  //   }
+  // },
   methods: {
     createReview(movie) {
         console.log('리뷰 남기기')
