@@ -36,6 +36,7 @@ export default {
         score,
         movie_pk,
       }
+      alert('하트를 성공적으로 보냈습니다!')
       this.$store.dispatch('RecordScore', payload)
     },
     getScored() {

@@ -1,6 +1,6 @@
 <template>
   <div class="idxback">
-    <nav>
+    <nav class="navbarCustom">
       <router-link :to="{ name: 'MainView' }">메인 페이지</router-link> |
       <router-link :to="{ name: 'SearchView' }"> 영화 검색 </router-link> | 
       <router-link :to="{ name: 'ProfileView'}">나의 프로필</router-link>
@@ -17,6 +17,11 @@
 </script>
 
 <style>
+.navbarCustom {
+  font-family: 'Gicsseong';
+  font-size: 180%;
+  text-decoration: none;
+}
 /* .idxback {
 } */
 /* fade 라우터 전환 */
