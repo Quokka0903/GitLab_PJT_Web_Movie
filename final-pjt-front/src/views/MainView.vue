@@ -1,13 +1,16 @@
 <template>
   <div id="justify-content" class="container">
+    <p v-if="!genre_movies" class="loading box">
+      <img src="@/assets/loading.gif" alt="">
+    </p>
     <div class="row justify-content-around">
       <p>오늘 이 영화 어떠세요?</p>
-        <AlgorithmItem
-        v-for="(movie) in recommend"
-        :key="movie.id"
-        :movie="movie"
-        class="col-3"
-        />
+      <AlgorithmItem
+      v-for="(movie) in recommend"
+      :key="movie.id"
+      :movie="movie"
+      class="col-3"
+      />
     </div>
     <br>
     <hr>
@@ -117,7 +120,7 @@ export default {
       })
        .then((response) => {
         this.genre = response.data.genre
-        this.genre_movies = response.data.movies
+        // this.genre_movies = response.data.movies
         })
         .catch((error) => {
           console.log(error)
@@ -139,10 +142,11 @@ export default {
 
 <style>
 .box {
-  text-align: center;
   border: 0;
-  width: 1000px;
-  height: 1000px;
 }
-
+.loading {
+  z-index: 2;
+  left: 40% !important;
+  top: 40% !important;
+}
 </style>

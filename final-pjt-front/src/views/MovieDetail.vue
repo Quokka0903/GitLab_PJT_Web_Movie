@@ -1,5 +1,8 @@
 <template>
   <div class="background">
+    <p v-if="!background" class="loading">
+      <img src="@/assets/loading.gif" alt="">
+    </p>
     <div id="justify-content" class="container">
       <h1>{{movie?.title}}</h1>
       <div class="row justify-content-around">
@@ -155,5 +158,11 @@ export default {
   z-index: -1;
   position: absolute;
 
+}
+.loading {
+  position: absolute;
+  z-index: 2;
+  left: 40% !important;
+  top: 40% !important;
 }
 </style>
