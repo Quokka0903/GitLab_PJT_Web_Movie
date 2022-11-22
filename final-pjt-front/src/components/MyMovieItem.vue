@@ -1,14 +1,16 @@
 <template>
-  <div @click="MoveDetail(movie.movie_id)">
-    <div class="card mx-auto" style="height: 100%">
-      <div>
-        <img :src="imgUrl" class="card-img-top" height=90%>
+  <!-- <div id="justify-content-around" class="container"> -->
+    <div class="row justify-content-around g-3 col-3">
+      <div @click="MoveDetail(movie.movie_id)">
+        <div class="card carditem" style="height: 100%">
+          <img :src="imgUrl" class="card-img-top" height=90%>
+          <div class="card-body">
+            <h5 class="carditem-title">{{detailmovie?.title}}</h5>
+            <p>점수: {{movie.score}}</p>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{{detailmovie?.title}}</h5>
-        <p>점수: {{movie.score}}</p>
-      </div>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -51,5 +53,17 @@ export default {
 </script>
 
 <style>
-
+.carditem {
+  left : 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-size: cover;
+}
+.carditem-title{
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 5px; 
+}
 </style>

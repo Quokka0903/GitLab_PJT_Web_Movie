@@ -1,11 +1,14 @@
 <template>
-  <div>
-    <p>title: {{review.title}}</p>
-    <p>content: {{review.content}}</p>
-    <b-button @click="ChangeReview(review.id)">수정</b-button>
-    <b-button @click="DeleteReview(review.id)">삭제</b-button>
-    <hr>
-  </div>
+  <div>    
+    <div class="row justify-content-around g-3 col-2">
+          <p>제목 : {{review.title}}</p>
+          <p>내용 : {{review.content}}</p>
+          <b-button @click="ChangeReview(review.id)">수정</b-button>
+          <b-button @click="DeleteReview(review.id)">삭제</b-button>
+          <hr>
+        </div>
+      </div>
+
 </template>
 
 <script>

@@ -10,11 +10,11 @@
         @keyup.enter="search"/>
       </div>
     </div>
-  <div v-if="results.length" class="row justify-content-start">
-    <div class="row g-3">
-    <h4 class="go">"{{ this.title_search  }}" 검색 결과가 {{ searchcount }}개 있습니다.</h4>
-    <hr>
-    <SearchItem
+    <div v-if="results.length" class="row justify-content-start">
+      <div class="row g-3">
+      <h4 class="go">"{{ this.title_search  }}" 검색 결과가 {{ searchcount }}개 있습니다.</h4>
+      <hr>
+      <SearchItem
       v-for="result in results"
       :key="result.id"
       :result="result"
@@ -84,7 +84,6 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   background-size: cover;
-
 }
 .card-title{
   font-size: 20px;
