@@ -1,7 +1,9 @@
 <template>
   <div>
     <div id="holder">
+    <br>
     <h1>Sign Up</h1>
+    <br>
     <form @submit.prevent="signUp">
       <label for="username">ID : </label><br>
       <input type="text" id="username" v-model="username"><br>
@@ -9,13 +11,19 @@
       <label for="password1"> PW : </label><br>
       <input type="password" id="password1" v-model="password1"><br>
       <br>
-      <label for="password2"> PW agian : </label>
+      <label for="password2"> PW agian : </label><br>
       <input type="password" id="password2" v-model="password2">
       <br>
       <br>
-      <a href="#"><span data-attr="Sign">Sign</span><span data-attr="Up">Up</span></a>
-      <input type="submit" value="SignUp">
-      <br>
+      <!-- <a href="#"><span data-attr="Sign">Sign</span><span data-attr="Up">Up</span></a> -->
+      <div class="button">
+          <p class="btnText">READY?</p>
+          <div class="btnTwo">
+            <p class="btnText2">GO!
+              <input class="hidden" type="submit" value="GO!">
+            </p>
+          </div>
+      </div>
     </form>
     </div>
   </div>
@@ -77,7 +85,51 @@ export default {
   box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
   border-radius: 2px;
 }
-.center {
+
+.button {
+  background: #3D4C53;
+  margin : 20px auto;
+  padding: 8px;
+  width : 200px;
+  height : 40px;
+  overflow: hidden;
+  text-align : center;
+  transition : .1s;
+  cursor : pointer;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+}
+.btnTwo {
+  position : relative;
+  width : 250px;
+  height : 100px;
+  margin-top: -100px;
+  padding-top: 2px;
+  background : #26A69A;
+  top: -5px;
+  left : -250px;
+  transition : .3s;
+}
+.btnText {
+  color : white;
+  transition : .3s;
+}
+.btnText2 {
+  margin-top : 63px;
+  margin-left : -55px;
+  color : #FFF;
+}
+.button:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
+  left: 0px;
+}
+.button:hover .btnText{ /*When hovering over .button change .btnText*/
+  margin-left : 65px;
+}
+.button:active { /*Clicked and held*/
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
+}
+
+/* .center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -156,5 +208,5 @@ a span:nth-child(2):after {
 }
 a:hover span:nth-child(2):after {
     transform: rotateX(90deg) translateY(-50%);
-} 
+}  */
 </style>

@@ -11,12 +11,12 @@
               <input class="hidden" type="submit" value="GO!">
             </p>
           </div>
-       </div>        
+        </div>        
       </form>
     <div class="button" @click="SignUp()">
       <p class="btnText">FIRST HERE</p>
       <div class="btnTwo">
-        <p class="btnText2">Sign Up!</p>
+        <p class="btnText2">SIGN UP!</p>
       </div>
     </div>
   </div>
@@ -116,7 +116,7 @@ export default {
 }
 .btnTwo {
   position : relative;
-  width : 200px;
+  width : 250px;
   height : 100px;
   margin-top: -100px;
   padding-top: 2px;
@@ -131,11 +131,11 @@ export default {
 }
 .btnText2 {
   margin-top : 63px;
-  margin-right : -130px;
+  margin-left : -55px;
   color : #FFF;
 }
 .button:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
-  left: -130px;
+  left: 0px;
 }
 .button:hover .btnText{ /*When hovering over .button change .btnText*/
   margin-left : 65px;
