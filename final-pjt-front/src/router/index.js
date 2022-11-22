@@ -131,6 +131,10 @@ const routes = [
       name: 'SearchView',
       component: SearchView,
     }]
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]
 
