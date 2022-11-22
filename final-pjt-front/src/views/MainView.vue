@@ -121,7 +121,7 @@ export default {
       })
        .then((response) => {
         this.genre = response.data.genre
-        // this.genre_movies = response.data.movies
+        this.genre_movies = response.data.movies
         })
         .catch((error) => {
           console.log(error)
