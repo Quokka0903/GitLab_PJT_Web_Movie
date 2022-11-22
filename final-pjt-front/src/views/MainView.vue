@@ -136,14 +136,9 @@ export default {
     this.getRecommend()
     this.getGenreMovie()
     this.getBack()
-<<<<<<< HEAD
-  },  
-=======
   },
   mounted() {
   }
-
->>>>>>> b9bc815423ac74d2b08ddda79d881af710622475
 }
 </script>
 
