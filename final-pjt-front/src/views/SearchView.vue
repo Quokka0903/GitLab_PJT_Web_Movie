@@ -2,7 +2,8 @@
   <div id="justify-content" class="container">
     <div class="row justify-content-around">
       <div class="search-box">
-        <input 
+        <input
+        class="inputsearch" 
         type="text" 
         v-model.trim="title_info" 
         placeholder="영화 제목을 입력하세요!"
@@ -101,7 +102,7 @@ export default {
     width: 400px;
     margin: 0 auto;
 }
-input {
+.inputsearch {
     width: 50%;
     border-radius: 20px;
     border: 2px solid #bbb;
