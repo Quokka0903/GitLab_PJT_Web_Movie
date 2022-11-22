@@ -36,6 +36,7 @@ export default {
         score,
         movie_pk,
       }
+      alert('하트를 성공적으로 보냈습니다!')
       this.$store.dispatch('RecordScore', payload)
     },
     getScored() {
@@ -61,12 +62,14 @@ export default {
             }
           })
             .then((res) => {
-              this.score = res.data.score
+              if (res.status === 204) {
+                this.score = 0
+              } else {
+                this.score = res.data.score
+              }
             })
             .catch((err) => {
-              console.log('에러아님')
               console.log(err)
-              this.score = 0
             })
         })
         .catch((err) => {

@@ -93,6 +93,8 @@ export default {
 .buttonprofile {
   font-weight: bolder;
   font-size: 25px;
+  font-family: 'YarpHanna';
+
   background: rgba(255, 255, 255, 0.9);
   margin : 20px auto;
   padding: 8px;
