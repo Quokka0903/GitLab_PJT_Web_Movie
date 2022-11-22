@@ -64,9 +64,9 @@ export default {
     isLogin() {
       return this.$store.getters.isLogin
     },
-    movies() {
-      return this.$store.state.movies
-    },
+    // movies() {
+    //   return this.$store.state.movies
+    // },
     recommend() {
       return this.$store.state.recommend
     }
@@ -87,9 +87,6 @@ export default {
         alert('로그인이 필요합니다!')
         this.$router.push({name: 'LoginView'})
       }
-    },
-    getlist() {
-
     },
     getTopMovie(){
       axios({
@@ -126,7 +123,7 @@ export default {
     },
     getBack() {
       this.num = _.sample(_.range(1, 28))
-      console.log(this.num)
+      // console.log(this.num)
     }
   },
   created() {
@@ -135,11 +132,7 @@ export default {
     this.getRecommend()
     this.getGenreMovie()
     this.getBack()
-  },
-  mounted() {
-
-  }
-  
+  },  
 }
 </script>
 
