@@ -1,5 +1,4 @@
 <template>
-
   <div id="justify-content" class="container">
     <div class="row justify-content-around">
       <hr>
@@ -59,6 +58,7 @@ export default {
       Movies:[],
       genre: null,
       genre_movies: null,
+      num: null,
     }
   },
   computed: {
@@ -124,6 +124,10 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    getBack() {
+      this.num = _.sample(_.range(1, 28))
+      console.log(this.num)
     }
   },
   created() {
@@ -131,11 +135,11 @@ export default {
     this.getTopMovie()
     this.getRecommend()
     this.getGenreMovie()
+    this.getBack()
   },
   mounted() {
-
   }
-  
+
 }
 </script>
 
@@ -144,7 +148,6 @@ export default {
   margin-top: auto;
   background-size: cover;
 }
-
 .card-title{
   font-size: 20px;
   overflow: hidden;

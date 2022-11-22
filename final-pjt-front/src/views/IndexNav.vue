@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="idxback">
     <nav>
       <router-link :to="{ name: 'MainView' }">메인 페이지</router-link> |
       <router-link :to="{ name: 'SearchView' }"> 영화 검색 </router-link> | 
@@ -17,6 +17,8 @@
 </script>
 
 <style>
+/* .idxback {
+} */
 /* fade 라우터 전환 */
 .fade-enter {
   opacity: 0;
