@@ -1,16 +1,12 @@
 <template>
-<div>
   <div @click="MoveDetail(result.id)">
     <div class="card mx-auto" style="height: 100%">
-      <div>
-        <img :src="imgUrl" class="card-img-top" height=90%>
-      </div>
+      <img :src="imgUrl" class="card-img-top" height=90%>
       <div class="card-body">
         <h5 class="card-title">{{result?.title}}</h5>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
