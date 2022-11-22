@@ -4,6 +4,7 @@
       <img src="@/assets/loading.gif" alt="">
     </p>
     <div class="row justify-content-around">
+      <hr>
       <p>오늘 이 영화 어떠세요?</p>
       <AlgorithmItem
       v-for="(movie) in recommend"
@@ -32,7 +33,7 @@
       v-for="(movie, index) in Movies"
       :movie='movie'
       :key="index"
-      class="col-2"
+      class="col-3"
       />
     </div>
     <br>
@@ -105,7 +106,7 @@ export default {
           }       
       })
         .then((response) => {
-          this.Movies = _.sampleSize(response.data.results, 5)
+          this.Movies = _.sampleSize(response.data.results, 4)
         }) 
         .catch((error)=> {
           console.log(error)
@@ -140,13 +141,23 @@ export default {
     this.getBack()
   },
   mounted() {
-
   }
-  
+
 }
 </script>
 
 <style>
+.card {
+  margin-top: auto;
+  background-size: cover;
+}
+.card-title{
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 5px; 
+}
 .box {
   border: 0;
 }

@@ -5,7 +5,6 @@
       <router-link :to="{ name: 'SearchView' }"> 영화 검색 </router-link> | 
       <router-link :to="{ name: 'ProfileView'}">나의 프로필</router-link>
     </nav>
-
     <!-- fade 라우터 전환 -->
     <transition name="slide-fade" mode="out-in">
       <router-view/>
