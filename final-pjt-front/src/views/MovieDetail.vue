@@ -10,55 +10,68 @@
       <br>
       <div class="row justify-content-around">
         <div class="img col-4">
+          <div class="moviecardOver">
           <img :src="jpg" class="card-img-top">
+          </div>
             <hr>
-            <h5> {{movie?.title}}에게 : </h5>
+            <h4> {{movie?.title}}에게 : </h4>
             <RecordDetail
             :movie="movie"
             />
         </div>
         <div class="col-8" style="font-weight: bold; font-size: 1rem;">
-          <h5>장르 : 
+          <h4>장르 : 
             <span v-for="(genre, index) in movie?.genres" :key="index">
               {{genre.name}} /
             </span>
-          </h5>
-          <h5>TMDB 평점 : {{movie?.vote_average}}</h5>
+          </h4>
+          <br>
+          <h4>TMDB 평점 : {{movie?.vote_average}}</h4>
+          <br>
           <div style="width: 100%">
-            <h5>시놉시스 : </h5>
-            <div v-if="show">
-              <h5>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h5>
-              <h5 @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</h5>
+            <h4>시놉시스 : </h4>
+            <br>
+            <div v-if="show" class="overview">
+              <h4>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h4>
+              <h4 @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</h4>
             </div>
             <div v-else>
-              <h5>{{movie?.overview}}</h5>
-              <h5 @click="ShowChange">닫기</h5>
+              <h4>{{movie?.overview}}</h4>
+              <h4 @click="ShowChange">닫기</h4>
             </div>
           </div>
-          <h5>개봉일 : {{movie?.release_date}}</h5>
+          <br>
+          <h4>개봉일 : {{movie?.release_date}}</h4>
+          <br>
           <div>
-            <h5>리뷰</h5>
+            <h3>리뷰</h3>
             <!-- <MakeReview
             :movie="movie"
             style="width:100%"
             />   -->
-            <b-button @click="ShowModal">리뷰 남기기</b-button>
-            <b-button @click="GoReview(movie.id)">리뷰 더보기</b-button>
+
+            <button @click="GoReview(movie.id)" class="custom-btn btn-review"><span>Click!</span><span>리뷰 더보기</span></button>
+            <br>
+            <button @click="ShowModal" class="custom-btn btn-review"><span>Click!</span><span>리뷰 남기기</span></button>
+
+            <!-- 리뷰 모달 -->
             <ModalTemplate @close="closeModal" v-if="modal">
               <h3>리뷰 남기기</h3>
               <b-input
               v-model="title"
               @keyup.enter="createReview"
               placeholder="리뷰 제목"></b-input>
+              <br>
               <b-textarea
               @keyup.enter="createReview"
-              placeholder="당신만의 한 줄을 남겨주세요"
+              placeholder="당신만의 리뷰를 남겨주세요"
               v-model="content"
               ></b-textarea>
               <template slot="footer">
                 <button @click="createReview">제출</button>
               </template>
             </ModalTemplate>
+
           </div>
         </div>
       </div>
@@ -223,6 +236,7 @@ export default {
     width : 30%;
     height : 30%;
   }
+
 .background {
   height: 100%;
   }
@@ -250,10 +264,125 @@ export default {
   position: absolute;
 
 }
+
+.overview {
+  width: 90%;
+  padding-left: 5rem;
+}
+
 .loading {
   position: absolute;
   z-index: 2;
   left: 40% !important;
   top: 40% !important;
+}
+
+.custom-btn {
+  left: -9%;
+
+  width: 240px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 0px solid #26A69A;
+  font-family: 'DuHanna';
+  font-weight: 500;
+  font-size: 1.5rem;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.btn-heart {
+  line-height: 40px;
+  padding: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.btn-heart:hover{
+  color: #26A69A;
+}
+.btn-heart:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #26A69A;
+  z-index: -1;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+  -webkit-transform: rotateX(0);
+  transform: rotateX(0);
+  transition: all 0.3s ease;
+}
+.btn-heart:hover:after {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+}
+.btn-review{
+  position: relative;
+  right: 20px;
+  bottom: 20px;
+  border:none;
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+}
+.btn-review span {
+  display: block;
+  position: absolute;
+  width: 240px;
+  height: 40px;
+  border: 2px solid #26A69A;
+  margin:0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.btn-review span:nth-child(1) {
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-review span:nth-child(2) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-review:hover span:nth-child(1) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+.btn-review:hover span:nth-child(2) {
+  background: #26A69A;
+  color: #26A69A;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
 }
 </style>

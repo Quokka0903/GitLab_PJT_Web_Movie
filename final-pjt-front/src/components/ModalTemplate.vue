@@ -38,7 +38,7 @@ export default {
 
   &-window {
     background: #fff;
-    border-radius: 4px;
+    border-radius: 15px;
     overflow: hidden;
   }
 
@@ -47,7 +47,7 @@ export default {
   }
 
   &-footer {
-    background: #ccc;
+    background: #26A69A;
     padding: 10px;
     text-align: right;
   }
