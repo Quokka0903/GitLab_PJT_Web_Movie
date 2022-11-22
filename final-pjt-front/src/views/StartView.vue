@@ -1,17 +1,17 @@
 <template>
   <div id="start">
-    <!-- <img id="logo" src="@/assets/moms.png" alt="mom_logo"> -->
-    
     <div>
-      <h4>
-        당신만을 위한 영화 맞춤 서비스
-      </h4>
-
-      <h4>Movie On Map,</h4>
-      <h4>My Own Movies,</h4>
-      <h1>
-        <strong>M O M</strong>
-      </h1>
+      <div>
+        <br>
+        <img src="@/assets/logotext3.png" alt="">
+        <br>
+        <br>
+        <img src="@/assets/logotext4.png" alt="">
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
     </div>
   </div>
 </template>
@@ -36,10 +36,6 @@ background-size: cover;
 background-position: center center;
 width: 100%;
 height: 100%;
-}
-#logo {
-  width: 25%;
-  height: 25%;
 }
 
 h3 {

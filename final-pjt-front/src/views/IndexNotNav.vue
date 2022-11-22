@@ -42,7 +42,7 @@ export default {
   font-style: initial;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
-  color: azure;
+  color: rgb(2, 11, 11);
   
 }
 .back {
