@@ -1,11 +1,12 @@
 <template>
   <div id="justify-content" class="container">
+    <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
     <p v-if="!genre_movies" class="loading box">
       <img src="@/assets/loading.gif" alt="">
     </p>
     <div class="row justify-content-around">
       <hr>
-      <p>오늘 이 영화 어떠세요?</p>
+      <h3>오늘 이 영화 어떠세요?</h3>
       <AlgorithmItem
       v-for="(movie) in recommend"
       :key="movie.id"
@@ -17,7 +18,7 @@
     <hr>
     <br>
     <div class="row justify-content-around">
-      <p>{{genre}} 장르의 영화 어떠세요?</p>
+      <h3>{{genre}} 장르의 영화 어떠세요?</h3>
       <GenreItem
       v-for="(movie,idx) in genre_movies"
       :movie="movie"
@@ -28,7 +29,7 @@
   <hr>
   <br>
   <div class="row justify-content-around">
-      <p>실시간 랭킹 영화</p>
+      <h3>실시간 랭킹 영화</h3>
       <MovieViewItem
       v-for="(movie, index) in Movies"
       :movie='movie'
@@ -123,6 +124,7 @@ export default {
         })
         .catch((error) => {
           console.log(error)
+          this.$router.go()
         })
     },
     getBack() {
@@ -161,5 +163,20 @@ export default {
   z-index: 2;
   left: 40% !important;
   top: 40% !important;
+}
+.backMain {
+  height: 220%;
+  width: 100%;
+  content: "";
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 40%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+
 }
 </style>

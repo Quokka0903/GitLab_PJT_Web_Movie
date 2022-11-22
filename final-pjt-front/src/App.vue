@@ -13,14 +13,55 @@
 </script>
 
 <style>
+@font-face {
+  font-family: "DuHanna";
+  src: url(@/assets/font/BMHANNAPro.ttf) format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "YarpHanna";
+  src: url(@/assets/font/BMHANNAAir_ttf.ttf) format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Gicsseong";
+  src: url(@/assets/font/BMDOHYEON_ttf.ttf) format("truetype");
+  font-weight: normal;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'DuHanna' 'YarpHanna' 'Gicsseong';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 
 }
+
+h1 {
+  font-family: 'DuHanna';
+}
+
+h2 {
+  font-family: 'DuHanna';
+}
+
+h3 {
+  font-family: 'DuHanna';
+}
+
+h4 {
+  font-family: 'YarpHanna';
+}
+
+h5 {
+  font-family: 'YarpHanna';
+}
+
+p {
+  font-family: 'YarpHanna';
+}
+
 nav {
   padding: 30px;
 }

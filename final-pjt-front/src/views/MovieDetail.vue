@@ -12,30 +12,30 @@
         <div class="img col-4">
           <img :src="jpg" class="card-img-top">
             <hr>
-            <p> {{movie?.title}}에게 : </p>
+            <h5> {{movie?.title}}에게 : </h5>
             <RecordDetail
             :movie="movie"
             />
         </div>
         <div class="col-8" style="font-weight: bold; font-size: 1rem;">
-          <p>장르 : 
+          <h5>장르 : 
             <span v-for="(genre, index) in movie?.genres" :key="index">
               {{genre.name}} /
             </span>
-          </p>
-          <p>TMDB 평점 : {{movie?.vote_average}}</p>
+          </h5>
+          <h5>TMDB 평점 : {{movie?.vote_average}}</h5>
           <div style="width: 100%">
-            <p>시놉시스 : </p>
+            <h5>시놉시스 : </h5>
             <div v-if="show">
-              <p>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></p>
-              <p @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</p>
+              <h5>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h5>
+              <h5 @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</h5>
             </div>
             <div v-else>
-              <p>{{movie?.overview}}</p>
-              <p @click="ShowChange">닫기</p>
+              <h5>{{movie?.overview}}</h5>
+              <h5 @click="ShowChange">닫기</h5>
             </div>
           </div>
-          <p>개봉일 : {{movie?.release_date}}</p>
+          <h5>개봉일 : {{movie?.release_date}}</h5>
           <div>
             <h5>리뷰</h5>
             <!-- <MakeReview
@@ -164,6 +164,7 @@ export default {
       this.$router.push({name: 'MovieDetail', params:{id}})
       // this.$router.go() -> 새로고침
       this.getMovieDetail()
+      window.scrollTo(0, 0);
     },
     ShowChange() {
       this.show = !this.show
