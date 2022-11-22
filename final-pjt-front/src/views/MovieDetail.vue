@@ -5,6 +5,9 @@
     </p>
     <div id="justify-content" class="container">
       <h1>{{movie?.title}}</h1>
+      <br>
+      <hr>
+      <br>
       <div class="row justify-content-around">
         <div class="img col-4">
           <img :src="jpg" class="card-img-top">
@@ -21,8 +24,10 @@
             </span>
           </p>
           <p>TMDB 평점 : {{movie?.vote_average}}</p>
-          <p>시놉시스 : </p>
-          <p>{{movie?.overview}}</p>
+          <div style="width: 100%">
+            <p>시놉시스 : </p>
+            <p>{{movie?.overview}}</p>
+          </div>
           <p>개봉일 : {{movie?.release_date}}</p>
           <div>
             <h5>리뷰</h5>
@@ -33,8 +38,12 @@
           </div>
         </div>
       </div>
+      <br>
+      <br>
       <hr>
-      <h3>같은 장르의 영화 추천드립니다!</h3>
+      <br>
+      <h3> 같은 장르의 영화 </h3>
+      <br>
       <div class='row row-cols-md-4'>
         <div v-for="movie in genre_movies"
         :key="movie.id"
@@ -145,7 +154,13 @@ export default {
   height: 100%;
   width: 100%;
   content: "";
-  background-image: var(--background);
+  background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 70%,
+            rgba(255, 255, 255, 0.5) 80%,
+            rgba(255, 255, 255, 0.75) 90%,
+            rgb(255, 255, 255) 100%
+          ), var(--background);
   
   overflow: hidden;
   background-size: cover;

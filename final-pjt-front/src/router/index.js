@@ -80,6 +80,26 @@ const routes = [
       component: MovieDetail,
     }]
   },
+  {
+    path: '/mymovie/:user_id',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'MyMovieView',
+      component: MyMovieView,
+    }]
+  },
+  {
+    path: '/myreview/:user_id',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'MyReviewView',
+      component: MyReviewView,
+    }]
+  },
   // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/onboarding',
@@ -101,16 +121,7 @@ const routes = [
     name: 'ReviewListView',
     component: ReviewListView
   },
-  {
-    path: '/mymovie/:user_id',
-    name: 'MyMovieView',
-    component: MyMovieView
-  },
-  {
-    path: '/myreview/:user_id',
-    name: 'MyReviewView',
-    component: MyReviewView
-  },
+  
   {
     path: '/search',
     name: '',

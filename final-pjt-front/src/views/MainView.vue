@@ -60,6 +60,7 @@ export default {
       Movies:[],
       genre: null,
       genre_movies: null,
+      num: null,
     }
   },
   computed: {
@@ -125,6 +126,10 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    getBack() {
+      this.num = _.sample(_.range(1, 28))
+      console.log(this.num)
     }
   },
   created() {
@@ -132,6 +137,7 @@ export default {
     this.getTopMovie()
     this.getRecommend()
     this.getGenreMovie()
+    this.getBack()
   },
   mounted() {
 
