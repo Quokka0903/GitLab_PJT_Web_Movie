@@ -20,7 +20,12 @@ export default {
       const url = `https://image.tmdb.org/t/p/original/${this.result.poster_path}`
       return url
     }
-  }
+  },
+  methods: {
+    MoveDetail(id) {
+      this.$router.push({name: 'MovieDetail', params:{id}})
+    }
+  } 
 }
 </script>
 

@@ -85,7 +85,15 @@ export default {
   box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
   border-radius: 2px;
 }
-
+/* 인풋 스타일 */
+.inputsearch {
+    width: 50%;
+    border-radius: 20px;
+    border: 2px solid #bbb;
+    margin: 10px 0;
+    padding: 10px 12px;
+}
+/* 버튼 스타일 */
 .button {
   background: #3D4C53;
   margin : 20px auto;
