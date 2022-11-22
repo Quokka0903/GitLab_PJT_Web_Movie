@@ -24,6 +24,12 @@
 }
 /* .idxback {
 } */
+
+a {
+  text-decoration: none!important;
+}
+
+
 /* fade 라우터 전환 */
 .fade-enter {
   opacity: 0;

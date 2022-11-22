@@ -7,11 +7,12 @@
     <div class="row justify-content-around">
       <hr>
       <h3>오늘 이 영화 어떠세요?</h3>
+      <br>
       <AlgorithmItem
       v-for="(movie) in recommend"
       :key="movie.id"
       :movie="movie"
-      class="col-3"
+      class="col-3 moviecard"
       />
     </div>
     <br>
@@ -19,22 +20,24 @@
     <br>
     <div class="row justify-content-around">
       <h3>{{genre}} 장르의 영화 어떠세요?</h3>
+      <br>
       <GenreItem
       v-for="(movie,idx) in genre_movies"
       :movie="movie"
       :key="idx"
-      class="col-3"/>
+      class="col-3 moviecard"/>
   </div>
   <br>
   <hr>
   <br>
   <div class="row justify-content-around">
       <h3>실시간 랭킹 영화</h3>
+      <br>
       <MovieViewItem
       v-for="(movie, index) in Movies"
       :movie='movie'
       :key="index"
-      class="col-3"
+      class="col-3 moviecard"
       />
     </div>
     <br>
@@ -105,6 +108,7 @@ export default {
       })
         .then((response) => {
           this.Movies = _.sampleSize(response.data.results, 4)
+          console.log(this.Movies)
         }) 
         .catch((error)=> {
           console.log(error)
@@ -156,6 +160,16 @@ export default {
   white-space: nowrap;
   padding-top: 5px; 
 }
+
+.moviecard {
+  transition: all 0.2s linear;
+}
+.moviecard:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+
 .box {
   border: 0;
 }
@@ -165,7 +179,7 @@ export default {
   top: 40% !important;
 }
 .backMain {
-  height: 220%;
+  height: 130rem !important;
   width: 100%;
   content: "";
   overflow: hidden;

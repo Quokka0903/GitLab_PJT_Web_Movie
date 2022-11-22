@@ -15,7 +15,7 @@
   </div>
     <!-- <input v-model="score" type="number" min="0" max="5" step="0.5"> -->
     <br>
-    <input type="submit" @click="RecordScore(movie)" value="하트 주기">
+    <button type="submit" @click="RecordScore(movie)" class="custom-btn btn-heart btn-align">하트 주기</button>
   </div>
 </template>
 
@@ -94,4 +94,8 @@ export default {
 
 <style>
 
+
+.btn-align {
+  left: 0% !important;
+}
 </style>
