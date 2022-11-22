@@ -1,13 +1,11 @@
 <template>
   <div @click="MoveDetail(movie.id)"> 
     <div class="card mx-auto" style="height: 100%">
-      <div>
-        <img :src="jpg" class="card-img-top" height=90%>
-      </div>
+      <img :src="jpg" class="card-img-top" height=90%>
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
       </div>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -34,13 +32,5 @@ export default {
 </script>
 
 <style>
-.card {
-  margin-top: auto;
-  background-size: cover;
-}
 
-.img {
-  width : 270px;
-  height : 300px;
-}
 </style>

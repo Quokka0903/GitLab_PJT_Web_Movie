@@ -97,7 +97,7 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('CHANGE_CHECKED')
-          context.commit('SAVE_TOKEN', res.data.key)
+          context.commit('SAVE_TOKEN', res.data.key) 
         })
     },
     login(context, payload) {

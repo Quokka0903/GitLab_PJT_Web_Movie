@@ -1,21 +1,22 @@
 <template>
-<div>
-  <div class="input-group mb-3 search" @submit.prevent>
+<div id="justify-content" class="container">
+  <div class="row justify-content-around" @submit.prevent>
     <input 
     type="text" 
     v-model.trim="title_info" 
     placeholder="영화 제목을 입력하세요!"
     @keyup.enter="search"/>
   </div>
-  <br>
-  <br>
+  <hr>
   <div v-if="results.length" class="row justify-content-start">
-    <SearchItem
-    v-for="result in results"
-    :key="result.id"
-    :result="result"
-    class="col-3"
-    />
+    <div class="row g-4">
+      <SearchItem
+      v-for="result in results"
+      :key="result.id"
+      :result="result"
+      class="col-3"
+      />
+    </div>
   </div>
   <div v-else>
     <p>검색된 결과가 없습니다.</p>
@@ -63,18 +64,19 @@ export default {
 </script>
 
 <style>
-.container-1 {
-  width: 300px;
-  vertical-align: middle;
-  white-space: nowrap;
-  position:relative;
+.card {
+  margin-top: auto;
+  margin-bottom: auto;
+  background-size: cover;
+
 }
 
-.search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
+.card-title{
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 5px; 
 }
 
 </style>
