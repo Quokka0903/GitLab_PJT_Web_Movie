@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'ModalTemplate'
+  name: 'ModalTemplate' 
 }
 </script>
 
