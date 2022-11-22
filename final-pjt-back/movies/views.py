@@ -9,7 +9,7 @@ from rest_framework import generics
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer
+from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer, TopReviewSerializer
 from .models import Movie, Genre, Review, MovieScore
 from django.http import JsonResponse
 from collections import defaultdict
@@ -247,3 +247,16 @@ class search_list(generics.ListAPIView):
     serializer_class = MovieListSerializer
     filter_backends = [SearchFilter]
     search_fields = ['title']
+
+# 상위 리뷰 2개
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def review_list(request, movie_id):
+#     movie = get_object_or_404(Movie, pk=movie_id)
+#     if request.method == 'GET':
+#         reviews = movie.review_set.all()
+#         for review in reviews:
+#             review.like_users.count
+#         # .order_by('-popularity')
+#         serializer = TopReviewSerializer(reviews, many=True)
+#         return Response(serializer.data)
