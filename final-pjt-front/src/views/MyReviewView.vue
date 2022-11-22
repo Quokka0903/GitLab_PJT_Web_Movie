@@ -14,8 +14,11 @@
   </div>
   <ModalTemplate @close="closeModal" v-if="modal">
     <h3>리뷰 수정</h3>
-    <div>제목: <input @keyup.enter="doSend" v-model="title"></div>
-    <div>내용: <input @keyup.enter="doSend" v-model="content"></div>
+    <b-input v-model="title" placeholder="리뷰 제목"></b-input>
+    <b-textarea
+    placeholder="당신만의 한 줄을 남겨주세요"
+    v-model="content"
+    ></b-textarea>
     <template slot="footer">
       <button @click="doSend">제출</button>
     </template>
