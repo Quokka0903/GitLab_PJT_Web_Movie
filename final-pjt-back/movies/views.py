@@ -149,18 +149,19 @@ def recommend(request):
 
             if movie.pk in already_like:
                  continue
-            score = movie.vote_average * 3
+            score = movie.vote_average * 2
             score += movie.popularity ** 0.5
+            score += (movie.release_date.year // 10) ** 0.5
 
             for genre in movie.genres.all():
-                score += prefer[genre.id] * 3   
+                score += prefer[genre.id] * 2
             movie_list.append([score, movie.id, movie.title])
 
         movie_list.sort(reverse=True)
 
-        my_movies = movie_list[:15]
+        # my_movies = movie_list[:25]
         my_movie = []
-        for s, i, t in  movie_list[:15]:
+        for s, i, t in  movie_list[:25]:
             my_movie.append(movies[i - 1])
 
         # for unit in my_movies:
