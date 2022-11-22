@@ -99,6 +99,10 @@ export default new Vuex.Store({
           context.commit('CHANGE_CHECKED')
           context.commit('SAVE_TOKEN', res.data.key) 
         })
+        .catch((err) => {
+          console.log(err)
+          alert('이미 존재하는 아이디거나 비밀번호가 서로 다릅니다!')
+        })
     },
     login(context, payload) {
       axios({
@@ -111,6 +115,10 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('SAVE_TOKEN', res.data.key)
+        })
+        .catch((err) => {
+          console.log(err)
+          alert('존재하지 않는 계정이거나 잘못된 비밀번호 입니다!')
         })
     },
     change(context, payload) {
