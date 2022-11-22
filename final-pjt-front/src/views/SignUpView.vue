@@ -1,25 +1,22 @@
 <template>
   <div>
     <div id="holder">
-    <br>
     <h1>Sign Up</h1>
-    <br>
     <form @submit.prevent="signUp">
-      <label for="username">ID : </label><br>
-      <input type="text" id="username" v-model="username"><br>
+      <label class="inputText" for="username">ID </label><br>
+      <input class="inputSignup" type="text" id="username" v-model="username">
       <br>
-      <label for="password1"> PW : </label><br>
-      <input type="password" id="password1" v-model="password1"><br>
+      <label class="inputText" for="password1"> PW </label><br>
+      <input class="inputSignup" type="password" id="password1" v-model="password1">
       <br>
-      <label for="password2"> PW agian : </label><br>
-      <input type="password" id="password2" v-model="password2">
-      <br>
+      <label class="inputText" for="password2"> PW AGAIN </label><br>
+      <input class="inputSignup" type="password" id="password2" v-model="password2">
       <br>
       <!-- <a href="#"><span data-attr="Sign">Sign</span><span data-attr="Up">Up</span></a> -->
       <div class="button">
-          <p class="btnText">READY?</p>
+          <p class="btnText">DONE?</p>
           <div class="btnTwo">
-            <p class="btnText2">GO!
+            <p class="btnText2">SIGNUP!
               <input class="hidden" type="submit" value="GO!">
             </p>
           </div>
@@ -86,12 +83,15 @@ export default {
   border-radius: 2px;
 }
 /* 인풋 스타일 */
-.inputsearch {
-    width: 50%;
+.inputSignup {
+    width: 90%;
     border-radius: 20px;
     border: 2px solid #bbb;
     margin: 10px 0;
     padding: 10px 12px;
+}
+.inputText{
+  font-size: 20px;
 }
 /* 버튼 스타일 */
 .button {
