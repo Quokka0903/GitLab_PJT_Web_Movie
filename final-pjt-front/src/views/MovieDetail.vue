@@ -1,37 +1,73 @@
 <template>
   <div class="background">
+    <p v-if="!background" class="loading">
+      <img src="@/assets/loading.gif" alt="">
+    </p>
     <div id="justify-content" class="container">
       <h1>{{movie?.title}}</h1>
+      <br>
+      <hr>
+      <br>
       <div class="row justify-content-around">
         <div class="img col-4">
           <img :src="jpg" class="card-img-top">
             <hr>
-            <p> {{movie?.title}}에게 : </p>
+            <h5> {{movie?.title}}에게 : </h5>
             <RecordDetail
             :movie="movie"
             />
         </div>
         <div class="col-8" style="font-weight: bold; font-size: 1rem;">
-          <p>장르 : 
+          <h5>장르 : 
             <span v-for="(genre, index) in movie?.genres" :key="index">
               {{genre.name}} /
             </span>
-          </p>
-          <p>TMDB 평점 : {{movie?.vote_average}}</p>
-          <p>시놉시스 : </p>
-          <p>{{movie?.overview}}</p>
-          <p>개봉일 : {{movie?.release_date}}</p>
+          </h5>
+          <h5>TMDB 평점 : {{movie?.vote_average}}</h5>
+          <div style="width: 100%">
+            <h5>시놉시스 : </h5>
+            <div v-if="show">
+              <h5>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h5>
+              <h5 @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</h5>
+            </div>
+            <div v-else>
+              <h5>{{movie?.overview}}</h5>
+              <h5 @click="ShowChange">닫기</h5>
+            </div>
+          </div>
+          <h5>개봉일 : {{movie?.release_date}}</h5>
           <div>
             <h5>리뷰</h5>
-            <MakeReview
+            <!-- <MakeReview
             :movie="movie"
             style="width:100%"
-            />  
+            />   -->
+            <b-button @click="ShowModal">리뷰 남기기</b-button>
+            <b-button @click="GoReview(movie.id)">리뷰 더보기</b-button>
+            <ModalTemplate @close="closeModal" v-if="modal">
+              <h3>리뷰 남기기</h3>
+              <b-input
+              v-model="title"
+              @keyup.enter="createReview"
+              placeholder="리뷰 제목"></b-input>
+              <b-textarea
+              @keyup.enter="createReview"
+              placeholder="당신만의 한 줄을 남겨주세요"
+              v-model="content"
+              ></b-textarea>
+              <template slot="footer">
+                <button @click="createReview">제출</button>
+              </template>
+            </ModalTemplate>
           </div>
         </div>
       </div>
+      <br>
+      <br>
       <hr>
-      <h3>같은 장르의 영화 추천드립니다!</h3>
+      <br>
+      <h3> 같은 장르의 영화 </h3>
+      <br>
       <div class='row row-cols-md-4'>
         <div v-for="movie in genre_movies"
         :key="movie.id"
@@ -49,7 +85,8 @@
 <script>
 import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
-import MakeReview from '@/components/MakeReview'
+import ModalTemplate from '@/components/ModalTemplate'
+// import MakeReview from '@/components/MakeReview'
 import _ from 'lodash'
 
 
@@ -62,12 +99,17 @@ export default {
       jpg: null,
       detail: null,
       background: null,
-      genre_movies: []
+      genre_movies: [],
+      show: true,
+      title: '',
+      content: '',
+      modal: false,
     }
   },
   components:{
     RecordDetail,
-    MakeReview,
+    // MakeReview,
+    ModalTemplate
   },
   methods: {
     getMovieDetail() {
@@ -118,9 +160,55 @@ export default {
         })
     },
     MoveDetail(id) {
+      console.log(id)
       this.$router.push({name: 'MovieDetail', params:{id}})
       // this.$router.go() -> 새로고침
       this.getMovieDetail()
+      window.scrollTo(0, 0);
+    },
+    ShowChange() {
+      this.show = !this.show
+    },
+    createReview() {
+      if (this.title.length === 0) {
+        alert('제목을 입력해주세요!')
+      } else if (this.content.length === 0) {
+        alert('내용을 입력해주세요!')
+      } else {
+        const API_URL = 'http://127.0.0.1:8000'
+        axios({
+          method: 'post',
+          url: `${API_URL}/pages/movies/${this.movie.id}/reviews/`,
+          headers: {
+              Authorization: `Token ${ this.$store.state.token }`
+          },
+          data: {
+              movie: this.movie.id,
+              title: this.title,
+              content: this.content,
+          }
+        })
+          .then((res) => {
+              console.log('리뷰', res)
+              this.title = ''
+              this.content = ''
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+      this.closeModal()
+    },
+    GoReview(movie_id) {
+      this.$router.push({name: 'ReviewListView', params: {movie_id: movie_id}})
+    },
+    ShowModal() {
+      this.modal = true
+    },
+    closeModal() {
+      this.modal = false
+      this.title = ''
+      this.content = ''
     }
   },
   created() {
@@ -142,7 +230,13 @@ export default {
   height: 100%;
   width: 100%;
   content: "";
-  background-image: var(--background);
+  background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 70%,
+            rgba(255, 255, 255, 0.5) 80%,
+            rgba(255, 255, 255, 0.75) 90%,
+            rgb(255, 255, 255) 100%
+          ), var(--background);
   
   overflow: hidden;
   background-size: cover;
@@ -155,5 +249,11 @@ export default {
   z-index: -1;
   position: absolute;
 
+}
+.loading {
+  position: absolute;
+  z-index: 2;
+  left: 40% !important;
+  top: 40% !important;
 }
 </style>

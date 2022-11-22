@@ -9,7 +9,7 @@ from rest_framework import generics
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer
+from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer, TopReviewSerializer
 from .models import Movie, Genre, Review, MovieScore
 from django.http import JsonResponse
 from collections import defaultdict
@@ -28,6 +28,7 @@ def movie_list(request):
 
 # TODO: movie detail 페이지로, 좋아요 상위 5개만 보내는 함수 만들기
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     if request.method == 'GET':
@@ -36,6 +37,7 @@ def movie_detail(request, movie_pk):
 
 # 영화에 대한 평점
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_score(request):
     if request.method == 'POST':
         movie_pk = request.data['movie_pk']
@@ -63,6 +65,7 @@ def create_score(request):
     # elif request.method == 'PUT':
     
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def review_list(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     if request.method == 'GET':
@@ -72,6 +75,7 @@ def review_list(request, movie_id):
 
 
 @api_view(['GET', 'DELETE', 'PUT'])
+@permission_classes([IsAuthenticated])
 def review_detail(request, review_pk):
     # 리뷰는 각 component로 가져올 것 이므로 GET 필요
     review = get_object_or_404(Review, pk=review_pk)
@@ -94,6 +98,7 @@ def review_detail(request, review_pk):
 
 # 리뷰 작성하기
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def review_create(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = ReviewSerializer(data=request.data)
@@ -104,6 +109,7 @@ def review_create(request, movie_pk):
 
 # 좋아요 구현
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def likes(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     if review.like_users.filter(pk=request.user.pk).exists():
@@ -122,6 +128,7 @@ def likes(request, review_pk):
 
 # 알고리즘 구현
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def recommend(request):
     if request.method == 'GET':
         movies = get_list_or_404(Movie)
@@ -172,6 +179,7 @@ def recommend(request):
         serializer = MovieListSerializer(my_movie, many=True)
         return Response(serializer.data)
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def recommend_genre(request, movie_id):
     # 장르가 같은 모든 영화 가져오기
     movie = get_object_or_404(Movie, pk=movie_id)
@@ -193,11 +201,12 @@ def recommend_genre(request, movie_id):
 
 # 처음 영화 선택, 장르별로 중복없이 영화 가져오기
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def like_movies(request):
     movie_list = []
     genres = get_list_or_404(Genre)
     for genre in genres:
-        movies = genre.movie_set.all().order_by('popularity')
+        movies = genre.movie_set.all().order_by('-popularity')
         n = 0
         for movie in movies:
             if n == 5 or n == len(movies): 
@@ -210,6 +219,7 @@ def like_movies(request):
 
 # main page에 들어갈 랜덤 장르
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def random_genre(request):
     genre = random.choice(get_list_or_404(Genre))
     movies = random.sample(list(genre.movie_set.all()), 4)
@@ -222,7 +232,7 @@ def random_genre(request):
     # result = json.dumps(context, indent=4)
     # print(result)
     return Response(context) 
-
+@permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def score_view(request, movie_pk, user_pk):
     try:
@@ -230,7 +240,7 @@ def score_view(request, movie_pk, user_pk):
         serializer = MovieScoreSerializer(movie_score)
         return Response(serializer.data)
     except:
-        return
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 # 검색기능 구현
 class search_list(generics.ListAPIView):
@@ -238,3 +248,16 @@ class search_list(generics.ListAPIView):
     serializer_class = MovieListSerializer
     filter_backends = [SearchFilter]
     search_fields = ['title']
+
+# 상위 리뷰 2개
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def review_list(request, movie_id):
+#     movie = get_object_or_404(Movie, pk=movie_id)
+#     if request.method == 'GET':
+#         reviews = movie.review_set.all()
+#         for review in reviews:
+#             review.like_users.count
+#         # .order_by('-popularity')
+#         serializer = TopReviewSerializer(reviews, many=True)
+#         return Response(serializer.data)

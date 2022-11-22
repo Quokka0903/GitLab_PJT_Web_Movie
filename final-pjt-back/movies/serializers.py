@@ -22,7 +22,7 @@ class ReviewListSerializer(serializers.ModelSerializer):
     # movie 처리 필요? (상관 없는 것 같기도)
     class Meta:
         model = Review
-        fields = ('id', )
+        fields = ('id',)
         read_only_fields = ('user', 'movie', 'like_users',)
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -54,3 +54,10 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = '__all__'
+
+class TopReviewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Review
+        fields = ('id', 'title', 'content')
+        read_only_fields = ('user', 'movie', 'like_users',)

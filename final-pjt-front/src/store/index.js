@@ -18,6 +18,7 @@ export default new Vuex.Store({
     // movies: [],
     recommend: [],
     token: null,
+    selected: true
   },
   getters: {
     isLogin(state) {
@@ -28,10 +29,17 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      router.push({ name: 'MainView' })
+      console.log(state.selected)
+      if (state.selected) {
+        router.push({ name: 'MainView' })
+      } else {
+        router.push({name: 'RecordView'})
+      }
     },
     DELETE_TOKEN(state) {
       state.token = null
+      state.selected = true
+      state.recommend = []
       router.push({ name: 'LoginView'})
     },
     // GET_MOVIES(state, movies) {
@@ -41,6 +49,9 @@ export default new Vuex.Store({
       state.recommend =recommend
       // console.log(state.recommend)
     },
+    CHANGE_CHECKED(state) {
+      state.selected = false
+    }
   },
   actions: {
     // getMovies(context) {
@@ -85,8 +96,12 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log('token', res)
-          context.commit('SAVE_TOKEN', res.data.key)
+          context.commit('CHANGE_CHECKED')
+          context.commit('SAVE_TOKEN', res.data.key) 
+        })
+        .catch((err) => {
+          console.log(err)
+          alert('이미 존재하는 아이디거나 비밀번호가 서로 다릅니다!')
         })
     },
     login(context, payload) {
@@ -99,9 +114,11 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log('로그인')
-          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
+        })
+        .catch((err) => {
+          console.log(err)
+          alert('존재하지 않는 계정이거나 잘못된 비밀번호 입니다!')
         })
     },
     change(context, payload) {

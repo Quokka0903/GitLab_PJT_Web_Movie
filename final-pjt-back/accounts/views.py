@@ -37,3 +37,11 @@ def profile_detail(request, user_pk):
         'my_movies' : movie_json,
     }
     return JsonResponse(context)
+
+# @api_view(['GET'])
+# def check(request, user_pk):
+#     User = get_user_model()
+#     person = get_object_or_404(User, pk=user_pk)
+#     reviews_count = person.reviews.all().length
+#     print(reviews_count)
+

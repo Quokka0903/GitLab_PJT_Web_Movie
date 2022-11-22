@@ -7,7 +7,7 @@ import MainView from '@/views/MainView'
 import ChangeView from '@/views/ChangeView'
 import ProfileView from '@/views/ProfileView'
 import OnBoardingView from '@/views/OnBoardingView'
-import RecordView from '@/views/RecordView'
+// import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
 import MovieDetail from '@/views/MovieDetail'
@@ -80,6 +80,26 @@ const routes = [
       component: MovieDetail,
     }]
   },
+  {
+    path: '/mymovie/:user_id',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'MyMovieView',
+      component: MyMovieView,
+    }]
+  },
+  {
+    path: '/myreview/:user_id',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'MyReviewView',
+      component: MyReviewView,
+    }]
+  },
   // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/onboarding',
@@ -94,23 +114,14 @@ const routes = [
   {
     path: '/record',
     name: 'RecordView',
-    component: RecordView
+    component: () => import('../views/RecordView.vue')
   },
   {
     path: '/reviews/:movie_id',
     name: 'ReviewListView',
     component: ReviewListView
   },
-  {
-    path: '/mymovie/:user_id',
-    name: 'MyMovieView',
-    component: MyMovieView
-  },
-  {
-    path: '/myreview/:user_id',
-    name: 'MyReviewView',
-    component: MyReviewView
-  },
+  
   {
     path: '/search',
     name: '',
@@ -120,6 +131,10 @@ const routes = [
       name: 'SearchView',
       component: SearchView,
     }]
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]
 

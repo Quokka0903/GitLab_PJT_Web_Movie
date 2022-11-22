@@ -26,7 +26,7 @@ export default {
   methods: {
     getBack() {
       this.num = _.sample(_.range(1, 28))
-      console.log(this.num)
+      // console.log(this.num)
     }
   },
   created() {
@@ -42,7 +42,7 @@ export default {
   font-style: initial;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
-  color: azure;
+  color: rgb(2, 11, 11);
   
 }
 .back {
@@ -54,7 +54,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 70%;
-  
   top: 0;
   left: 0;
   z-index: -1;

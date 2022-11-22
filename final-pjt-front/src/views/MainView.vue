@@ -1,19 +1,24 @@
 <template>
   <div id="justify-content" class="container">
+    <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
+    <p v-if="!genre_movies" class="loading box">
+      <img src="@/assets/loading.gif" alt="">
+    </p>
     <div class="row justify-content-around">
-      <p>오늘 이 영화 어떠세요?</p>
-        <AlgorithmItem
-        v-for="(movie) in recommend"
-        :key="movie.id"
-        :movie="movie"
-        class="col-3"
-        />
+      <hr>
+      <h3>오늘 이 영화 어떠세요?</h3>
+      <AlgorithmItem
+      v-for="(movie) in recommend"
+      :key="movie.id"
+      :movie="movie"
+      class="col-3"
+      />
     </div>
     <br>
     <hr>
     <br>
     <div class="row justify-content-around">
-      <p>{{genre}} 장르의 영화 어떠세요?</p>
+      <h3>{{genre}} 장르의 영화 어떠세요?</h3>
       <GenreItem
       v-for="(movie,idx) in genre_movies"
       :movie="movie"
@@ -24,12 +29,12 @@
   <hr>
   <br>
   <div class="row justify-content-around">
-      <p>실시간 랭킹 영화</p>
+      <h3>실시간 랭킹 영화</h3>
       <MovieViewItem
       v-for="(movie, index) in Movies"
       :movie='movie'
       :key="index"
-      class="col-2"
+      class="col-3"
       />
     </div>
     <br>
@@ -57,15 +62,16 @@ export default {
       Movies:[],
       genre: null,
       genre_movies: null,
+      num: null,
     }
   },
   computed: {
     isLogin() {
       return this.$store.getters.isLogin
     },
-    movies() {
-      return this.$store.state.movies
-    },
+    // movies() {
+    //   return this.$store.state.movies
+    // },
     recommend() {
       return this.$store.state.recommend
     }
@@ -87,9 +93,6 @@ export default {
         this.$router.push({name: 'LoginView'})
       }
     },
-    getlist() {
-
-    },
     getTopMovie(){
       axios({
         method : 'get',
@@ -101,7 +104,7 @@ export default {
           }       
       })
         .then((response) => {
-          this.Movies = _.sampleSize(response.data.results, 5)
+          this.Movies = _.sampleSize(response.data.results, 4)
         }) 
         .catch((error)=> {
           console.log(error)
@@ -121,7 +124,12 @@ export default {
         })
         .catch((error) => {
           console.log(error)
+          this.$router.go()
         })
+    },
+    getBack() {
+      this.num = _.sample(_.range(1, 28))
+      // console.log(this.num)
     }
   },
   created() {
@@ -129,20 +137,46 @@ export default {
     this.getTopMovie()
     this.getRecommend()
     this.getGenreMovie()
+    this.getBack()
   },
   mounted() {
-
   }
-  
 }
 </script>
 
 <style>
-.box {
-  text-align: center;
-  border: 0;
-  width: 1000px;
-  height: 1000px;
+.card {
+  margin-top: auto;
+  background-size: cover;
 }
+.card-title{
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 5px; 
+}
+.box {
+  border: 0;
+}
+.loading {
+  z-index: 2;
+  left: 40% !important;
+  top: 40% !important;
+}
+.backMain {
+  height: 220%;
+  width: 100%;
+  content: "";
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 40%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
 
+}
 </style>

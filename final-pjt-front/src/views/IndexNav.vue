@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <nav>
+  <div class="idxback">
+    <nav class="navbarCustom">
       <router-link :to="{ name: 'MainView' }">메인 페이지</router-link> |
       <router-link :to="{ name: 'SearchView' }"> 영화 검색 </router-link> | 
       <router-link :to="{ name: 'ProfileView'}">나의 프로필</router-link>
     </nav>
-
     <!-- fade 라우터 전환 -->
     <transition name="slide-fade" mode="out-in">
       <router-view/>
@@ -18,6 +17,13 @@
 </script>
 
 <style>
+.navbarCustom {
+  font-family: 'Gicsseong';
+  font-size: 180%;
+  text-decoration: none;
+}
+/* .idxback {
+} */
 /* fade 라우터 전환 */
 .fade-enter {
   opacity: 0;
