@@ -196,7 +196,7 @@ def like_movies(request):
     movie_list = []
     genres = get_list_or_404(Genre)
     for genre in genres:
-        movies = genre.movie_set.all().order_by('popularity')
+        movies = genre.movie_set.all().order_by('-popularity')
         n = 0
         for movie in movies:
             if n == 5 or n == len(movies): 

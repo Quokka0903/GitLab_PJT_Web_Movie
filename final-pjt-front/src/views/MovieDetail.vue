@@ -74,7 +74,7 @@ export default {
       jpg: null,
       detail: null,
       background: null,
-      genre_movies: []
+      genre_movies: [],
     }
   },
   components:{
@@ -130,6 +130,7 @@ export default {
         })
     },
     MoveDetail(id) {
+      console.log(id)
       this.$router.push({name: 'MovieDetail', params:{id}})
       // this.$router.go() -> 새로고침
       this.getMovieDetail()

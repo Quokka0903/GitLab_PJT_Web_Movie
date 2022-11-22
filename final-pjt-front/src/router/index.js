@@ -7,7 +7,7 @@ import MainView from '@/views/MainView'
 import ChangeView from '@/views/ChangeView'
 import ProfileView from '@/views/ProfileView'
 import OnBoardingView from '@/views/OnBoardingView'
-import RecordView from '@/views/RecordView'
+// import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
 import MovieDetail from '@/views/MovieDetail'
@@ -114,7 +114,7 @@ const routes = [
   {
     path: '/record',
     name: 'RecordView',
-    component: RecordView
+    component: () => import('../views/RecordView.vue')
   },
   {
     path: '/reviews/:movie_id',
