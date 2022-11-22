@@ -87,6 +87,7 @@ def review_detail(request, review_pk):
 
     # 수정하기
     elif request.method == 'PUT':
+        print('내가문제야..')
         serializer = ReviewSerializer(review, data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()

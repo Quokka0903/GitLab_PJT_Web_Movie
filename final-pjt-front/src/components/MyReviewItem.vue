@@ -10,6 +10,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'MyReviewItem',
   props: {
@@ -17,17 +18,7 @@ export default {
   },
   methods: {
     ChangeReview(review_id) {
-      const API_URL = 'http://127.0.0.1:8000'
-      axios({
-        method: 'put',
-        url: `${API_URL}/pages/reviews/${review_id}`,
-        headers: {
-          Authorization: `Token ${ this.$store.state.token }`
-        }
-      })
-        .then((res) => {
-          console.log(res)
-        })
+      this.$emit('change_review', review_id)
     },
     DeleteReview(review_id) {
       const API_URL = 'http://127.0.0.1:8000'
