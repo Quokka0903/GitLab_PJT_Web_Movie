@@ -1,14 +1,17 @@
 <template>
   <div id="justify-content" class="container">
+    <p v-if="!genre_movies" class="loading box">
+      <img src="@/assets/loading.gif" alt="">
+    </p>
     <div class="row justify-content-around">
       <hr>
       <p>오늘 이 영화 어떠세요?</p>
-        <AlgorithmItem
-        v-for="(movie) in recommend"
-        :key="movie.id"
-        :movie="movie"
-        class="col-3"
-        />
+      <AlgorithmItem
+      v-for="(movie) in recommend"
+      :key="movie.id"
+      :movie="movie"
+      class="col-3"
+      />
     </div>
     <br>
     <hr>
@@ -154,5 +157,13 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-top: 5px; 
+}
+.box {
+  border: 0;
+}
+.loading {
+  z-index: 2;
+  left: 40% !important;
+  top: 40% !important;
 }
 </style>
