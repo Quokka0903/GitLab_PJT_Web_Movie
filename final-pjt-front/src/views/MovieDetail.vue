@@ -4,7 +4,7 @@
       <img src="@/assets/loading.gif" alt="">
     </p>
     <div id="justify-content" class="container">
-      <h1>{{movie?.title}}</h1>
+      <h1 class="movieTitle">{{movie?.title}}</h1>
       <br>
       <hr>
       <br>
@@ -26,22 +26,25 @@
             </span>
           </h4>
           <br>
+          <h4>개봉일 : {{movie?.release_date}}</h4>
+          <br>
           <h4>TMDB 평점 : {{movie?.vote_average}}</h4>
           <br>
-          <div style="width: 100%">
+          <div style="width: 100%" class="">
             <h4>시놉시스 : </h4>
             <br>
             <div v-if="show" class="overview">
               <h4>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h4>
-              <h4 @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</h4>
+              <p @click="ShowChange" v-if="movie?.overview.length >= 150" class="button btnFade btnBlueGreen">더보기</p>
             </div>
             <div v-else>
               <h4>{{movie?.overview}}</h4>
-              <h4 @click="ShowChange">닫기</h4>
+              <p @click="ShowChange" class="button btnFade btnBlueGreen">닫기</p>
             </div>
+            <br>
           </div>
           <br>
-          <h4>개봉일 : {{movie?.release_date}}</h4>
+          <br>
           <br>
           <div>
             <h3>리뷰</h3>
@@ -77,7 +80,7 @@
               v-model="content"
               ></b-textarea>
               <template slot="footer">
-                <button @click="createReview">제출</button>
+                <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
               </template>
             </ModalTemplate>
 
@@ -94,7 +97,7 @@
         <div v-for="movie in genre_movies"
         :key="movie.id"
         class='col'>
-        <div class="card h-100" @click="MoveDetail(movie.id)">
+        <div class="card h-100 moviecard" @click="MoveDetail(movie.id)">
           <img class="card-img-top" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="">
         </div>
         </div>
@@ -272,6 +275,9 @@ export default {
     width : 30%;
     height : 30%;
   }
+.movieTitle {
+  font-size: 340%;
+}
 
 .background {
   height: 100%;
@@ -342,7 +348,7 @@ export default {
   transform-style: preserve-3d;
 }
 .btn-heart:hover{
-  color: #26A69A;
+  color: #000000;
 }
 .btn-heart:after {
   position: absolute;
@@ -420,5 +426,46 @@ export default {
   -webkit-transform: rotateX(-90deg);
   -moz-transform: rotateX(-90deg);
   transform: rotateX(-90deg);
+}
+
+p.button {
+  display: block;
+  position: absolute;
+  left: 59.3%;
+  float: left;
+  width: 250px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  font-size: 130%;
+  text-align: center;
+  line-height: 45px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btnBlueGreen {
+  background: #26A69A;
+}
+.btnFade.btnBlueGreen {
+  width: 85px;
+  font-size: 100%;
+}
+.btnFade.btnBlueGreen:hover {
+  background: #14554f;
+}
+.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.btnBlueGreen.btnPush {
+  box-shadow: 0px 5px 0px 0px #14554f;
+}
+.btnBlueGreen.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #14554f;
+}
+
+.btn-center {
+  left: 0%
 }
 </style>

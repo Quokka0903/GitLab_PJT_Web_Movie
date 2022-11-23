@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style>
+
+
 .index {
   width: 100%;
   height: 100%;
