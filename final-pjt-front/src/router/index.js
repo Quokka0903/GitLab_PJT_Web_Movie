@@ -138,7 +138,6 @@ const routes = [
       component: SearchView,
     }]
   },
-
   // {
   //   path: '/ost/:moviename',
   //   name: 'MovieOstView',
