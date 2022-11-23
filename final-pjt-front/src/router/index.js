@@ -111,16 +111,21 @@ const routes = [
       component: ReviewListView,
     }]
   },
+  {
+    path: '/password',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'ChangeView',
+      component: ChangeView,
+    }]
+  },
   // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/onboarding',
     name: 'OnBoardingView',
     component: OnBoardingView
-  },
-  {
-    path: '/password',
-    name: 'ChangeView',
-    component: ChangeView
   },
   {
     path: '/record',

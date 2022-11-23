@@ -12,6 +12,7 @@
 
       <div @click="GoMovie" class="buttonprofile">평가한 영화 보기</div>
       <div @click="GoReview" class="buttonprofile">리뷰 남긴 영화 보기</div>
+      <div @click="GoChange" class="buttonprofile">개인정보수정</div>
       <div @click="LogOut" class="buttonprofile">로그아웃</div>
 
 
@@ -46,6 +47,10 @@ export default {
     GoReview() {
       const user_id = this.user_id
       this.$router.push({name:'MyReviewView', params: {user_id}})
+    },
+    GoChange() {
+      const user_id = this.user_id
+      this.$router.push({name:'ChangeView', params: {user_id}})
     },
     GetUserId() {
       const API_URL = 'http://127.0.0.1:8000'
@@ -102,7 +107,6 @@ export default {
   font-weight: bolder;
   font-size: 25px;
   font-family: 'YarpHanna';
-
   background: rgba(255, 255, 255, 0.9);
   margin : 20px auto;
   padding: 8px;
@@ -113,7 +117,14 @@ export default {
   cursor : pointer;
   border-radius: 15px;
   box-shadow: 0px 1px 2px rgba(0,0,0,2);
+  transition: all 0.2s linear;
 }
+
+.buttonprofile:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
 
 /* Winona */
 /* .button--winona {
