@@ -4,13 +4,16 @@
     <h1>Sign Up</h1>
     <form @submit.prevent="signUp">
       <label class="inputText" for="username">ID </label><br>
-      <input class="inputSignup" type="text" id="username" v-model="username">
+      <input @input="CheckUser" class="inputSignup" type="text" id="username" v-model="username">
+      <p v-show="sameusername">아이디를 입력해주세요</p>
       <br>
       <label class="inputText" for="password1"> PW </label><br>
-      <input class="inputSignup" type="password" id="password1" v-model="password1">
+      <input @input="CheckPassword" class="inputSignup" type="password" id="password1" v-model="password1">
+      <p v-show="samepassword">비밀번호를 8글자 이상 입력해주세요</p>
       <br>
       <label class="inputText" for="password2"> PW AGAIN </label><br>
-      <input class="inputSignup" type="password" id="password2" v-model="password2">
+      <input @input="CheckPassword2" class="inputSignup" type="password" id="password2" v-model="password2">
+      <p v-show="samepassword2">비밀번호가 일치하지 않습니다.</p>
       <br>
       <!-- <a href="#"><span data-attr="Sign">Sign</span><span data-attr="Up">Up</span></a> -->
       <div class="button">
@@ -34,6 +37,9 @@ export default {
       username: null,
       password1: null,
       password2: null,
+      sameusername: false,
+      samepassword: false,
+      samepassword2: false,
     }
   },
   computed: {
@@ -61,6 +67,32 @@ export default {
     Check() {
       if (this.isLogin) {
         this.$router.replace({name: 'MainView'})
+    }
+    },
+    CheckUser() {
+      const username = this.username
+      if (username.trim().length === 0) {
+        this.sameusername = true
+      } else {
+        this.sameusername = false
+      }
+    },
+    CheckPassword() {
+      const password1 = this.password1
+      if (password1.trim().length < 8) {
+        this.samepassword = true
+      } else {
+        this.samepassword = false
+      }
+    },
+    CheckPassword2() {
+      console.log('working')
+      const password2 = this.password2
+      const password1 = this.password1
+      if (password2 === password1) {
+        this.samepassword2 = false
+      } else {
+        this.samepassword2 = true
       }
     },
   },

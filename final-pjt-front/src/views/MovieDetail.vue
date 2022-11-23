@@ -191,6 +191,7 @@ export default {
       this.$router.push({name: 'MovieDetail', params:{id}})
       // this.$router.go() -> 새로고침
       this.getMovieDetail()
+      this.GetTopReview()
       window.scrollTo(0, 0);
     },
     ShowChange() {
