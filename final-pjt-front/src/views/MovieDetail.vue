@@ -49,7 +49,16 @@
             :movie="movie"
             style="width:100%"
             />   -->
-
+            <div v-if="status">
+              <p>리뷰가 없습니다!</p>
+            </div>
+            <div v-else>
+              <div v-for="top in topreviews"
+              :key="`top-${top.id}`">
+              <h3>{{top.title}}</h3>
+              <p>{{top.content}}</p>
+              </div>
+            </div>
             <button @click="GoReview(movie.id)" class="custom-btn btn-review"><span>Click!</span><span>리뷰 더보기</span></button>
             <br>
             <button @click="ShowModal" class="custom-btn btn-review"><span>Click!</span><span>리뷰 남기기</span></button>
@@ -117,6 +126,8 @@ export default {
       title: '',
       content: '',
       modal: false,
+      status: null,
+      topreviews: [],
     }
   },
   components:{
@@ -203,6 +214,7 @@ export default {
         })
           .then((res) => {
               console.log('리뷰', res)
+              this.GetTopReview()
               this.title = ''
               this.content = ''
           })
@@ -213,6 +225,7 @@ export default {
       this.closeModal()
     },
     GoReview(movie_id) {
+      console.log(movie_id)
       this.$router.push({name: 'ReviewListView', params: {movie_id: movie_id}})
     },
     ShowModal() {
@@ -222,10 +235,33 @@ export default {
       this.modal = false
       this.title = ''
       this.content = ''
+    },
+    GetTopReview() {
+      const API_URL = 'http://127.0.0.1:8000'
+      const movie_id = this.$route.params.id
+      axios({
+        method: 'get',
+        url: `${API_URL}/pages/reviews/top/${movie_id}/`,
+        headers: {
+            Authorization: `Token ${ this.$store.state.token }`
+        },
+      })
+        .then((res) => {
+          if (res.status === 204) {
+            this.status = true
+          } else {
+            this.status = false
+            this.topreviews = res.data 
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   created() {
-    this.getMovieDetail()
+    this.getMovieDetail(),
+    this.GetTopReview()
   },
   
 }

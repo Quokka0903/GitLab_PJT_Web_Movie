@@ -7,6 +7,7 @@ urlpatterns = [
     path('score/', views.create_score),
     path('score/<int:movie_pk>/<int:user_pk>', views.score_view),
     path('reviews/<int:review_pk>/', views.review_detail),
+    path('reviews/top/<int:movie_pk>/', views.review_top),
     path('movies/<int:movie_pk>/reviews/', views.review_create),
     path('reviews/<int:review_pk>/likes/', views.likes),
     path('algo/', views.recommend),
