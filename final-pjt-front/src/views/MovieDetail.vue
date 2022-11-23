@@ -114,15 +114,12 @@
           class='col-3 detailitem'>
           <div class="card mx-auto" style="height:100%" @click="MoveDetail(movie.id)">
             <img class="card-img-top" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" height=100%>
-          <div class="card mb-3 moviecard" @click="MoveDetail(movie.id)">
-            <img class="card-img-top detailitem" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`">
           </div>
         </div>
       </div>
     </div>
     </div>
     <br>    <br>    <br>
-  </div>
   </div>
 </template>
 
