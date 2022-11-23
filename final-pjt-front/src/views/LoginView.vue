@@ -93,7 +93,7 @@ export default {
 #holder{
   background: rgba(255, 255, 255, 0.512);
   padding: 10px;
-  width: 18%;
+  width: 350px;
   margin: 0 auto;
   position: relative;
   top: 12rem;
@@ -103,7 +103,7 @@ export default {
 }
 /* 인풋 스타일 */
 .inputLogin {
-    width: 70%;
+    width: 60%;
     border-radius: 20px;
     border: 2px solid #bbb;
     margin: 10px 0;

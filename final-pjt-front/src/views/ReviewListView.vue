@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3 @click="MoveBack()"> 영화로 돌아가기 </h3>
     <p>리뷰리스트</p>
     <ReviewDetail
     v-for="(id, index) in review_ids"
@@ -93,6 +94,9 @@ export default {
         this.content = ""
         this.review_id = null
       }
+    },
+    MoveBack() {
+      this.$router.go(-1)
     },
   },
   created() {

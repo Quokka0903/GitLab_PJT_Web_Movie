@@ -15,6 +15,7 @@ import ReviewListView from '@/views/ReviewListView'
 import MyMovieView from '@/views/MyMovieView'
 import MyReviewView from '@/views/MyReviewView'
 import SearchView from '@/views/SearchView'
+import NotFound from '@/views/NotFound'
 
 Vue.use(VueRouter)
 
@@ -100,6 +101,16 @@ const routes = [
       component: MyReviewView,
     }]
   },
+  {
+    path: '/reviews/:movie_id',
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'ReviewListView',
+      component: ReviewListView,
+    }]
+  },
   // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/onboarding',
@@ -116,12 +127,7 @@ const routes = [
     name: 'RecordView',
     component: () => import('../views/RecordView.vue')
   },
-  {
-    path: '/reviews/:movie_id',
-    name: 'ReviewListView',
-    component: ReviewListView
-  },
-  
+
   {
     path: '/search',
     name: '',
@@ -132,15 +138,21 @@ const routes = [
       component: SearchView,
     }]
   },
+
   // {
   //   path: '/ost/:moviename',
   //   name: 'MovieOstView',
   //   component: () => import('../views/MovieOstView.vue')
   // },
+<<<<<<< HEAD
+  
+=======
+>>>>>>> d602407d50fa35cb63a2019d3301c98561a71b5d
   {
     path: '*',
-    redirect: '/404'
-  }
+    redirect: '/404',
+    component: NotFound,
+  },
 ]
 
 const router = new VueRouter({

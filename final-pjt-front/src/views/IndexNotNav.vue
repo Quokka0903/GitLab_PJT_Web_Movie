@@ -60,7 +60,6 @@ export default {
   left: 0;
   z-index: -1;
   position: absolute;
-
 }
 .logo {
   width: 30%;
