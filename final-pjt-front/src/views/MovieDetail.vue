@@ -28,24 +28,24 @@
           <br>
           <h4>TMDB 평점 : {{movie?.vote_average}}</h4>
           <br>
+          <h4>개봉일 : {{movie?.release_date}}</h4>
+          <br>
           <div style="width: 100%">
             <h4>시놉시스 : </h4>
             <br>
             <div v-if="show" class="overview">
               <h4>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h4>
-              <h4 @click="ShowChange" v-if="movie?.overview.length >= 150">더보기</h4>
+              <p @click="ShowChange" v-if="movie?.overview.length >= 150" class="button btnFade btnBlueGreen">더보기</p>
             </div>
             <div v-else>
               <h4>{{movie?.overview}}</h4>
-              <h4 @click="ShowChange">닫기</h4>
+              <p @click="ShowChange" class="button btnFade btnBlueGreen">닫기</p>
             </div>
           </div>
           <br>
-          <h4>개봉일 : {{movie?.release_date}}</h4>
           <br>
           <hr>
           <br>
-          <hr>
           <br>
           <div  class="btn-review-container">
             <h3>베스트 리뷰</h3>
@@ -92,12 +92,20 @@
               v-model="content"
               ></b-textarea>
               <template slot="footer">
-                <button @click="createReview">제출</button>
+                <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
               </template>
             </ModalTemplate>
           </div>
         </div>
       </div>
+      <br>
+      <br>
+      <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
+      <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
+      <!-- <MovieOst
+      v-if="ost"
+      :moviename="movie?.title"
+      /> -->
       <br>
       <br>
       <hr>
@@ -120,12 +128,6 @@
     <br>
     <hr>
     <br>
-    <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
-    <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
-    <!-- <MovieOst
-    v-if="ost"
-    :moviename="movie?.title"
-    /> -->
     <br>
     <br>
     <hr>
@@ -248,6 +250,7 @@ export default {
         })
           .then((res) => {
               console.log('리뷰', res)
+              this.GetTopReview()
               this.title = ''
               this.content = ''
           })
@@ -296,6 +299,7 @@ export default {
   },
   created() {
     this.getMovieDetail()
+    this.GetTopReview()
   },
   
 }
@@ -306,6 +310,10 @@ export default {
   padding: 0;
   width : 200px;
   height : 300px !important;
+}
+
+.movieTitle {
+  font-size: 340%;
 }
 
 .img {
