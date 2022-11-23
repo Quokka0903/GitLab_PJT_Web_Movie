@@ -12,7 +12,7 @@
       <b-button @click="ChangeReview(review.id)">수정</b-button>
       <b-button @click="DeleteReview(review.id)">삭제</b-button>
     </div>
-    <hr>
+    <hr class="hr-dotted">
   </div>
 </template>
 

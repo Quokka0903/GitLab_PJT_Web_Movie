@@ -6,7 +6,10 @@
     </p>
     <div class="row justify-content-around">
       <hr>
-      <h3>오늘 이 영화 어떠세요?</h3>
+      <img class="deep" src="@/assets/deep02.png" alt="">
+      <h3> 여러분의 관심사와 흥미를 빅데이터로 분석하여 가장 높은 만족도를 이끌어낼 만한 영화 리스트를 도출했습니다. </h3>
+      <br>
+      <br>
       <br>
       <AlgorithmItem
       v-for="(movie) in recommend"
@@ -19,8 +22,8 @@
     <hr>
     <br>
     <div class="row justify-content-around">
-      <h3>{{genre}} 장르의 영화 어떠세요?</h3>
-      <br>
+      <h3>오늘은 {{genre}} 장르의 영화 어떠세요?</h3>
+      <br>      <br>    <br>
       <GenreItem
       v-for="(movie,idx) in genre_movies"
       :movie="movie"
@@ -31,8 +34,8 @@
   <hr>
   <br>
   <div class="row justify-content-around">
-      <h3>실시간 랭킹 영화</h3>
-      <br>
+      <h3> TOP RATED MOVIES </h3>
+      <br>      <br>      <br>
       <MovieViewItem
       v-for="(movie, index) in Movies"
       :movie='movie'
@@ -169,6 +172,10 @@ export default {
   z-index: 1;
 }
 
+.deep {
+  width: 10% !important;
+}
+
 .box {
   border: 0;
 }
@@ -178,7 +185,7 @@ export default {
   top: 40% !important;
 }
 .backMain {
-  height: 130rem !important;
+  height: 240% !important;
   width: 100%;
   content: "";
   overflow: hidden;
