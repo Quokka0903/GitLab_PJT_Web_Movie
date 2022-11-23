@@ -114,6 +114,14 @@ export default {
 </script>
 
 <style>
+.reviewcard{
+  transition: all 0.2s linear;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+}
+.reviewcard:hover{
+  transform: scale(1.05);
+  z-index: 1;
+}
 .reviewtitle{
   font-size: 18px;
   overflow: hidden;
