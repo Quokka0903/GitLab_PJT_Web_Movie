@@ -2,8 +2,8 @@
   <div>
     <div id="holder">
       <form @submit.prevent="logIn">
-        <label class="inputText" for="username"> ID </label><br> <input class="input inputLogin" type="text" id="username" v-model="username"><br>
-        <label class="inputText" for="password"> PW </label><br> <input class="input inputLogin" type="password" id="password" v-model="password"><br>
+        <label class="inputText" for="username"> ID :  </label> <input class="input inputLogin" type="text" id="username" v-model="username"><br>
+        <label class="inputText" for="password"> PW :  </label> <input class="input inputLogin" type="password" id="password" v-model="password"><br>
         <div class="button">
           <p class="btnText">READY?</p>
           <div class="btnTwo">
@@ -93,7 +93,7 @@ export default {
 #holder{
   background: rgba(255, 255, 255, 0.512);
   padding: 10px;
-  width: 250px;
+  width: 18%;
   margin: 0 auto;
   position: relative;
   top: 12rem;
@@ -103,7 +103,7 @@ export default {
 }
 /* 인풋 스타일 */
 .inputLogin {
-    width: 90%;
+    width: 70%;
     border-radius: 20px;
     border: 2px solid #bbb;
     margin: 10px 0;

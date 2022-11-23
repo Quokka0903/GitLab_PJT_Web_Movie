@@ -9,8 +9,8 @@
       <hr>
       <br>
       <div class="row justify-content-around">
-        <div class="img col-4">
-          <div class="moviecardOver">
+        <div class="img col-4 moviecardHeart">
+          <div>
           <img :src="jpg" class="card-img-top">
           </div>
             <hr>
@@ -46,25 +46,39 @@
           <br>
           <br>
           <br>
-          <div>
-            <h3>리뷰</h3>
+          <hr>
+          <br>
+          <div  class="btn-review-container">
+            <h3>베스트 리뷰</h3>
+            <br>
             <!-- <MakeReview
             :movie="movie"
             style="width:100%"
             />   -->
             <div v-if="status">
-              <p>리뷰가 없습니다!</p>
+              <h4>첫 번째 리뷰의 주인공이 되어보세요!</h4>
+              <br>
+              <br>
             </div>
             <div v-else>
               <div v-for="top in topreviews"
               :key="`top-${top.id}`">
+              <hr class="hr-dotted">
+              <img class="medal" src="@/assets/medal.png" alt="medal">
+              <br> 
               <h3>{{top.title}}</h3>
+              <br>
               <p>{{top.content}}</p>
-              </div>
-            </div>
+             </div>
+              <hr class="hr-dotted">
+              <br>
+              <br>
+            </div>  
+            <div>
             <button @click="GoReview(movie.id)" class="custom-btn btn-review"><span>Click!</span><span>리뷰 더보기</span></button>
             <br>
             <button @click="ShowModal" class="custom-btn btn-review"><span>Click!</span><span>리뷰 남기기</span></button>
+            </div>
 
             <!-- 리뷰 모달 -->
             <ModalTemplate @close="closeModal" v-if="modal">
@@ -370,9 +384,14 @@ export default {
   -webkit-transform: rotateX(-180deg);
   transform: rotateX(-180deg);
 }
+
+.btn-review-container {
+  position: static;
+}
 .btn-review{
   position: relative;
-  right: 20px;
+  left: -1.5rem !important;
+  font-size: 1.5rem;
   bottom: 20px;
   border:none;
   width: 130px;
@@ -384,7 +403,7 @@ export default {
 .btn-review span {
   display: block;
   position: absolute;
-  width: 240px;
+  width: 100%;
   height: 40px;
   border: 2px solid #26A69A;
   margin:0;
@@ -468,5 +487,21 @@ p.button {
 
 .btn-center {
   left: 0%
+}
+
+.moviecardHeart {
+  position: static;
+}
+
+.hr-dotted {
+border : 0px;
+border-top: 2px dotted #8866aa;
+width: 50%;
+margin-left: 25%;
+}
+
+.medal {
+  height: 5%;
+  width: 5%;
 }
 </style>

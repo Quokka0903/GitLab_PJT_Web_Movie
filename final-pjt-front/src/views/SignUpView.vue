@@ -1,20 +1,21 @@
 <template>
   <div>
-    <div id="holder">
+    <div id="holderSign">
     <h1>Sign Up</h1>
+    <br>
     <form @submit.prevent="signUp">
-      <label class="inputText" for="username">ID </label><br>
-      <input @input="CheckUser" class="inputSignup" type="text" id="username" v-model="username">
-      <p v-show="sameusername">아이디를 입력해주세요</p>
-      <br>
-      <label class="inputText" for="password1"> PW </label><br>
-      <input @input="CheckPassword" class="inputSignup" type="password" id="password1" v-model="password1">
-      <p v-show="samepassword">비밀번호를 8글자 이상 입력해주세요</p>
-      <br>
-      <label class="inputText" for="password2"> PW AGAIN </label><br>
-      <input @input="CheckPassword2" class="inputSignup" type="password" id="password2" v-model="password2">
-      <p v-show="samepassword2">비밀번호가 일치하지 않습니다.</p>
-      <br>
+      <label class="inputText" for="username">ID : </label> <input @input="CheckUser" class="inputSignup" type="text" id="username" v-model="username">
+      <p v-show="!sameusername">아이디를 입력해주세요</p>
+      <p v-show="sameusername">아이디는 1글자 이상 입력되어야 합니다</p>
+      <!-- <br> -->
+      <label class="inputText" for="password1"> PW : </label> <input @input="CheckPassword" class="inputSignup" type="password" id="password1" v-model="password1">
+      <p v-show="!samepassword">비밀번호를 입력해 주세요</p>
+      <p v-show="samepassword">비밀번호는 8글자 이상 입력되어야 합니다</p>
+      <!-- <br> -->
+      <label class="inputText" for="password2"> PW AGAIN : </label> <input @input="CheckPassword2" class="inputSignup" type="password" id="password2" v-model="password2">
+      <p v-show="!samepassword2"><br></p>
+      <p v-show="samepassword2">비밀번호가 일치하지 않습니다</p>
+      <!-- <br> -->
       <!-- <a href="#"><span data-attr="Sign">Sign</span><span data-attr="Up">Up</span></a> -->
       <div class="button">
           <p class="btnText">DONE?</p>
@@ -103,10 +104,10 @@ export default {
 </script>
 
 <style>
-#holder{
+#holderSign{
   background: rgba(255, 255, 255, 0.512);
   padding: 10px;
-  width: 250px;
+  width: 20%;
   margin: 0 auto;
   position: relative;
   top: 12rem;
@@ -116,7 +117,7 @@ export default {
 }
 /* 인풋 스타일 */
 .inputSignup {
-    width: 90%;
+    width: 50%;
     border-radius: 20px;
     border: 2px solid #bbb;
     margin: 10px 0;
