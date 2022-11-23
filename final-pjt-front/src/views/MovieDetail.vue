@@ -107,13 +107,13 @@
       <br>
       <h3> 같은 장르의 영화 </h3>
       <br>
-      <div id="justify-content-center" class="container">
+      <div id="justify-content" class="container">
         <div class='row justify-content-around'>
           <div v-for="movie in genre_movies"
           :key="movie.id"
-          class='col-3'>
-          <div class="card mb-3 moviecard" @click="MoveDetail(movie.id)">
-            <img class="card-img-top detailitem" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`">
+          class='col-3 detailitem'>
+          <div class="card mx-auto" style="height:100%" @click="MoveDetail(movie.id)">
+            <img class="card-img-top" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" height=100%>
           </div>
         </div>
       </div>
@@ -296,9 +296,12 @@ export default {
 
 <style>
 .detailitem {
-  padding: 0;
-  width : 300px;
-  height : 400px !important;
+  background-size: cover;
+  transition: all 0.2s linear;
+}
+.detailitem:hover {
+  transform: scale(1.1);
+  z-index: 1;
 }
 
 .movieTitle {
