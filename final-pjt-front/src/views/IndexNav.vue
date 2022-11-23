@@ -1,6 +1,7 @@
 <template>
   <div class="idxback">
     <nav class="navbarCustom">
+      <img class="NavMain" src="@/assets/mainback/mainback00.jpg" alt="">
       <router-link :to="{ name: 'MainView' }">메인 페이지</router-link> |
       <router-link :to="{ name: 'SearchView' }"> 영화 검색 </router-link> | 
       <router-link :to="{ name: 'ProfileView'}">나의 프로필</router-link>
@@ -25,7 +26,16 @@ a {
   font-family: 'Gicsseong';
   font-size: 180%;
   text-decoration: none;
+  
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  padding: 1rem;
+  z-index: 1; */
 }
+
 /* .idxback {
 } */
 
@@ -61,5 +71,21 @@ a {
 .slide-fade-leave-to {
   transform: translateX(-10px);
   opacity: 0;
+}
+
+.NavMain {
+  height: 25% !important;
+  width: 100%;
+  content: "";
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+
 }
 </style>

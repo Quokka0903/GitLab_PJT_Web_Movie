@@ -18,6 +18,10 @@
             <RecordDetail
             :movie="movie"
             />
+            <br>            <br>            <br>
+            <p @click="ShowModal" class="button btnPush btnBlueGreen btn-align">리뷰 남기기</p>
+            <br>            <br>            <br>
+            <p @click="GoReview(movie.id)" class="button btnPush btnBlueGreen btn-align">리뷰 모두 보기</p>
         </div>
         <div class="col-8" style="font-weight: bold; font-size: 1rem;">
           <h4>장르 : 
@@ -42,22 +46,18 @@
               <p @click="ShowChange" class="button btnFade btnBlueGreen">닫기</p>
             </div>
           </div>
-          <br>
-          <br>
+          <br>          <br>
           <hr>
-          <br>
           <br>
           <div  class="btn-review-container">
             <h3>베스트 리뷰</h3>
-            <br>
             <!-- <MakeReview
             :movie="movie"
             style="width:100%"
             />   -->
             <div v-if="status">
               <h4>첫 번째 리뷰의 주인공이 되어보세요!</h4>
-              <br>
-              <br>
+              <br>              <br>
             </div>
             <div v-else>
               <div v-for="top in topreviews"
@@ -70,13 +70,9 @@
               <p>{{top.content}}</p>
              </div>
               <hr class="hr-dotted">
-              <br>
-              <br>
             </div>  
             <div>
-            <button @click="GoReview(movie.id)" class="custom-btn btn-review"><span>Click!</span><span>리뷰 더보기</span></button>
-            <br>
-            <button @click="ShowModal" class="custom-btn btn-review"><span>Click!</span><span>리뷰 남기기</span></button>
+           
             </div>
             <!-- 리뷰 모달 -->
             <ModalTemplate @close="closeModal" v-if="modal">
@@ -95,10 +91,10 @@
                 <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
               </template>
             </ModalTemplate>
+            
           </div>
         </div>
       </div>
-      <br>
       <br>
       <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
       <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
@@ -106,8 +102,7 @@
       v-if="ost"
       :moviename="movie?.title"
       /> -->
-      <br>
-      <br>
+      <br>      <br>
       <hr>
       <br>
       <h3> 같은 장르의 영화 </h3>
@@ -117,16 +112,14 @@
           <div v-for="movie in genre_movies"
           :key="movie.id"
           class='col-3'>
-          <div class="card mb-3" @click="MoveDetail(movie.id)">
+          <div class="card mb-3 moviecard" @click="MoveDetail(movie.id)">
             <img class="card-img-top detailitem" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`">
           </div>
         </div>
       </div>
     </div>
     </div>
-    <br>
-    <br>
-    <br>
+    <br>    <br>    <br>
   </div>
 </template>
 
