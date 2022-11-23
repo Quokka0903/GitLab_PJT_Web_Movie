@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{review}}
     <p>title: {{review.title}}</p>
     <p>content: {{review.content}}</p>
     <b-button @click="ChangeReview(review.id)">수정</b-button>
