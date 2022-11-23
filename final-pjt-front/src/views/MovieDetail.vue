@@ -45,6 +45,8 @@
           <br>
           <hr>
           <br>
+          <hr>
+          <br>
           <div  class="btn-review-container">
             <h3>베스트 리뷰</h3>
             <br>
@@ -76,7 +78,6 @@
             <br>
             <button @click="ShowModal" class="custom-btn btn-review"><span>Click!</span><span>리뷰 남기기</span></button>
             </div>
-
             <!-- 리뷰 모달 -->
             <ModalTemplate @close="closeModal" v-if="modal">
               <h3>리뷰 남기기</h3>
@@ -94,7 +95,6 @@
                 <button @click="createReview">제출</button>
               </template>
             </ModalTemplate>
-
           </div>
         </div>
       </div>
@@ -115,8 +115,20 @@
         </div>
       </div>
     </div>
-      
     </div>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
+    <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
+    <!-- <MovieOst
+    v-if="ost"
+    :moviename="movie?.title"
+    /> -->
+    <br>
+    <br>
+    <hr>
   </div>
 </template>
 
@@ -124,6 +136,8 @@
 import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
 import ModalTemplate from '@/components/ModalTemplate'
+// import MovieOst from '@/components/MovieOst'
+
 // import MakeReview from '@/components/MakeReview'
 import _ from 'lodash'
 
@@ -142,12 +156,16 @@ export default {
       title: '',
       content: '',
       modal: false,
+      status: null,
+      topreviews: [],
+      ost: false
     }
   },
   components:{
     RecordDetail,
     // MakeReview,
-    ModalTemplate
+    ModalTemplate,
+    // MovieOst,
   },
   methods: {
     getMovieDetail() {
@@ -202,6 +220,8 @@ export default {
       this.$router.push({name: 'MovieDetail', params:{id}})
       // this.$router.go() -> 새로고침
       this.getMovieDetail()
+      this.GetTopReview()
+      this.show = false
       window.scrollTo(0, 0);
     },
     ShowChange() {
@@ -247,6 +267,31 @@ export default {
       this.modal = false
       this.title = ''
       this.content = ''
+    },
+    GetTopReview() {
+      const API_URL = 'http://127.0.0.1:8000'
+      const movie_id = this.$route.params.id
+      axios({
+        method: 'get',
+        url: `${API_URL}/pages/reviews/top/${movie_id}/`,
+        headers: {
+            Authorization: `Token ${ this.$store.state.token }`
+        },
+      })
+        .then((res) => {
+          if (res.status === 204) {
+            this.status = true
+          } else {
+            this.status = false
+            this.topreviews = res.data 
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    ShowOst() {
+      this.ost = !this.ost
     }
   },
   created() {
