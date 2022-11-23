@@ -1,15 +1,17 @@
+
 <template>
 <div>
   <br>
   <h1>내가 평점 준 영화</h1>
-  <hr>
-  <br>
-  <div class="row justify-content-start">
-    <MyMovieItem
-    v-for="movie in my_movies"
-    :key="`my-movie-${movie.movie_id}`"
-    :movie="movie"
-    class="col-3"/>
+  <div id="justify-content-center" class="container">
+    <div class="row justify-content-left">
+      <hr>
+      <MyMovieItem
+      v-for="movie in my_movies"
+      :key="`my-movie-${movie.movie_id}`"
+      :movie="movie"
+      class="col-3 mb-4"/>
+      </div>
   </div>
 </div>
 </template>
@@ -55,5 +57,18 @@ export default {
 </script>
 
 <style>
+.mycard {
+  margin-top: auto;
+  margin-bottom: 10px;
+  background-size: cover;
+}
 
+.mycard-title {
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 10px; 
+  margin-bottom: 10px;
+}
 </style>

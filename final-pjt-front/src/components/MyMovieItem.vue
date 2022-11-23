@@ -1,13 +1,12 @@
+
 <template>
   <div @click="MoveDetail(movie.movie_id)">
-    <div class="card mx-auto" style="height: 100%">
-      <div>
+    <div class="card mycard" style="height: 100%">
         <img :src="imgUrl" class="card-img-top" height=90%>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{detailmovie?.title}}</h5>
+        <div class="card-body">
+        <h5 class="mycard-title">{{detailmovie?.title}}</h5>
         <p>점수: {{movie.score}}</p>
-      </div>
+        </div>
     </div>
   </div>
 </template>
@@ -51,5 +50,4 @@ export default {
 </script>
 
 <style>
-
 </style>
