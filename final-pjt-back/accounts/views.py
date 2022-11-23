@@ -13,16 +13,18 @@ def profile_detail(request, user_pk):
     User = get_user_model()
     person = get_object_or_404(User, pk=user_pk)
     reviews = person.reviews.all()
-    print(reviews)
     movies= person.score.all()
     review_json = []
     movie_json = []
     for review in reviews:
+        review_movie = review.movie
         review_json.append(
         {
             'id': review.id,
             'title': review.title,
             'content': review.content,
+            'movie_poster': review_movie.poster_path,
+            'movie_title': review_movie.title
         }
         )
     for movie in movies:
