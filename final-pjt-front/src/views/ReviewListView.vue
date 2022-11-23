@@ -1,25 +1,34 @@
 <template>
   <div>
-    <h3 @click="MoveBack()"> 영화로 돌아가기 </h3>
-    <p>리뷰리스트</p>
+    <hr>
+    <div>
+    <p @click="MoveBack()" class="button btnPush btnBlueGreen neobi1">영화로 돌아가기</p> 
+    <!-- <p @click="MoveBack()" class="button btnPush btnBlueGreen neobi2">새 리뷰 남기기</p> -->
+    </div>
+    <!-- <br>    <br>    <br> -->
+    <br>    <br>    <br>
+    <h2>리뷰리스트</h2>
+    <hr class="hr-dotted">
     <ReviewDetail
     v-for="(id, index) in review_ids"
     :review_id="id.id"
     :key="`review-${index}`"
     @change_review="ChangeReview"
     />
-    <ModalTemplate @close="closeModal" v-if="modal">
-    <h3>리뷰 수정</h3>
-    <b-input @keyup.enter="doSend" v-model="title" placeholder="리뷰 제목"></b-input>
-    <b-textarea
-    @keyup.enter="doSend"
-    placeholder="당신만의 한 줄을 남겨주세요"
-    v-model="content"
-    ></b-textarea>
-    <template slot="footer">
-      <button @click="doSend">제출</button>
-    </template>
-  </ModalTemplate>
+      <ModalTemplate @close="closeModal" v-if="modal">
+        <h3>리뷰 수정</h3>
+        <b-input @keyup.enter="doSend" v-model="title" placeholder="리뷰 제목"></b-input>
+        <b-textarea
+        @keyup.enter="doSend"
+        placeholder="당신만의 한 줄을 남겨주세요"
+        v-model="content"
+        ></b-textarea>
+        <template slot="footer">
+          <button @click="doSend">제출</button>
+        </template>
+      </ModalTemplate>
+
+      
   </div>
 </template>
 <script>
@@ -106,5 +115,19 @@ export default {
 </script>
 
 <style>
+.hr-dotted {
+border : 0px;
+border-top: 2px dotted #8866aa;
+width: 50%;
+margin-left: 25%;
+}
 
+.neobi1 {
+  left: 44.5% !important;
+  width: 13rem !important;
+}
+/* .neobi2 {
+  left: 50% !important;
+  width: 13rem !important;
+} */
 </style>
