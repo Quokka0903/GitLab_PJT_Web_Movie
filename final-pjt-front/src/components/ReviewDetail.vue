@@ -26,11 +26,11 @@ export default {
       userId: null,
     }
   },
-  watch: {
-    review() {
-      this.getReviews()
-    }
-  },
+  // watch: {
+  //   review() {
+  //     this.getReviews()
+  //   }
+  // },
   props: {
     review_id: Number,
   },

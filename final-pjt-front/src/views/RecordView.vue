@@ -16,14 +16,16 @@
         <h5>more you rate, more effective it is.</h5>
       </nav>
     </header>
-    <main class="row justify-content-start main">
-      <FirstRecord
-      v-for="movie in movies"
-      :key="movie.id"
-      :movie ="movie"
-      class="col-lg-2 col-md-3 col-sm-4"
-      @checked="CountNumber"
-      />
+    <main class="justify-content-start main">
+      <div class="row justify-content-around">
+        <FirstRecord
+        v-for="movie in movies"
+        :key="movie.id"
+        :movie ="movie"
+        class="col-lg-2 col-md-3 col-sm-4 mb-4 mx-auto"
+        @checked="CountNumber"
+        />
+      </div>
     </main>
   </div>
 </template>
@@ -98,9 +100,13 @@ export default {
   z-index: 1;
 }
 .main {
-  padding-top: 320px;
+  padding-top: 300px;
   z-index: 0;
 }
+/* 카드 스타일 */
+.recordcard {
+ height: 460px;
+} 
 
 /* 버튼 스타일 */
 .button {
