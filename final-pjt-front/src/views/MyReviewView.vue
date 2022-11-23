@@ -2,7 +2,7 @@
 <div>
   <br>
   <h1>내가 남긴 리뷰</h1>
-  <div id="justify-content-center" class="container">
+  <div id="justify-content" class="container">
     <div class="row justify-content-left">
       <hr>
       <MyReviewItem
@@ -10,7 +10,7 @@
       :key="`my-review-${review.title}`"
       :review="review"
       @change_review="ChangeReview"
-      class="col-4 mb-4"/>
+      class="mb-4"/>
     </div>
   </div>
   <ModalTemplate @close="closeModal" v-if="modal">
@@ -114,20 +114,17 @@ export default {
 </script>
 
 <style>
-.reviewcard {
-  margin-top: auto;
-  margin-bottom: 10px;
-  background-size: cover;
-  width: 200px;
-  height: 300px;
-}
-
-.reviewitem {
+.reviewtitle{
+  font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding-top: 10px; 
-  margin-bottom: 10px;
+  padding-top: 5px; 
+}
+
+.reviewitem {
+  padding-top: 50px;
+  justify-content: center;
 }
 
 button + button {
