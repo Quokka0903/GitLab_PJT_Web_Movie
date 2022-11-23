@@ -79,7 +79,6 @@
             <br>
             <button @click="ShowModal" class="custom-btn btn-review"><span>Click!</span><span>리뷰 남기기</span></button>
             </div>
-
             <!-- 리뷰 모달 -->
             <ModalTemplate @close="closeModal" v-if="modal">
               <h3>리뷰 남기기</h3>
@@ -97,7 +96,6 @@
                 <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
               </template>
             </ModalTemplate>
-
           </div>
         </div>
       </div>
@@ -116,8 +114,20 @@
         </div>
         </div>
       </div>
-      
     </div>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
+    <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
+    <!-- <MovieOst
+    v-if="ost"
+    :moviename="movie?.title"
+    /> -->
+    <br>
+    <br>
+    <hr>
   </div>
 </template>
 
@@ -125,6 +135,8 @@
 import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
 import ModalTemplate from '@/components/ModalTemplate'
+// import MovieOst from '@/components/MovieOst'
+
 // import MakeReview from '@/components/MakeReview'
 import _ from 'lodash'
 
@@ -145,12 +157,14 @@ export default {
       modal: false,
       status: null,
       topreviews: [],
+      ost: false
     }
   },
   components:{
     RecordDetail,
     // MakeReview,
-    ModalTemplate
+    ModalTemplate,
+    // MovieOst,
   },
   methods: {
     getMovieDetail() {
@@ -206,6 +220,7 @@ export default {
       // this.$router.go() -> 새로고침
       this.getMovieDetail()
       this.GetTopReview()
+      this.show = false
       window.scrollTo(0, 0);
     },
     ShowChange() {
@@ -275,6 +290,9 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+    },
+    ShowOst() {
+      this.ost = !this.ost
     }
   },
   created() {

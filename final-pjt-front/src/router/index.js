@@ -10,7 +10,7 @@ import OnBoardingView from '@/views/OnBoardingView'
 // import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
-import MovieDetail from '@/views/MovieDetail'
+// import MovieDetail from '@/views/MovieDetail'
 import ReviewListView from '@/views/ReviewListView'
 import MyMovieView from '@/views/MyMovieView'
 import MyReviewView from '@/views/MyReviewView'
@@ -77,7 +77,7 @@ const routes = [
     children: [{
       path: '/',
       name: 'MovieDetail',
-      component: MovieDetail,
+      component: () => import('../views/MovieDetail.vue'),
     }]
   },
   {
@@ -132,11 +132,11 @@ const routes = [
       component: SearchView,
     }]
   },
-  {
-    path: '/ost/:moviename',
-    name: 'MovieOstView',
-    component: () => import('../views/MovieOstView.vue')
-  },
+  // {
+  //   path: '/ost/:moviename',
+  //   name: 'MovieOstView',
+  //   component: () => import('../views/MovieOstView.vue')
+  // },
   {
     path: '*',
     redirect: '/404'
