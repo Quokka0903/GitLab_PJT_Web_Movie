@@ -79,7 +79,7 @@ export default {
     //   return this.$store.state.movies
     // },
     recommend() {
-      return this.$store.state.recommend
+      return this.$store.state.recommend 
     }
   },
   methods: {
