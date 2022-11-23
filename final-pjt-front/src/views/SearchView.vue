@@ -51,9 +51,10 @@ export default {
     search(event) {
       const search_input = event.target.value.trim()
       if (!search_input) {
-        alert('검색어를 입력해주세요!')
+        // alert('검색어를 입력해주세요!')
         return
       }
+      this.title_search = search_input
       axios({
         method : 'get',
         url: `http://127.0.0.1:8000/pages/search/`,
@@ -62,8 +63,9 @@ export default {
         },
       })
         .then((response) => {
+          console.log(response)
           this.results = response.data
-          // this.title_search = this.title_info
+          // this.title_search = this.search_input
           // this.title_info = null
         }) 
         .catch((error)=> {
