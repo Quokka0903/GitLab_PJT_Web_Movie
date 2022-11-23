@@ -60,7 +60,6 @@ export default {
 .mycard {
   margin-top: auto;
   margin-bottom: 10px;
-  /* margin : 2em; */
   background-size: cover;
 }
 

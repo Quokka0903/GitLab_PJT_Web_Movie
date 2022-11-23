@@ -24,6 +24,7 @@ def profile_detail(request, user_pk):
             'title': review.title,
             'content': review.content,
             'movie_poster': review_movie.poster_path,
+            'movie_id': review_movie.id,
             'movie_title': review_movie.title
         }
         )

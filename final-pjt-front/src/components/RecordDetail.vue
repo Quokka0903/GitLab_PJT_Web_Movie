@@ -95,6 +95,8 @@ export default {
 
 
 .btn-align {
+  position: relative !important;
   left: 20% !important;
+  width: 60% !important;
 }
 </style>

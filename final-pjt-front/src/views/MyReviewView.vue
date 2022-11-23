@@ -3,15 +3,14 @@
   <br>
   <h1>내가 남긴 리뷰</h1>
   <div id="justify-content-center" class="container">
-    <hr>
-    <div class="col justify-content-around">
+    <div class="row justify-content-left">
+      <hr>
       <MyReviewItem
       v-for="review in my_reviews"
       :key="`my-review-${review.title}`"
       :review="review"
       @change_review="ChangeReview"
-      class="mb-4"
-      />
+      class="col-4 mb-4"/>
     </div>
   </div>
   <ModalTemplate @close="closeModal" v-if="modal">
@@ -69,6 +68,7 @@ export default {
       })
         .then((res) => {
           this.my_reviews = res.data.my_reviews
+          this.my_reviews.title = res.data.my_reviews.title
         })
     },
     closeModal() {
@@ -114,5 +114,23 @@ export default {
 </script>
 
 <style>
+.reviewcard {
+  margin-top: auto;
+  margin-bottom: 10px;
+  background-size: cover;
+  width: 200px;
+  height: 300px;
+}
 
+.reviewitem {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 10px; 
+  margin-bottom: 10px;
+}
+
+button + button {
+  margin-left: 10px;
+}
 </style>
