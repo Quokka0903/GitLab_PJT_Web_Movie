@@ -4,7 +4,7 @@
   <br>
   <h1>내가 평점 준 영화</h1>
   <div id="justify-content-center" class="container">
-    <div class="row justify-content-around">
+    <div class="row justify-content-left">
       <hr>
       <MyMovieItem
       v-for="movie in my_movies"

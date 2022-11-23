@@ -1,6 +1,7 @@
 <template>
-  <div>    
-    <div class="row justify-content-around g-3 col-2">
+  <div>
+    {{review}}
+    <div class="row justify-content-around g-3">
           <p>제목 : {{review.title}}</p>
           <p>내용 : {{review.content}}</p>
           <b-button @click="ChangeReview(review.id)">수정</b-button>

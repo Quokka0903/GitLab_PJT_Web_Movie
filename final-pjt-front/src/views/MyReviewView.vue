@@ -2,15 +2,17 @@
 <div>
   <br>
   <h1>내가 남긴 리뷰</h1>
-  <hr>
-  <br>
-  <div class="row justify-content-around">
-    <MyReviewItem
-    v-for="review in my_reviews"
-    :key="`my-review-${review.title}`"
-    :review="review"
-    @change_review="ChangeReview"
-    />
+  <div id="justify-content-center" class="container">
+    <hr>
+    <div class="col justify-content-around">
+      <MyReviewItem
+      v-for="review in my_reviews"
+      :key="`my-review-${review.title}`"
+      :review="review"
+      @change_review="ChangeReview"
+      class="mb-4"
+      />
+    </div>
   </div>
   <ModalTemplate @close="closeModal" v-if="modal">
     <h3>리뷰 수정</h3>
