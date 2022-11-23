@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div class="card mx-auto" style="height: 100%">
-      <div>
-        <img :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" class="card-img-top" height=90%>
-      </div>
+    <div class="card">
+      <img :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" class="card-img-top recordcard">
       <div class="card-body row justify-content-around">
         <h5 class="card-title">{{movie?.title}}</h5>
         <div
