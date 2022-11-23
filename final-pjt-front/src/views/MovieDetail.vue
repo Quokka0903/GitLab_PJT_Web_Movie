@@ -126,11 +126,7 @@
     </div>
     <br>
     <br>
-    <hr>
     <br>
-    <br>
-    <br>
-    <hr>
   </div>
 </template>
 
@@ -308,8 +304,8 @@ export default {
 <style>
 .detailitem {
   padding: 0;
-  width : 200px;
-  height : 300px !important;
+  width : 300px;
+  height : 400px !important;
 }
 
 .movieTitle {
