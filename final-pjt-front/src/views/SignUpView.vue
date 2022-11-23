@@ -5,11 +5,11 @@
     <br>
     <form @submit.prevent="signUp">
       <label class="inputText" for="username">ID : </label> <input @input="CheckUser" class="inputSignup" type="text" id="username" v-model="username">
-      <p v-show="!sameusername">아이디를 입력해주세요</p>
+      <p v-show="!sameusername"><br></p>
       <p v-show="sameusername">아이디는 1글자 이상 입력되어야 합니다</p>
       <!-- <br> -->
       <label class="inputText" for="password1"> PW : </label> <input @input="CheckPassword" class="inputSignup" type="password" id="password1" v-model="password1">
-      <p v-show="!samepassword">비밀번호를 입력해 주세요</p>
+      <p v-show="!samepassword"><br></p>
       <p v-show="samepassword">비밀번호는 8글자 이상 입력되어야 합니다</p>
       <!-- <br> -->
       <label class="inputText" for="password2"> PW AGAIN : </label> <input @input="CheckPassword2" class="inputSignup" type="password" id="password2" v-model="password2">

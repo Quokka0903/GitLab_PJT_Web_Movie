@@ -145,6 +145,7 @@ export default {
     this.getRecommend()
     this.getGenreMovie()
     this.getBack()
+    window.scrollTo(0, 0);
   },
   mounted() {
   }

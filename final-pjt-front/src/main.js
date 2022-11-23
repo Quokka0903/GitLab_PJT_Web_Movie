@@ -6,9 +6,9 @@ import router from './router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueGeolocationApi from 'vue-geolocation-api'
+// import VueGeolocationApi from 'vue-geolocation-api'
  
-Vue.use(VueGeolocationApi/*, { ...options } */)
+// Vue.use(VueGeolocationApi/*, { ...options } */)
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
