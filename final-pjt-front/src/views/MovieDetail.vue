@@ -35,7 +35,7 @@
           <h4>개봉일 : {{movie?.release_date}}</h4>
           <br>
           <div style="width: 100%">
-            <h4>시놉시스 : </h4>
+            <h4>SUMMARY : </h4>
             <br>
             <div v-if="show" class="overview">
               <h4>{{movie?.overview.substr(0, 151)}} <span v-if="movie?.overview.length >= 150">...</span></h4>
