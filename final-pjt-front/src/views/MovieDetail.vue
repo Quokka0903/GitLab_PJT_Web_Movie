@@ -63,9 +63,14 @@
             <div v-else>
               <div v-for="top in topreviews"
               :key="`top-${top.id}`">
+              <hr class="hr-dotted">
+              <img class="medal" src="@/assets/medal.png" alt="medal">
+              <br> 
               <h3>{{top.title}}</h3>
+              <br>
               <p>{{top.content}}</p>
-              </div>
+             </div>
+              <hr class="hr-dotted">
               <br>
               <br>
             </div>  
@@ -486,5 +491,17 @@ p.button {
 
 .moviecardHeart {
   position: static;
+}
+
+.hr-dotted {
+border : 0px;
+border-top: 2px dotted #8866aa;
+width: 50%;
+margin-left: 25%;
+}
+
+.medal {
+  height: 5%;
+  width: 5%;
 }
 </style>
