@@ -107,7 +107,7 @@ export default {
 #holderSign{
   background: rgba(255, 255, 255, 0.512);
   padding: 10px;
-  width: 20%;
+  width: 350px;
   margin: 0 auto;
   position: relative;
   top: 12rem;
@@ -117,7 +117,7 @@ export default {
 }
 /* 인풋 스타일 */
 .inputSignup {
-    width: 50%;
+    width: 60%;
     border-radius: 20px;
     border: 2px solid #bbb;
     margin: 10px 0;
