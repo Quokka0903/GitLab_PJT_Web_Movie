@@ -237,7 +237,7 @@ export default {
 .detailitem {
   padding: 0;
   width : 200px;
-  height : 400px;
+  height : 300px !important;
 }
 
 .img {

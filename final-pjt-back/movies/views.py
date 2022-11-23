@@ -250,14 +250,25 @@ class search_list(generics.ListAPIView):
     search_fields = ['title']
 
 # 상위 리뷰 2개
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def review_list(request, movie_id):
-#     movie = get_object_or_404(Movie, pk=movie_id)
-#     if request.method == 'GET':
-#         reviews = movie.review_set.all()
-#         for review in reviews:
-#             review.like_users.count
-#         # .order_by('-popularity')
-#         serializer = TopReviewSerializer(reviews, many=True)
-#         return Response(serializer.data)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def review_top(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    if request.method == 'GET':
+        reviews = movie.review_set.all()
+        reviewsorted = []
+        if len(reviews):
+            for review in reviews:
+                likes = review.like_users.count()
+                reviewsorted.append({
+                    'id': review.id,
+                    'likes' : likes,
+                    'title': review.title,
+                    'content': review.content
+                })
+            reviewsorted.sort(key=lambda x: (x['likes'], x['id']), reverse = True)
+            topreview = reviewsorted[:2]
+            return JsonResponse(topreview, safe=False)
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
