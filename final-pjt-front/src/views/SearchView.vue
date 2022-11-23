@@ -1,5 +1,6 @@
 <template>
   <div id="justify-content" class="container">
+    <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
     <div class="row justify-content-around">
       <div class="search-box">
         <input
