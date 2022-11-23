@@ -51,7 +51,7 @@ a {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.8s ease-out;
 }
 
 .fade-leave-to {
@@ -59,17 +59,17 @@ a {
 }
 
 .slide-fade-enter {
-  transform: translateX(10px);
+  transform: translateX(40px);
   opacity: 0;
 }
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;
 }
 
 .slide-fade-leave-to {
-  transform: translateX(-10px);
+  transform: translateX(-40px);
   opacity: 0;
 }
 
