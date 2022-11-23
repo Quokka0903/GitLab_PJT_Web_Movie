@@ -44,3 +44,4 @@ def profile_detail(request, user_pk):
 #     person = get_object_or_404(User, pk=user_pk)
 #     reviews_count = person.reviews.all().length
 #     print(reviews_count)
+
