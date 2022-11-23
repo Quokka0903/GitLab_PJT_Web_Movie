@@ -144,10 +144,6 @@ const routes = [
   //   name: 'MovieOstView',
   //   component: () => import('../views/MovieOstView.vue')
   // },
-<<<<<<< HEAD
-  
-=======
->>>>>>> d602407d50fa35cb63a2019d3301c98561a71b5d
   {
     path: '*',
     redirect: '/404',

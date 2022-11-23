@@ -248,6 +248,7 @@ export default {
         })
           .then((res) => {
               console.log('리뷰', res)
+              this.GetTopReview()
               this.title = ''
               this.content = ''
           })
@@ -296,6 +297,7 @@ export default {
   },
   created() {
     this.getMovieDetail()
+    this.GetTopReview()
   },
   
 }
