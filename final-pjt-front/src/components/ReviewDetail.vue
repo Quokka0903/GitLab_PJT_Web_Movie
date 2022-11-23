@@ -5,13 +5,15 @@
     <h4>{{review?.title}}</h4>
     <p>{{review?.content}}</p>
     <div v-if="userId != review?.user">
-      <b-button v-if="review?.like_users.includes(userId)" :id="`button-${review?.id}`" @click="LikeReview(review.id)">좋아요 취소</b-button>
-      <b-button v-else :id="`button-${review?.id}`" @click="LikeReview(review.id)">좋아요</b-button>
+      <p class="button btnFade btnBlueGreen like-neoby" v-if="review?.like_users.includes(userId)" :id="`button-${review?.id}`" @click="LikeReview(review.id)">좋아요 취소</p>
+      <p class="button btnFade btnBlueGreen like-neoby" v-else :id="`button-${review?.id}`" @click="LikeReview(review.id)">좋아요</p>
     </div>
     <div v-else>
-      <b-button @click="ChangeReview(review.id)">수정</b-button>
-      <b-button @click="DeleteReview(review.id)">삭제</b-button>
+      <p @click="ChangeReview(review.id)" class="button btnFade btnBlueGreen neoby1">수정</p>
+      <p @click="DeleteReview(review.id)" class="button btnFade btnBlueGreen neoby2">삭제</p>
     </div>
+    <br>
+    <br>
     <hr class="hr-dotted">
   </div>
 </template>
@@ -115,5 +117,105 @@ export default {
 </script>
 
 <style>
+.neoby1 {
+  left: 30% !important;
+}
+.neoby2 {
+  left: 60% !important; 
+}
+.custom-btn {
+  left: -9%;
 
+  width: 240px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 0px solid #26A69A;
+  font-family: 'DuHanna';
+  font-weight: 500;
+  font-size: 1.5rem;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.btn-heart {
+  line-height: 40px;
+  padding: 0;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.btn-heart:hover{
+  color: #26A69A;
+}
+.btn-heart:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #26A69A;
+  z-index: -1;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+  -webkit-transform: rotateX(0);
+  transform: rotateX(0);
+  transition: all 0.3s ease;
+}
+.btn-heart:hover:after {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+}
+
+p.button {
+  display: block;
+  position: absolute;
+  left: 59.3%;
+  float: left;
+  width: 250px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  font-size: 130%;
+  text-align: center;
+  line-height: 45px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btnBlueGreen {
+  background: #26A69A;
+}
+.btnFade.btnBlueGreen {
+  width: 85px;
+  font-size: 100%;
+}
+.btnFade.btnBlueGreen:hover {
+  background: #14554f;
+}
+.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.btnBlueGreen.btnPush {
+  box-shadow: 0px 5px 0px 0px #14554f;
+}
+.btnBlueGreen.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #14554f;
+}
+
+.btn-center {
+  left: 0%
+}
+
+.like-neoby {
+  left: 47.3% !important;
+}
 </style>

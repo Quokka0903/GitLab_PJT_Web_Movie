@@ -1,6 +1,7 @@
 
 <template>
 <div>
+  <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
   <br>
   <h1>내가 평점 준 영화</h1>
   <div id="justify-content-center" class="container">

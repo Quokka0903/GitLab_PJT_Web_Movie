@@ -14,8 +14,9 @@
         <h4>리뷰 내용</h4>
         <p>{{review.content}}</p>
         <div>
-          <b-button @click="ChangeReview(review.id)">수정</b-button>
-          <b-button @click="DeleteReview(review.id)">삭제</b-button>
+          <br>
+          <p @click="ChangeReview(review.id)" class="button btnFade btnBlueGreen MRI-neoby1">수정</p>
+          <p @click="DeleteReview(review.id)" class="button btnFade btnBlueGreen MRI-neoby2">삭제</p>
         </div>
       </div>
     </div>
@@ -57,4 +58,10 @@ export default {
 </script>
 
 <style>
+.MRI-neoby1 {
+  left: 50% !important;
+}
+.MRI-neoby2 {
+  left: 70% !important;  
+}
 </style>
