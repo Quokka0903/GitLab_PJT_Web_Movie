@@ -1,6 +1,6 @@
 <template>
 <div>
-  <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
+  <img class="backMainReview" src="@/assets/mainback/mainback00.jpg" alt="">
   <br>
   <h1>내가 남긴 리뷰</h1>
   <div id="justify-content" class="container">
@@ -139,5 +139,21 @@ export default {
 
 button + button {
   margin-left: 10px;
+}
+
+.backMainReview {
+  height: 1500% !important;
+  width: 100%;
+  content: "";
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 30%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+
 }
 </style>

@@ -1,7 +1,7 @@
 
 <template>
 <div>
-  <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
+  <img class="backMainRecord" src="@/assets/mainback/mainback00.jpg" alt="">
   <br>
   <h1>내가 평점 준 영화</h1>
   <div id="justify-content-center" class="container">
@@ -78,5 +78,21 @@ export default {
   white-space: nowrap;
   padding-top: 10px; 
   margin-bottom: 10px;
+}
+
+.backMainRecord {
+  height: 1500% !important;
+  width: 100%;
+  content: "";
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 30%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+
 }
 </style>

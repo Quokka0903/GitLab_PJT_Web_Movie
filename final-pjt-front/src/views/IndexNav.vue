@@ -63,7 +63,7 @@ a {
 }
 
 .NavMain {
-  height: 25% !important;
+  height: 225% !important;
   width: 100%;
   content: "";
   overflow: hidden;
