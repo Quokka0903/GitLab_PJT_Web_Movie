@@ -121,12 +121,17 @@ const routes = [
       component: ChangeView,
     }]
   },
-  // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/cinema',
-    name: 'CinemaLocation',
-    component: () => import('../views/CinemaLocation.vue')
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'CinemaLocation',
+      component: () => import('../views/CinemaLocation.vue')
+    }]
   },
+  // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
   {
     path: '/record',
     name: 'RecordView',

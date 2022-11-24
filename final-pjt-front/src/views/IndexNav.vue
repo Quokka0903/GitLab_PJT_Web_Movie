@@ -4,6 +4,7 @@
       <img class="NavMain" src="@/assets/mainback/mainback00.jpg" alt="">
       <router-link :to="{ name: 'MainView' }">메인 페이지</router-link> |
       <router-link :to="{ name: 'SearchView' }"> 영화 검색 </router-link> | 
+      <router-link :to="{ name: 'CinemaLocation'}">영화관 찾기</router-link> | 
       <router-link :to="{ name: 'ProfileView'}">나의 프로필</router-link>
     </nav>
     <!-- fade 라우터 전환 -->
