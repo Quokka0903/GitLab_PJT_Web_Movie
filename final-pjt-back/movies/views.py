@@ -232,6 +232,7 @@ def random_genre(request):
     # result = json.dumps(context, indent=4)
     # print(result)
     return Response(context) 
+    
 @permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def score_view(request, movie_pk, user_pk):

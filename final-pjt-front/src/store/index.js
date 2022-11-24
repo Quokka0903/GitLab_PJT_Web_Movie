@@ -178,6 +178,26 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    DeleteUser(context, user_id) {
+      console.log('전달받음')
+      console.log(user_id)
+      const API_URL = 'http://127.0.0.1:8000'
+      axios({
+        method: 'delete',
+        url: `${API_URL}/infos/profile/${user_id}/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then(() => {
+          alert('회원탈퇴 되었습니다!')
+          context.commit('DELETE_TOKEN')
+        })
+        .catch((err) => {
+          console.log(err)
+          
+        })
+    }
   },
   modules: {
   }
