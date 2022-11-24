@@ -105,9 +105,7 @@ export default {
     },
     searchPlace() {
       const keyword = '영화관'
-      // const infowindow = new window.kakao.InfoWindeow({zindex:1})
       const ps = new window.kakao.maps.services.Places(this.map)
-      // const location = new window.kakao.maps.LatLng(this.latitude, this.longitude)
       const searchOption = {
         location: location,
         radius: 1000,
@@ -117,9 +115,6 @@ export default {
         console.log(data)
         console.log(pgn)
         console.log(status)
-        // this.search.keyword = keyword
-        // this.search.pgn = pgn
-        // this.search.result = data
       }, searchOption)
 
     },

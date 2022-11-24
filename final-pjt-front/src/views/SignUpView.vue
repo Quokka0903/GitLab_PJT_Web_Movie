@@ -7,16 +7,12 @@
       <label class="inputText" for="username">ID : </label> <input @input="CheckUser" class="inputSignup" type="text" id="username" v-model="username">
       <p v-show="!sameusername"><br></p>
       <p v-show="sameusername">아이디는 1글자 이상 입력되어야 합니다</p>
-      <!-- <br> -->
       <label class="inputText" for="password1"> PW : </label> <input @input="CheckPassword" class="inputSignup" type="password" id="password1" v-model="password1">
       <p v-show="!samepassword"><br></p>
       <p v-show="samepassword">비밀번호는 8글자 이상 입력되어야 합니다</p>
-      <!-- <br> -->
       <label class="inputText" for="password2"> PW AGAIN : </label> <input @input="CheckPassword2" class="inputSignup" type="password" id="password2" v-model="password2">
       <p v-show="!samepassword2"><br></p>
       <p v-show="samepassword2">비밀번호가 일치하지 않습니다</p>
-      <!-- <br> -->
-      <!-- <a href="#"><span data-attr="Sign">Sign</span><span data-attr="Up">Up</span></a> -->
       <div class="button">
           <p class="btnText">DONE?</p>
           <div class="btnTwo">
@@ -55,9 +51,6 @@ export default {
       const password2 = this.password2
 
       const payload = {
-        // username,
-        // password1,
-        // password2,
         username: username,
         password1: password1,
         password2: password2,
@@ -170,84 +163,4 @@ export default {
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
 
-/* .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-a {
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 30px;
-}
-a span {
-    padding: 15px;
-    transition: .5s;
-    position: relative;
-}
-a span:nth-child(1) {
-    color: #fff;
-    background: #00000071;
-}
-a span:nth-child(2) {
-    color: #fff;
-    background: #ff363660;
-}
-a span:nth-child(1):before {
-    content: attr(data-attr);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #ff363645;
-    padding: 15px;
-    transition: 0.5S;
-    transform-origin: top;
-    transform: rotateX(90deg) translateY(-50%);
-}
-a:hover span:nth-child(1):before {
-    transform: rotateX(0deg) translateY(0%);
-} 
-a span:nth-child(2):before {
-    content: attr(data-attr);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #262626;
-    padding: 15px;
-    transition: 0.5S;
-    transform-origin: bottom;
-    transform: rotateX(90deg) translateY(50%);
-}
-a:hover span:nth-child(2):before {
-    transform: rotateX(0deg) translateY(0%);
-} 
-a  span:nth-child(1):after {
-  content: attr(data-attr);
-  padding: 15px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #262626;
-  transform-origin: bottom;
-  transform: rotateX(0deg) translateY(0%);
-  transition: 0.5s;
-}
-a:hover span:nth-child(1):after {
-  transform: rotateX(90deg) translateY(50%);
-}
-a span:nth-child(2):after {
-    content: attr(data-attr);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #ff3636;
-    padding: 15px;
-    transition: 0.5S;
-    transform-origin: top;
-    transform: rotateX(0deg) translateY(0%);
-}
-a:hover span:nth-child(2):after {
-    transform: rotateX(90deg) translateY(-50%);
-}  */
 </style>

@@ -13,7 +13,6 @@
       </div>
     </div>
   </div>
-    <!-- <input v-model="score" type="number" min="0" max="5" step="0.5"> -->
     <br>
     <p @click="RecordScore(movie)" title="Button push blue/green" class="button btnPush btnBlueGreen btn-align">하트 주기</p>
   </div>
@@ -87,9 +86,7 @@ export default {
     this.getScored()
   }
 }
-// const drawStar = (target) => {
-//     document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
-//   }
+
 </script>
 
 <style>

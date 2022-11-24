@@ -4,9 +4,7 @@
     <hr>
     <div>
     <p @click="MoveBack()" class="button btnPush btnBlueGreen back-neobi1">영화로 돌아가기</p> 
-    <!-- <p @click="MoveBack()" class="button btnPush btnBlueGreen neo3.5%>새 리뷰 남기기</p> -->
     </div>
-    <!-- <br>    <br>    <br> -->
     <br>    <br>    <br>
     <h2> {{movie_title}}의 리뷰리스트</h2>
     <hr class="hr-dotted">
@@ -187,8 +185,4 @@ p.button {
 .RLV-center {
   left: 0% !important;
 }
-/* .neobi2 {
-  left: 50% !important;
-  width: 13rem !important;
-} */
 </style>

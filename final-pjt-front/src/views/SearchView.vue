@@ -33,14 +33,11 @@
 import axios from 'axios'
 import SearchItem from '@/components/SearchItem'
 
-// const API_URL = 'http://127.0.0.1:8000'
-
 export default {
   name:'SearchView',
   data(){
     return {
       results: [],
-      // title_info: null,
       title_search : null,
     }
   },
@@ -65,8 +62,6 @@ export default {
         .then((response) => {
           console.log(response)
           this.results = response.data
-          // this.title_search = this.search_input
-          // this.title_info = null
         }) 
         .catch((error)=> {
           console.log(error)

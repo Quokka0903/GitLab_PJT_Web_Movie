@@ -162,21 +162,4 @@ export default {
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
 
-/* .btn {
-  flex: 1 1 auto;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  height: 3rem;
- } */
-/* .btn:hover {
-  background-position: right center;
-} */
-/* .btn-2 {
-  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
-} */
 </style>
