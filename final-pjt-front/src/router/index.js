@@ -6,7 +6,7 @@ import LoginView from '@/views/LoginView'
 import MainView from '@/views/MainView'
 import ChangeView from '@/views/ChangeView'
 import ProfileView from '@/views/ProfileView'
-import CinemaLocation from '@/views/CinemaLocation'
+// import CinemaLocation from '@/views/CinemaLocation'
 // import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
@@ -125,7 +125,7 @@ const routes = [
   {
     path: '/cinema',
     name: 'CinemaLocation',
-    component: CinemaLocation
+    component: () => import('../views/CinemaLocation.vue')
   },
   {
     path: '/record',
