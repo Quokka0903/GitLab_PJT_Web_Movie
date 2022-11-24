@@ -6,7 +6,7 @@ import LoginView from '@/views/LoginView'
 import MainView from '@/views/MainView'
 import ChangeView from '@/views/ChangeView'
 import ProfileView from '@/views/ProfileView'
-import OnBoardingView from '@/views/OnBoardingView'
+import CinemaLocation from '@/views/CinemaLocation'
 // import RecordView from '@/views/RecordView'
 import IndexNav from '@/views/IndexNav'
 import IndexNotNav from '@/views/IndexNotNav'
@@ -111,16 +111,21 @@ const routes = [
       component: ReviewListView,
     }]
   },
-  // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
-  {
-    path: '/onboarding',
-    name: 'OnBoardingView',
-    component: OnBoardingView
-  },
   {
     path: '/password',
-    name: 'ChangeView',
-    component: ChangeView
+    name: '',
+    component: IndexNav,
+    children: [{
+      path: '/',
+      name: 'ChangeView',
+      component: ChangeView,
+    }]
+  },
+  // 여기까지 Nav Bar 노출/비노출 적용한 라우터들입니다
+  {
+    path: '/cinema',
+    name: 'CinemaLocation',
+    component: CinemaLocation
   },
   {
     path: '/record',
@@ -143,7 +148,7 @@ const routes = [
   //   name: 'MovieOstView',
   //   component: () => import('../views/MovieOstView.vue')
   // },
-  {
+  { 
     path: '*',
     redirect: '/404',
     component: NotFound,

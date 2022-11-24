@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="background">
+    <p v-if="!background" class="loading">
     <hr>
     <div>
-    <p @click="MoveBack()" class="button btnPush btnBlueGreen neobi1">영화로 돌아가기</p> 
-    <!-- <p @click="MoveBack()" class="button btnPush btnBlueGreen neobi2">새 리뷰 남기기</p> -->
+    <p @click="MoveBack()" class="button btnPush btnBlueGreen back-neobi1">영화로 돌아가기</p> 
+    <!-- <p @click="MoveBack()" class="button btnPush btnBlueGreen neo3.5%>새 리뷰 남기기</p> -->
     </div>
     <!-- <br>    <br>    <br> -->
     <br>    <br>    <br>
-    <h2>리뷰리스트</h2>
+    <h2> {{movie_title}}의 리뷰리스트</h2>
     <hr class="hr-dotted">
     <ReviewDetail
     v-for="(id, index) in review_ids"
@@ -24,7 +25,7 @@
         v-model="content"
         ></b-textarea>
         <template slot="footer">
-          <button @click="doSend">제출</button>
+          <button @click="doSend" class="custom-btn btn-heart btn-center RLV-center">완료</button>
         </template>
       </ModalTemplate>
 
@@ -45,6 +46,7 @@ export default {
       title: '',
       content: '',
       review_id: null,
+      movie_title: null,
     }
   },
   components: {
@@ -64,7 +66,20 @@ export default {
       })
         .then((res) => {
           this.review_ids = res.data
+          console.log(this.review_ids)
         })
+        .then(() => {
+          axios({
+            method: 'get',
+            url: `http://127.0.0.1:8000/pages/movies/${movie_id}/`,
+            headers: {
+              Authorization: `Token ${this.$store.state.token}`
+            }
+          })
+            .then((res) => {
+              this.movie_title = res.data.title
+            })
+          })
         .catch((err) => {
           console.log(err)
         })
@@ -122,9 +137,48 @@ width: 50%;
 margin-left: 25%;
 }
 
-.neobi1 {
-  left: 44.5% !important;
+p.button {
+  display: block;
+  position: absolute;
+  left: 59.3%;
+  float: left;
+  width: 250px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  font-size: 130%;
+  text-align: center;
+  line-height: 45px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btnBlueGreen {
+  background: #26A69A;
+}
+.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.btnBlueGreen.btnPush {
+  box-shadow: 0px 5px 0px 0px #14554f;
+}
+.btnBlueGreen.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #14554f;
+}
+.btnFade.btnBlueGreen {
+  width: 85px;
+  font-size: 100%;
+}
+.btnFade.btnBlueGreen:hover {
+  background: #14554f;
+}
+.back-neobi1 {
+  left: 43.4% !important;
   width: 13rem !important;
+}
+.RLV-center {
+  left: 0% !important;
 }
 /* .neobi2 {
   left: 50% !important;

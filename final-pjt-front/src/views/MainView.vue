@@ -79,7 +79,7 @@ export default {
     //   return this.$store.state.movies
     // },
     recommend() {
-      return this.$store.state.recommend
+      return this.$store.state.recommend 
     }
   },
   methods: {
@@ -145,6 +145,7 @@ export default {
     this.getRecommend()
     this.getGenreMovie()
     this.getBack()
+    window.scrollTo(0, 0);
   },
   mounted() {
   }

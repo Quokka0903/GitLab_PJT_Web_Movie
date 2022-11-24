@@ -1,5 +1,6 @@
 <template>
 <div>
+  <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
   <br>
   <h1>내가 남긴 리뷰</h1>
   <div id="justify-content" class="container">
@@ -25,7 +26,7 @@
     v-model="content"
     ></b-textarea>
     <template slot="footer">
-      <button @click="doSend">제출</button>
+      <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
     </template>
   </ModalTemplate>
 </div>
@@ -114,6 +115,14 @@ export default {
 </script>
 
 <style>
+.reviewcard{
+  transition: all 0.2s linear;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+}
+.reviewcard:hover{
+  transform: scale(1.05);
+  z-index: 1;
+}
 .reviewtitle{
   font-size: 18px;
   overflow: hidden;

@@ -1,6 +1,7 @@
 
 <template>
 <div>
+  <img class="backMain" src="@/assets/mainback/mainback00.jpg" alt="">
   <br>
   <h1>내가 평점 준 영화</h1>
   <div id="justify-content-center" class="container">
@@ -61,7 +62,14 @@ export default {
   margin-top: auto;
   margin-bottom: 10px;
   background-size: cover;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+  transition: all 0.2s linear;
 }
+.mycard:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
 
 .mycard-title {
   font-size: 20px;
