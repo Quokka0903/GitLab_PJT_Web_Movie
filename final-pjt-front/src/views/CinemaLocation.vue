@@ -24,12 +24,11 @@ export default {
     }
   },
   mounted() {
-    // this.getMap()
-    // if (window.kakao && window.kakao.maps) {
-    //   this.loadMap()
-    // } else {
-    //   this.loadScript()
-    // }
+    if (window.kakao && window.kakao.maps) {
+      this.loadMap()
+    } else {
+      this.loadScript()
+    }
   },
   methods:{
     geofind () {
@@ -58,21 +57,21 @@ export default {
     //   const map = new kakao.maps.Map(container, options)
     // }
     // ,
-  //   loadScript() {
-  //     const script = document.createElement("script")
-  //     script.type = "text/javascript"
-  //     script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=45abd58f07d2a9ef8f42f8799ce67fda"
-  //     script.onload = () => window.kakao.maps.load(this.loadMap)
-  //     document.head.appendChild(script)
-  //   },
-  //   loadMap() {
-  //     var container = document.getElementById("map")
-  //     var options = {
-  //       center: new kakao.maps.LatLng(this.latitude, this.longitude), 
-  //       level: 3,
-  //     }
-  //     this.map = new window.kakao.maps.Map(container, options)
-  // },
+    loadScript() {
+      const script = document.createElement("script")
+      script.type = "text/javascript"
+      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=45abd58f07d2a9ef8f42f8799ce67fda"
+      script.onload = () => window.kakao.maps.load(this.loadMap)
+      document.head.appendChild(script)
+    },
+    loadMap() {
+      var container = document.getElementById("map")
+      var options = {
+        center: new window.kakao.maps.LatLng(this.latitude, this.longitude), 
+        level: 3,
+      }
+      this.map = new window.kakao.maps.Map(container, options)
+  },
   },
   created() {
     this.geofind()

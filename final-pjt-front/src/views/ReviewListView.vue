@@ -15,6 +15,8 @@
     :review_id="id.id"
     :key="`review-${index}`"
     @change_review="ChangeReview"
+    :ischanged="ischanged"
+    @resetid="ResetId"
     />
       <ModalTemplate @close="closeModal" v-if="modal">
         <h3>리뷰 수정</h3>
@@ -47,6 +49,7 @@ export default {
       content: '',
       review_id: null,
       movie_title: null,
+      ischanged: null,
     }
   },
   components: {
@@ -56,6 +59,7 @@ export default {
   methods: {
     
     getReviewids() {
+      console.log('working')
       const movie_id = this.$route.params.movie_id
       axios({
         method: 'get',
@@ -110,8 +114,8 @@ export default {
           }
         })
           .then((res) => {
-            console.log(res)
-            this.getReviewids()
+            console.log('res',res)
+            this.ischanged = res.data.id 
           })
         this.closeModal()
         this.title = ""
@@ -122,6 +126,9 @@ export default {
     MoveBack() {
       this.$router.go(-1)
     },
+    ResetId() {
+      this.ischanged = null
+    }
   },
   created() {
     this.getReviewids()
