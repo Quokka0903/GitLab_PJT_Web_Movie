@@ -1,10 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import ProfileSerializer
+from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from rest_framework import status
 
@@ -45,11 +43,3 @@ def profile_detail(request, user_pk):
     elif request.method == 'DELETE':
         person.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-# @api_view(['GET'])
-# def check(request, user_pk):
-#     User = get_user_model()
-#     person = get_object_or_404(User, pk=user_pk)
-#     reviews_count = person.reviews.all().length
-#     print(reviews_count)

@@ -9,12 +9,11 @@ from rest_framework import generics
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer, GenreSerializer, TopReviewSerializer
+from .serializers import MovieListSerializer, MovieScoreSerializer, ReviewListSerializer, ReviewSerializer, MovieSerializer
 from .models import Movie, Genre, Review, MovieScore
 from django.http import JsonResponse
 from collections import defaultdict
 import random
-import json
 
 # Create your views here.
 @api_view(['GET'])
@@ -26,7 +25,7 @@ def movie_list(request):
         serializer = MovieListSerializer(movies, many=True)
         return Response(serializer.data)
 
-# TODO: movie detail 페이지로, 좋아요 상위 5개만 보내는 함수 만들기
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def movie_detail(request, movie_pk):
@@ -53,17 +52,13 @@ def create_score(request):
                 if serializer.is_valid(raise_exception=True):
                     serializer.save()
                     return Response(serializer.data)
-                # tmp_movie.delete()
-                # break
         else:
             newmovie = get_object_or_404(Movie, pk=movie_pk)
             serializer = MovieScoreSerializer(data=newdata)
             if serializer.is_valid(raise_exception=True):
                 serializer.save(user=request.user, movie=newmovie)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-    # 수정 어떻게 할 지
-    # elif request.method == 'PUT':
-    
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def review_list(request, movie_id):
@@ -139,18 +134,10 @@ def recommend(request):
         for score in movie_scores:
             already_like.append(score.movie_id)
             movie = get_object_or_404(Movie, pk=score.movie_id)
-            #print('movie')
-            #print(movie.title)
             for genre in movie.genres.all():
-                #print(genre.name, end=' ')
                 prefer[genre.id] += 1
-            #print('\n')
 
         movie_list = []
-
-        #print('장르 점수')
-        #print(prefer)
-        #print('\n')
 
         for movie in movies:
 
@@ -166,18 +153,13 @@ def recommend(request):
 
         movie_list.sort(reverse=True)
 
-        # my_movies = movie_list[:25]
         my_movie = []
         for s, i, t in  movie_list[:25]:
             my_movie.append(movies[i - 1])
 
-        # for unit in my_movies:
-        #     print(unit[0], unit[2])
-
-        #print(my_movie)
-
         serializer = MovieListSerializer(my_movie, many=True)
         return Response(serializer.data)
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def recommend_genre(request, movie_id):
@@ -228,9 +210,6 @@ def random_genre(request):
         'genre': genre.name,
         'movies': serializer.data
     }
-    
-    # result = json.dumps(context, indent=4)
-    # print(result)
     return Response(context) 
     
 @permission_classes([IsAuthenticated])
