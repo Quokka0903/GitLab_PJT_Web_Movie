@@ -61,6 +61,7 @@ export default {
   z-index: -1;
   position: absolute;
 }
+
 .logo {
   width: 30%;
 }

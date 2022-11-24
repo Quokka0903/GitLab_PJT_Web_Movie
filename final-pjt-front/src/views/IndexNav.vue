@@ -26,18 +26,7 @@ a {
   font-family: 'Gicsseong';
   font-size: 180%;
   text-decoration: none;
-  
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 280px;
-  padding: 1rem;
-  z-index: 1; */
 }
-
-/* .idxback {
-} */
 
 a {
   text-decoration: none!important;
@@ -51,7 +40,7 @@ a {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.8s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .fade-leave-to {
@@ -59,17 +48,17 @@ a {
 }
 
 .slide-fade-enter {
-  transform: translateX(40px);
+  transform: translateX(10px);
   opacity: 0;
 }
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
 }
 
 .slide-fade-leave-to {
-  transform: translateX(-40px);
+  transform: translateX(-10px);
   opacity: 0;
 }
 

@@ -75,22 +75,11 @@ export default {
     isLogin() {
       return this.$store.getters.isLogin
     },
-    // movies() {
-    //   return this.$store.state.movies
-    // },
     recommend() {
       return this.$store.state.recommend 
     }
   },
   methods: {
-    // getMovies() {
-    //   if (this.isLogin) {
-    //     this.$store.dispatch('getMovies')
-    //   } else {
-    //     alert('로그인이 필요합니다!')
-    //     this.$router.push({name: 'LoginView'})
-    //   }
-    // },
     getRecommend() {
       if (this.isLogin) {
         this.$store.dispatch('getRecommend')
@@ -136,11 +125,9 @@ export default {
     },
     getBack() {
       this.num = _.sample(_.range(1, 28))
-      // console.log(this.num)
     }
   },
   created() {
-    // this.getMovies()
     this.getTopMovie()
     this.getRecommend()
     this.getGenreMovie()

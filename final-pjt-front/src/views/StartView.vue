@@ -30,7 +30,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #start {
-/* background:url("@/assets/cinema/cinema00.jpg"); */
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center center;

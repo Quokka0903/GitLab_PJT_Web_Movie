@@ -3,8 +3,6 @@
     <img class="backimg1" :src="require(`@/assets/back/cinema${num}.jpg`)" alt="">
       <div class="holder1">
         <form @submit.prevent="Change">
-          <!-- <label for="original">Origin Password : </label>
-            <input type="text" id="original" v-model="original"><br> -->
             <h1>Change Password</h1>
             <div>
               <label class="inputText" for="newpassword"> New Password</label><br>
@@ -25,7 +23,6 @@ export default {
   name: 'ChangeView',
   data() {
     return {
-      // original: null,
       newpassword: null,
       newpassword2: null,
       num: null,
@@ -36,12 +33,10 @@ export default {
       this.num = _.sample(_.range(1, 28))
     },
     Change() {
-      // const original = this.original
       const newpassword = this.newpassword
       const newpassword2 = this.newpassword2
 
       const payload = {
-        // original,
         newpassword,
         newpassword2,
       }

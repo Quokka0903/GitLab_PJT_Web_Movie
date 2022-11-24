@@ -51,10 +51,6 @@
           <br>
           <div  class="btn-review-container">
             <h3>베스트 리뷰</h3>
-            <!-- <MakeReview
-            :movie="movie"
-            style="width:100%"
-            />   -->
             <div v-if="status">
               <h4>첫 번째 리뷰의 주인공이 되어보세요!</h4>
               <br>              <br>
@@ -98,10 +94,6 @@
       <br>
       <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
       <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
-      <!-- <MovieOst
-      v-if="ost"
-      :moviename="movie?.title"
-      /> -->
       <br>      <br>
       <hr>
       <br>
@@ -128,7 +120,6 @@ import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
 import ModalTemplate from '@/components/ModalTemplate'
 // import MovieOst from '@/components/MovieOst'
-
 // import MakeReview from '@/components/MakeReview'
 import _ from 'lodash'
 
@@ -209,7 +200,6 @@ export default {
     MoveDetail(id) {
       console.log(id)
       this.$router.push({name: 'MovieDetail', params:{id}})
-      // this.$router.go() -> 새로고침
       this.getMovieDetail()
       this.GetTopReview()
       this.show = false

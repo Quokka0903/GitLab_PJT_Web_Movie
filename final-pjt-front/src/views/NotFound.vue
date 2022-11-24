@@ -18,7 +18,6 @@ export default {
   methods: {
     getImg() {
       this.num = _.sample(_.range(2, 3))
-      // console.log(this.num)
     }
   },
   created() {
