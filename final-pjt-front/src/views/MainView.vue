@@ -173,14 +173,14 @@ export default {
   top: 40% !important;
 }
 .backMain {
-  height: 240% !important;
+  height: 340% !important;
   width: 100%;
   content: "";
   overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 40%;
+  opacity: 30%;
   top: 0;
   left: 0;
   z-index: -1;

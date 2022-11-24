@@ -101,8 +101,8 @@ export default {
       })
         .then((res) => {
           console.log(res)
-          alert('리뷰가 삭제되었습니다!')
-          this.$router.go()
+          alert('리뷰가 삭제되었습니다. 영화 페이지로 이동합니다.')
+          this.$router.go(-1)
         })
     },
   },
