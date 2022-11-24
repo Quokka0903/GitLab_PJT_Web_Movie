@@ -7,7 +7,7 @@
             <input type="text" id="original" v-model="original"><br> -->
             <h1>Change Password</h1>
             <div>
-              <label class="inputText" for="newpassword"> New Password</label>
+              <label class="inputText" for="newpassword"> New Password</label><br>
               <input class="input inputLogin" type="password" id="newpassword" v-model="newpassword"><br>
               <label class="inputText" for="newpassword2"> New Password Confirmation</label>
               <input class="input inputLogin" type="password" id="newpassword2" v-model="newpassword2"><br>
@@ -58,13 +58,13 @@ export default {
 <style>
 .holder1{
   background: rgba(255, 255, 255, 0.7);
-  padding: 10px;
-  width: 350px;
+  padding: 20px;
+  width: 450px;
   margin: 0 auto;
   position: relative;
-  top: 30rem;
+  top: 25rem;
   transform: translateY(-65%);
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.5);
   border-radius: 20px;
 }
 
@@ -89,13 +89,18 @@ export default {
   background: rgba(255, 255, 255, 0.9);
   margin : 20px auto;
   padding: 8px;
-  width : 300px;
+  width : 200px;
   height : 50px;
   overflow: hidden;
   text-align : center;
   cursor : pointer;
   border-radius: 15px;
-  box-shadow: 0px 1px 2px rgba(0,0,0,2);
+  box-shadow: 0px 1px 2px rgba(0,0,0,3);
   transition: all 0.2s linear;
+}
+
+.buttonprofile1:hover {
+  transform: scale(1.1);
+  z-index: 1;
 }
 </style>

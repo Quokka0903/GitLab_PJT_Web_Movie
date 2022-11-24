@@ -86,7 +86,14 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   background-size: cover;
+  transition: all 0.2s linear;
 }
+
+.card:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
 .card-title{
   font-size: 20px;
   overflow: hidden;
@@ -109,5 +116,13 @@ export default {
     border: 2px solid #bbb;
     margin: 10px 0;
     padding: 10px 12px;
+    cursor : pointer;
+    transition: all 0.2s linear;
+}
+
+.inputsearch:focus{
+  animation-name: border-focus;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 </style>

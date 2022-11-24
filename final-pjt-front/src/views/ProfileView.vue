@@ -12,8 +12,9 @@
 
       <div @click="GoMovie" class="buttonprofile">평가한 영화 보기</div>
       <div @click="GoReview" class="buttonprofile">리뷰 남긴 영화 보기</div>
-      <div @click="GoChange" class="buttonprofile">개인정보수정</div>
+      <div @click="GoChange" class="buttonprofile">비밀번호변경</div>
       <div @click="LogOut" class="buttonprofile">로그아웃</div>
+      <div class="buttonprofile">회원탈퇴</div>
 
 
     </form>
