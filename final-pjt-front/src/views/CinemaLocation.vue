@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <br>
-    <h3>영화관 찾기</h3>
-    <br>
+  <div class="page-cinema">
+    <img class="backMain back-cinema" src="@/assets/mainback/mainback00.jpg" alt="">
     <div class="map-area">
       <div class="searchbox">
         <div>
-          <input type="submit" value="영화관 찾기" @click="searchPlace">
+          <br>
+          <p type="submit" @click="searchPlace" class="button btnPush btnBlueGreen btn-align btn-cinema"> 영화관 찾기 </p>
           </div>
+          <br>          <br>          <br>
         <div class="results">
           <div class="place" v-for="rs in search.results"
           :key="rs.id"
@@ -117,6 +117,12 @@ export default {
     height: 600px;
   }
 }
-
+.btn-cinema {
+  width: 60% !important;
+  left: 20% !important;
+}
+// .back-cinema {
+//   height: 110% !important;
+// }
 
 </style>
