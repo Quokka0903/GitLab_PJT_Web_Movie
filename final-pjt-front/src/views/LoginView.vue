@@ -41,7 +41,13 @@ export default {
     logIn() {
       const username = this.username
       const password = this.password
-
+      if (username.length === 0) {
+        alert('아이디를 입력해주세요')
+        return
+      } else if (password.length === 0) {
+        alert('비밀번호를 입력해주세요')
+        return
+      }
       const payload = {
         username: username,
         password: password,
