@@ -1,133 +1,122 @@
 <template>
   <div>
-    <h1>영화관 찾기</h1>
-    <div>
-      <button @click='geofind'>위치찾기</button>
-      <p> {{textContent}} </p>
-    </div>
-    <div id="map" style="width:500px;height:400px;">
-    </div>
-    <div class="results">
-      <div class="place" v-for="rs in search.results"
-      :key=rs.id>
-      <h4>{{rs.place_name}}</h4>
-      <p>{{rs.address_name}}</p>
+    <br>
+    <h3>영화관 찾기</h3>
+    <br>
+    <div class="map-area">
+      <div class="searchbox">
+        <div>
+          <input type="submit" value="영화관 찾기" @click="searchPlace">
+          </div>
+        <div class="results">
+          <div class="place" v-for="rs in search.results"
+          :key="rs.id"
+          @click="showPlace(rs)">
+            <h4>{{ rs.place_name }}</h4>
+            <div class="addr">{{ rs.address_name }}</div>
+          </div>
       </div>
+    </div>
+      <KakaoMap class="kmap" :options="mapOption"/>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
+import KakaoMap from '@/components/KakaoMap'
 export default {
   name: 'CinemaLocation',
-  data () {
+  components: {
+    KakaoMap,
+  },
+  data() {
     return {
-      map: null,
-      markers: [],
-      latitude: '',
-      longitude: '',
-      textContent: '',
-      infowindow: null,
+      mapOption: {
+        center: {
+          lat: 33.450701,
+          lng: 126.570667,
+        },
+        level: 8
+      },
       search: {
         keyword: null,
         pgn: null,
-        result: null
+        results: [],
+      },
+    }
+  },
+  methods: {
+    searchPlace() {
+      const keyword = "영화관"
+      const ps = new window.kakao.maps.services.Places()
+      ps.keywordSearch(keyword, (data, status, pagination) => {
+        console.log(status)
+        this.search.keyword = keyword
+        this.search.pgn = pagination
+        this.search.results = data
+      })
+    },
+    showPlace(place) {
+      console.log(place)
+      this.mapOption.center = {
+        lat: place.y,
+        lng: place.x,
       }
-    }
-  },
-  mounted() {
-    if (window.kakao && window.kakao.maps) {
-      this.loadMap()
-    } else {
-      this.loadScript()
-    }
-  },
-  methods:{
-    geofind () {
+    },
+    geoFind() {
       if(!("geolocation" in navigator)) {
-        this.textContent = 'Geolocation is not available.'
         return
         }
-        this.textContent = 'Locating...'
-        
         // get position
         navigator.geolocation.getCurrentPosition((pos) => {
-        this.latitude = pos.coords.latitude
-        this.longitude = pos.coords.longitude
-        this.textContent = 'Your location data is ' + this.latitude + ', ' + this.longitude
+        this.mapOption.center.lat = pos.coords.latitude
+        this.mapOption.center.lng = pos.coords.longitude
         }, (err) => {
-        this.textContent = err.message;
+        console.log(err)
         })
-    },
-    loadScript() {
-      const script = document.createElement("script")
-      script.type = "text/javascript"
-      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=45abd58f07d2a9ef8f42f8799ce67fda&libraries=services"
-      script.onload = () => window.kakao.maps.load(this.loadMap)
-      document.head.appendChild(script)
-    },
-    loadMap() {
-      var container = document.getElementById("map")
-      var options = {
-        center: new window.kakao.maps.LatLng(this.latitude, this.longitude), 
-        level: 5,
-      }
-      this.map = new window.kakao.maps.Map(container, options)
-      this.displayMarker([[this.latitude, this.longitude]])
-      this.searchPlace()
-    },
-    displayMarker(markerPositions) {
-      if (this.markers.length > 0) {
-        this.markers.forEach((marker) => marker.setMap(null))
-      }
-
-      const positions = markerPositions.map(
-        (position) => new window.kakao.maps.LatLng(...position)
-      );
-
-      if (positions.length > 0) {
-        this.markers = positions.map(
-          (position) =>
-            new window.kakao.maps.Marker({
-              map: this.map,
-              position,
-            })
-        );
-
-        const bounds = positions.reduce(
-          (bounds, latlng) => bounds.extend(latlng),
-          new window.kakao.maps.LatLngBounds()
-        );
-
-        this.map.setBounds(bounds);
-      }
-    },
-    searchPlace() {
-      const keyword = '영화관'
-      const ps = new window.kakao.maps.services.Places(this.map)
-      const searchOption = {
-        location: location,
-        radius: 1000,
-        size: 5
-      }
-      ps.keywordSearch(keyword, (data, status, pgn) => {
-        console.log(data)
-        console.log(pgn)
-        console.log(status)
-      }, searchOption)
-
-    },
+    }
   },
   created() {
-    this.geofind()
+    this.geoFind()
   }
 }
 </script>
 
-<style scoped>
-#map {
-  width: 400px;
-  height: 400px;
+<style lang="scss">
+.map-area {
+  display: flex;
+  position: relative;
+  .searchbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 600px;
+    z-index: 10000;
+    background-color: #ffffffaa;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    .results {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      .place{
+        padding: 8px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(240, 248, 255, 0.657)
+        }
+        h4: {
+          margin: 0;
+        }
+      }
+    }
+  }
+  .kmap {
+    flex: 1 1 auto;
+    height: 600px;
+  }
 }
+
+
 </style>
