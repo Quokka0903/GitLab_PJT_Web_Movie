@@ -97,7 +97,7 @@ export default {
           ),#26a69900;
   font-weight: bold;
   font-size: 1rem;
-  z-index: 1;
+  z-index: 2;
 }
 .main {
   padding-top: 300px;

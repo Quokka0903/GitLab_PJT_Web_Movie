@@ -83,6 +83,7 @@
               placeholder="당신만의 리뷰를 남겨주세요"
               v-model="content"
               ></b-textarea>
+              <p>{{content.length}}/50</p>
               <template slot="footer">
                 <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
               </template>

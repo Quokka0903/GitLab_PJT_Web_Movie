@@ -21,9 +21,10 @@
         <b-input @keyup.enter="doSend" v-model="title" placeholder="리뷰 제목"></b-input>
         <b-textarea
         @keyup.enter="doSend"
-        placeholder="당신만의 한 줄을 남겨주세요"
+        placeholder="나만의 한 줄을 남겨주세요"
         v-model="content"
         ></b-textarea>
+        <p>{{content.length}}/50</p>
         <template slot="footer">
           <button @click="doSend" class="custom-btn btn-heart btn-center RLV-center">완료</button>
         </template>

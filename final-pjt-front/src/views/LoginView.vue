@@ -2,8 +2,8 @@
   <div>
     <div id="holder">
       <form @submit.prevent="logIn">
-        <label class="inputText" for="username"> ID :  </label> <input class="input inputLogin" type="text" id="username" v-model="username"><br>
-        <label class="inputText" for="password"> PW :  </label> <input class="input inputLogin" type="password" id="password" v-model="password"><br>
+        <label class="inputText" @keyup.enter="logIn" for="username"> ID :  </label> <input class="input inputLogin" type="text" id="username" v-model="username"><br>
+        <label class="inputText" @keyup.enter="logIn" for="password"> PW :  </label> <input class="input inputLogin" type="password" id="password" v-model="password"><br>
         <div class="button">
           <p class="btnText">READY?</p>
           <div class="btnTwo">
@@ -48,11 +48,13 @@ export default {
         alert('비밀번호를 입력해주세요')
         return
       }
-      const payload = {
-        username: username,
-        password: password,
+      else {
+        const payload = {
+          username: username,
+          password: password,
+        }
+        this.$store.dispatch('login', payload)
       }
-      this.$store.dispatch('login', payload)
     },
     Check() {
       if (this.isLogin) {
