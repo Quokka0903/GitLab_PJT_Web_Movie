@@ -26,7 +26,7 @@
     v-model="content"
     ></b-textarea>
     <template slot="footer">
-      <button @click="createReview" class="custom-btn btn-heart btn-center">완료</button>
+      <button @click="doSend" class="custom-btn btn-heart btn-center">완료</button>
     </template>
   </ModalTemplate>
 </div>

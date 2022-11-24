@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ischanged}}
     <p>작성자: {{review?.username}}</p>
     <p>좋아요 수: <span :id="`review-${review?.id}`">{{review?.like_users_count}}</span></p>
     <h4>{{review?.title}}</h4>
@@ -28,13 +29,9 @@ export default {
       userId: null,
     }
   },
-  // watch: {
-  //   review() {
-  //     this.getReviews()
-  //   }
-  // },
   props: {
     review_id: Number,
+    ischanged: Number
   },
   methods: {
     getReviews() {
@@ -112,6 +109,14 @@ export default {
   created() {
     this.getReviews()
     this.getUserId()
+  },
+  watch: {
+    ischanged() {
+      if (this.ischanged === this.review_id) {
+        this.getReviews()
+        this.$emit('resetid')
+      }
+    }
   }
 }
 </script>
