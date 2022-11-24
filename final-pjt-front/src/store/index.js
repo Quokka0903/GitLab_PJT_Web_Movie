@@ -115,8 +115,9 @@ export default new Vuex.Store({
           Authorization: `Token ${context.state.token}`
         }
       })
-        .then((res) => {
-          context.commit('SAVE_TOKEN', res.data.key)
+        .then(() => {
+          context.commit('DELETE_TOKEN')
+          alert('비밀번호가 변경되었습니다. 다시 로그인하세요.')
         })
         .catch((err) => {
           console.log(err)
