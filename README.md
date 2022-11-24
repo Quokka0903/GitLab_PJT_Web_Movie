@@ -3,8 +3,7 @@
 --- 
 
 # 내 MOM에 쏘옥 드는 MOM!
-
-<img title="" src="README.md_assets/09426dd75c46172927c25fd71eafdcf5f970c085.png" alt="도입부.png" width="800">
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a20e5c25-d627-4316-8bf4-87a033ad6d04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T170621Z&X-Amz-Expires=86400&X-Amz-Signature=9c4d73918dd1f29460d7e1332c1673b0dba0b3afdd107aca49a37df27af3e60f&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 > 알고리즘을 사용한 영화 정보 기반 추천 서비스 (MOM)
 
@@ -12,13 +11,13 @@
 
 ## 1. 팀원 소개
 
-![남다른 뀨한나 프로필-001.png](README.md_assets/0e664bbd5a7e14660b5a6419c81652055a8180c9.png)
+![남다른 뀨한나 프로필-001.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2c2610d9-046d-4d29-ba46-4fa5402e331e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T170919Z&X-Amz-Expires=86400&X-Amz-Signature=3ca95a65c3e3dfc3523952cd5c2b9b49aca5cf5aa4bb8576acdb17985948e758&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ## 
 
 ## 2.  사용한 기술
 
-![사용한 기술.png](README.md_assets/08f65ba7321c297b6d46cafebd1782039fc03716.png)
+![사용한 기술.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/92139574-50e3-4cc8-b438-c3f967436be5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T170950Z&X-Amz-Expires=86400&X-Amz-Signature=3f706af79bddb0e541306aab97055717c9b7292a68c49690bc956ce9ad3d839e&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 - Vue.js (Front-end)
 
@@ -28,7 +27,7 @@
 
 ## 3. 서비스 기능
 
-![기능 구현 표.png](README_assets/24a456e226ebb9d523a9b0d8ae793f7e1c598ebc.png)
+![기능 구현 표.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4ef020a3-94f0-433e-ab86-c7aa40e1e4f9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171851Z&X-Amz-Expires=86400&X-Amz-Signature=3a5077c917a3eeb1d75e46bffb1a4f6c5f71692623e78ee0b3726ba4bc25b9a9&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 - 1019개 영화데이터 저장
 
@@ -38,11 +37,11 @@
 
 ### ERD
 
-![남다른뀨한나_ERD.png](README.md_assets/de39738cc9d6c3d9056efac6b9ad6a4c81dd4086.png)
+![남다른뀨한나_ERD.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/99a5a35f-3f22-4c18-95dd-aa494ed6f363/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171915Z&X-Amz-Expires=86400&X-Amz-Signature=b5bef64e2685cb2c610585f4a54567d6b3740b2704b9e9bdaf483b994671729b&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### Front components
 
-![남다른뀨한나_Templates.png](README.md_assets/fc4e2ffc59445241985a4a980aec4bbc3477d852.png)
+![남다른뀨한나_Templates.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5ee6ed15-f280-4a89-8118-ce37e830c1da/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171931Z&X-Amz-Expires=86400&X-Amz-Signature=7e0e60a66cc4876942dee4556e31624ed4ebe140b50ec9b39666c80461d21e35&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ## 5. Overview
 
@@ -52,7 +51,7 @@
 > 
 > - 약 4초간 진행되며 이후 로그인 페이지로 자동으로 넘어갑니다. 
 
-![도입부.png](README.md_assets/09426dd75c46172927c25fd71eafdcf5f970c085.png)
+![도입부.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e02f0753-342b-4174-9663-f0364046999a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171945Z&X-Amz-Expires=86400&X-Amz-Signature=f30369966f72bdc82fa6e3edce260b4b456f5fbf99949b0be8f40c38d8b06265&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -64,7 +63,7 @@
 > 
 > - 회원가입 페이지에선 반응형 input태그를 구현해 아이디는 1자리 이상, 비밀번호 8자리 이상 입력될때 문구가 자동으로 사라지며 비밀번호 재확인이 불일치하면 문구 및 경고문이 뜹니다.
 
-![로그인 및 회원가입.png](README.md_assets/15eebd375b5d17190cdda1ceb4a690437b700652.png)
+![로그인 및 회원가입.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ae8a397e-8bc2-43dc-8d7f-583bb01b58ec/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171958Z&X-Amz-Expires=86400&X-Amz-Signature=88c095297196185e2a8d5f68f58ea72b4b7e6af205104ea2a3ecc722cee3df60&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -76,7 +75,7 @@
 > 
 > - 각 장르별로 4개씩 영화가 도출되며, 3개 이상 평점을 선택하고 버튼을 눌러야 메인페이지로 이동합니다. 그렇지 않으면 경고문이 나타납니다. 
 
-![회원가입 후 영화평점 체크 페이지.png](README.md_assets/f4e695c535c6a58c534b6287d62206bf597bcd10.png)
+![회원가입 후 영화평점 체크 페이지.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4d0f41bb-4aec-4890-a78c-495f9345f482/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171813Z&X-Amz-Expires=86400&X-Amz-Signature=20f1e7579367a1d690eee91a185cb8431e85697bc457d02df2ecc70fef71a60f&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -92,7 +91,7 @@
 > 
 > - 3번째 단락인 top rated movies는 tmdb를 기반으로 한 4편의 영화가 등장하며,  카드 클릭 시 tmdb의 해당영화 페이지가 등장합니다.
 
-![메인페이지-메인.png](README.md_assets/ced49d18ceed0e2cd303fc91ff253a369c7629c5.png)
+![메인페이지-메인.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b48e9ac8-3a82-401d-89de-10c264d85028/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171758Z&X-Amz-Expires=86400&X-Amz-Signature=295b7e1ecff9d42624f0e70fae1586d36d2df20c39061e8c96ef5a72c00daad5&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -102,7 +101,7 @@
 > 
 > - 반응형으로 구현했으며, 글자를 입력할 때마다 입력한 글자, 해당 글자가 적용된 영화의 수와 영화카드가 아래 실시간으로 나타납니다.
 
-![메인페이지-검색.png](README.md_assets/f21296aca3e57e7d05bf9438c33858e1555a92c7.png)
+![메인페이지-검색.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c321a3eb-6ce7-42ce-bf26-1c19eda89473/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171726Z&X-Amz-Expires=86400&X-Amz-Signature=2f95140d04a69b85e6c4d88b06154d69ffcb2cf661c33ccb1c7f89190ce2f326&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -112,7 +111,7 @@
 > 
 > - 영화관 찾기 버튼 클릭 시 내위치와 모든 영화관 리스트를 도출합니다.
 
-![영화관 찾기.png](README_assets/69f660f6c0d831d7cbb1a6042d570c2eeff83a96.png)
+![영화관 찾기.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/82730643-d977-4ec3-a572-f603f5e3f4ad/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171654Z&X-Amz-Expires=86400&X-Amz-Signature=c0b09734bc61c83d9981492b1b4fd098406737c170cecf1dae5a748c70014b4a&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -122,7 +121,7 @@
 > 
 > - 이 중 후에 기술되지 않은 로그아웃과 회원탈퇴는 클릭 즉시 반영되며 로그인페이지로 이동하게 됩니다.
 
-![메인페이지-나의프로필.png](README.md_assets/d6a4d3d83d9e3b0facc36037cf7aa5f58e4127a9.png)
+![메인페이지-나의프로필.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0c922bfa-f276-40c8-813c-6d573f25bb5d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171616Z&X-Amz-Expires=86400&X-Amz-Signature=f3e06e7ab037c7402c0bbcd2a12d2fcd4ecfe691cc27e7f3cd0b199560e3fb99&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ##### 평가한 영화 보기
 
@@ -130,7 +129,7 @@
 > 
 > - 해당 카드는 클릭 즉시 해당 영화의 디테일페이지로 이동합니다.
 
-![프로필-평점.png](README.md_assets/5109e11d47350247d41de3736f27c8f344d53fa5.png)
+![프로필-평점.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ba1cce1f-9952-4d0e-98a7-6ab6f797efdf/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171554Z&X-Amz-Expires=86400&X-Amz-Signature=40bb99f008858bff8515413b7d60512db5d7de22e93ccfff6aa2747636712e86&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ##### 
 
@@ -140,13 +139,13 @@
 > 
 > - 이 곳에서도 리뷰의 수정과 삭제가 가능하며 모달을 통해 구현했고 즉시 반영됩니다.
 
-<img src="README.md_assets/01b95ee1882af164f1207b828c62f7f9cffad622.png" title="" alt="프로필-리뷰.png" data-align="left">
+![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0a113899-33e5-4658-934a-05ef64fa082c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171528Z&X-Amz-Expires=86400&X-Amz-Signature=6e72d13d586c8c8e55ca44ac7645d5eea4ad4c939dbe34c04628e5df5a9876f8&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ##### 비밀번호 변경
 
 > - 비밀번호 수정이 가능한 페이지이며 수정 후 로그인페이지로 이동합니다.
 
-![프로필-비밀번호 변경.png](README.md_assets/119c131911c16dbcdaced0733912f46cd582c2d3.png)
+![프로필-비밀번호 변경.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1c9df1af-b8fe-4f0f-af78-7cbeae871d72/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171457Z&X-Amz-Expires=86400&X-Amz-Signature=2661606a573b4eb91e85515fdb2360b26f45a4ae4f3df8e3e88fa2889f3a8633&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ### 
 
@@ -166,7 +165,7 @@
 > 
 > - 최하단엔 같은 장르의 다른 영화가 4개씩 랜덤으로 도출됩니다.
 
-![디테일페이지.png](README.md_assets/cb6228fe5efd0d6ee3b6fe072c2e190f7af59466.png)
+![디테일페이지.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/93b9a267-32d8-447c-80f4-4b4a29dc581f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171429Z&X-Amz-Expires=86400&X-Amz-Signature=6e53edad2bab3f6945cfe5436bdc130d7ed7baa4d3543913f7216fa6289a555b&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 > - 리뷰 모두보기 버튼을 클릭하면 전환되는 페이지입니다. 
 > 
@@ -174,7 +173,7 @@
 > 
 > - 삭제 후 디테일페이지로 돌아갈 수 있습니다.
 
-![디테일페이지 리뷰.png](README.md_assets/52b9917800550317fe57f4ae6be4b4a00be56c37.png)
+![디테일페이지 리뷰.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d9800a01-9710-4176-a6ee-a2b47c3e3d39/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T171414Z&X-Amz-Expires=86400&X-Amz-Signature=c27cc81bd352432e615f02beab6cd2f35d8d8441197d6a5f7caee0a65ca86b4f&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ## 6. 설치 방법
 
