@@ -40,7 +40,7 @@ export default new Vuex.Store({
       state.token = null
       state.selected = true
       state.recommend = []
-      router.push({ name: 'LoginView'})
+      router.push({ name: 'StartView'})
     },
     // GET_MOVIES(state, movies) {
     //   state.movies =movies
