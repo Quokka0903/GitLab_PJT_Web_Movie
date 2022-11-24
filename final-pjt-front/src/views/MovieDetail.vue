@@ -93,8 +93,14 @@
         </div>
       </div>
       <br>
-      <button v-if="ost" @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
-      <button v-else @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
+      <div v-if="ost">
+        <button @click="ShowOst" class="custom-btn btn-heart btn-center">OST 닫기</button>
+          <MovieOst
+          :moviename="movie.title"/>
+      </div>
+      <div v-else>
+        <button @click="ShowOst" class="custom-btn btn-heart btn-center">OST 보기</button>
+      </div>
       <br>      <br>
       <hr>
       <br>
@@ -120,7 +126,7 @@
 import axios from 'axios'
 import RecordDetail from '@/components/RecordDetail'
 import ModalTemplate from '@/components/ModalTemplate'
-// import MovieOst from '@/components/MovieOst'
+import MovieOst from '@/components/MovieOst'
 // import MakeReview from '@/components/MakeReview'
 import _ from 'lodash'
 
@@ -148,7 +154,7 @@ export default {
     RecordDetail,
     // MakeReview,
     ModalTemplate,
-    // MovieOst,
+    MovieOst,
   },
   methods: {
     getMovieDetail() {
