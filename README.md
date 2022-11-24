@@ -4,7 +4,7 @@
 
 # 내 MOM에 쏘옥 드는 MOM!
 
-<img title="" src="README.md_assets/09426dd75c46172927c25fd71eafdcf5f970c085.png" alt="loading-ag-427" width="800">
+<img title="" src="README.md_assets/09426dd75c46172927c25fd71eafdcf5f970c085.png" alt="도입부.png" width="800">
 
 > 알고리즘을 사용한 영화 정보 기반 추천 서비스 (MOM)
 
@@ -12,7 +12,7 @@
 
 ## 1. 팀원 소개
 
-![loading-ag-428](README.md_assets/0e664bbd5a7e14660b5a6419c81652055a8180c9.png)
+![남다른 뀨한나 프로필-001.png](README.md_assets/0e664bbd5a7e14660b5a6419c81652055a8180c9.png)
 
 ## 
 
@@ -28,7 +28,7 @@
 
 ## 3. 서비스 기능
 
-![기능 구현 표-001.png](README.md_assets/daaca1b7b1e4b9d9c8b75ccfa9200507f384f1ca.png)
+![기능 구현 표.png](README_assets/24a456e226ebb9d523a9b0d8ae793f7e1c598ebc.png)
 
 - 1019개 영화데이터 저장
 
@@ -106,9 +106,19 @@
 
 ### 
 
+### 메인페이지 -영화관 찾기
+
+> - 메인페이지 Navbar의 3번인 영화관 찾기입니다.
+> 
+> - 영화관 찾기 버튼 클릭 시 내위치와 모든 영화관 리스트를 도출합니다.
+
+![영화관 찾기.png](README_assets/69f660f6c0d831d7cbb1a6042d570c2eeff83a96.png)
+
+### 
+
 ### 메인페이지 - 나의 프로필
 
-> - 메인페이지 Navbar의 3번인 프로필입니다.
+> - 메인페이지 Navbar의 4번인 프로필입니다.
 > 
 > - 이 중 후에 기술되지 않은 로그아웃과 회원탈퇴는 클릭 즉시 반영되며 로그인페이지로 이동하게 됩니다.
 
