@@ -26,7 +26,7 @@ export default {
       const SearchText = this.moviename + ' ost 모음'
       axios({
         method: 'get',
-        url: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${SearchText}&type=video&key=AIzaSyAnjtdd0bFO1UvwzXtPV-bBzT-LzotI3MM`
+        url: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${SearchText}&type=video&key=${자신의_api키}`
       })
         .then((res) => {
           this.movie = res.data.items[0]

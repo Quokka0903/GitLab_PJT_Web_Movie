@@ -93,7 +93,7 @@ export default {
         method : 'get',
         url: 'https://api.themoviedb.org/3/movie/top_rated?',
         params:{
-          api_key:'3b039b524fe9061bc79cb30956f2b673',
+          api_key:'자신의 api 키',
           language:'ko-KR',
           page:'1',
           }       

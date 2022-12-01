@@ -175,7 +175,7 @@ export default {
         .then((res) => {
           axios({
             method: 'get',
-            url: `https://api.themoviedb.org/3/movie/${res.real_movie_id}?api_key=97facdf795694b266aef7a0828a53e1f&language=ko-KR`,
+            url: `https://api.themoviedb.org/3/movie/${res.real_movie_id}?api_key=${자신의_api키}&language=ko-KR`,
             headers: {
               Authorization: `Token ${this.$store.state.token}`
             }
